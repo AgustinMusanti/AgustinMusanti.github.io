@@ -40,7 +40,13 @@ const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) =>
         type={t.projects.personalType}
         description={project.data.description}
         tags={project.data.tags}
-        href={project.data.caseStudy ? (lang === 'en' ? `/en/projects/${project.id}` : `/proyectos/${project.id}`) : undefined}
+        href={
+          project.data.caseStudy
+            ? lang === 'en'
+              ? `/en/projects/${project.id}`
+              : `/proyectos/${project.id}`
+            : undefined
+        }
         repo={project.data.repo}
         demo={project.data.demo}
         repoMeta={repoMeta}
@@ -49,7 +55,9 @@ const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) =>
     ))}
   </div>
 
-  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">{t.projects.professionalGroup}</h3>
+  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">
+    {t.projects.professionalGroup}
+  </h3>
   <div class="grid gap-5 sm:grid-cols-2">
     {professional.map((project) => (
       <ProjectCard

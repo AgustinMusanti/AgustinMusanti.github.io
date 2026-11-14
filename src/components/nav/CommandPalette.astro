@@ -88,7 +88,6 @@ const enHref = lang === 'en' ? '/' : '/en';
   const dialog = document.getElementById('command-palette') as HTMLDialogElement | null;
   const trigger = document.getElementById('command-palette-trigger');
   const input = document.getElementById('command-palette-input') as HTMLInputElement | null;
-  const list = document.getElementById('command-palette-list');
   const empty = document.getElementById('command-palette-empty');
   const items = Array.from(document.querySelectorAll<HTMLButtonElement>('.command-item'));
   let activeIndex = 0;
@@ -104,7 +103,7 @@ const enHref = lang === 'en' ? '/' : '/en';
   function openPalette() {
     dialog?.showModal();
     if (input) input.value = '';
-    items.forEach((item) => (item.parentElement!.classList.remove('hidden')));
+    items.forEach((item) => item.parentElement!.classList.remove('hidden'));
     empty?.classList.add('hidden');
     activeIndex = 0;
     setActive(0);
@@ -133,7 +132,7 @@ const enHref = lang === 'en' ? '/' : '/en';
         // clipboard unavailable; silently ignore
       }
     } else if (action === 'toggle-theme') {
-      document.getElementById('theme-toggle')?.dispatchEvent(new MouseEvent('click'));
+      document.querySelector('[data-theme-toggle]')?.dispatchEvent(new MouseEvent('click'));
     } else if (action === 'toggle-lang') {
       const enHref = dialog?.dataset.enHref;
       if (enHref) window.location.href = enHref;
@@ -157,7 +156,11 @@ const enHref = lang === 'en' ? '/' : '/en';
     const isShortcut = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
     if (isShortcut) {
       event.preventDefault();
-      dialog?.open ? dialog.close() : openPalette();
+      if (dialog?.open) {
+        dialog.close();
+      } else {
+        openPalette();
+      }
     }
   });
 

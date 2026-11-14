@@ -38,7 +38,12 @@ const { title, text, principles, buildingNow } = await getLearning(lang);
           </span>
           <div>
             {item.link ? (
-              <a href={item.link} target="_blank" rel="noopener noreferrer" class="text-[var(--text)] hover:text-[var(--accent)]">
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[var(--text)] hover:text-[var(--accent)]"
+              >
                 {item.title}
                 <span class="sr-only"> {t.nav.openInNewTab}</span>
               </a>

@@ -32,7 +32,9 @@ const t = useTranslations(lang);
 
   {href ? (
     <h3 class="mt-1 text-lg text-[var(--text)]">
-      <a href={href} class="hover:text-[var(--accent)]">{title}</a>
+      <a href={href} class="hover:text-[var(--accent)]">
+        {title}
+      </a>
     </h3>
   ) : (
     <h3 class="mt-1 text-lg text-[var(--text)]">{title}</h3>
@@ -42,26 +44,34 @@ const t = useTranslations(lang);
 
   <ul class="mt-4 flex flex-wrap gap-2">
     {tags.map((tag) => (
-      <li class="rounded border border-[var(--border)] px-2 py-0.5 font-mono-data text-[10px] uppercase text-[var(--muted)]">{tag}</li>
+      <li class="rounded border border-[var(--border)] px-2 py-0.5 font-mono-data text-[10px] uppercase text-[var(--muted)]">
+        {tag}
+      </li>
     ))}
   </ul>
 
   <div class="mt-4 flex items-center gap-4 font-mono-data text-xs text-[var(--accent-3)]">
     {href && (
-      <a href={href} class="hover:underline">{t.projects.viewCase}</a>
+      <a href={href} class="hover:underline">
+        {t.projects.viewCase}
+      </a>
     )}
     {repo && (
       <a href={repo} target="_blank" rel="noopener noreferrer" class="hover:underline">
-        {t.projects.repo}<span class="sr-only"> {t.nav.openInNewTab}</span>
+        {t.projects.repo}
+        <span class="sr-only"> {t.nav.openInNewTab}</span>
       </a>
     )}
     {demo && (
       <a href={demo} target="_blank" rel="noopener noreferrer" class="hover:underline">
-        {t.projects.demo}<span class="sr-only"> {t.nav.openInNewTab}</span>
+        {t.projects.demo}
+        <span class="sr-only"> {t.nav.openInNewTab}</span>
       </a>
     )}
     {repoMeta && (
-      <span class="ml-auto text-[var(--muted)]">★ {repoMeta.stars} · {repoMeta.updatedLabel}</span>
+      <span class="ml-auto text-[var(--muted)]">
+        ★ {repoMeta.stars} · {repoMeta.updatedLabel}
+      </span>
     )}
   </div>
 </article>

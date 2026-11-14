@@ -16,7 +16,10 @@ const enHref = toEnPath(currentPath);
 <div class="flex items-center gap-1 font-mono-data text-xs" aria-label={t.lang_toggle.label}>
   <a
     href={esHref}
-    class:list={['rounded px-2 py-1', lang === 'es' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]']}
+    class:list={[
+      'rounded px-2 py-1',
+      lang === 'es' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]',
+    ]}
     aria-current={lang === 'es' ? 'true' : undefined}
   >
     ES
@@ -24,7 +27,10 @@ const enHref = toEnPath(currentPath);
   <span class="text-[var(--border)]">/</span>
   <a
     href={enHref}
-    class:list={['rounded px-2 py-1', lang === 'en' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]']}
+    class:list={[
+      'rounded px-2 py-1',
+      lang === 'en' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]',
+    ]}
     aria-current={lang === 'en' ? 'true' : undefined}
   >
     EN

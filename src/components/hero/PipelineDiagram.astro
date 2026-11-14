@@ -42,7 +42,15 @@ const desc = t.pipeline.description;
   {mainNodes.map((node, i) => (
     <g transform={`translate(${60 + i * 200}, 30)`}>
       <rect width="160" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5" />
-      <text x="80" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+      <text
+        x="80"
+        y="27"
+        text-anchor="middle"
+        fill="var(--text)"
+        font-family="var(--font-heading)"
+        font-size="13"
+        font-weight="600"
+      >
         {node.title}
       </text>
       {node.detail && (
@@ -54,8 +62,24 @@ const desc = t.pipeline.description;
   ))}
 
   <g transform="translate(380, 150)">
-    <rect width="160" height="60" rx="6" fill="var(--surface)" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4 3" />
-    <text x="80" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+    <rect
+      width="160"
+      height="60"
+      rx="6"
+      fill="var(--surface)"
+      stroke="var(--accent-2)"
+      stroke-width="1.5"
+      stroke-dasharray="4 3"
+    />
+    <text
+      x="80"
+      y="27"
+      text-anchor="middle"
+      fill="var(--text)"
+      font-family="var(--font-heading)"
+      font-size="13"
+      font-weight="600"
+    >
       {branchNode.title}
     </text>
     <text x="80" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
@@ -63,8 +87,18 @@ const desc = t.pipeline.description;
     </text>
   </g>
 
-  <circle r="4" fill="var(--accent-3)" class="pipeline-dot" style="offset-path: path('M 140 60 H 860'); animation-delay: 0s;" />
-  <circle r="4" fill="var(--accent-2)" class="pipeline-dot" style="offset-path: path('M 280 85 V 150 H 460'); animation-delay: 1.2s;" />
+  <circle
+    r="4"
+    fill="var(--accent-3)"
+    class="pipeline-dot"
+    style="offset-path: path('M 140 60 H 860'); animation-delay: 0s;"
+  />
+  <circle
+    r="4"
+    fill="var(--accent-2)"
+    class="pipeline-dot"
+    style="offset-path: path('M 280 85 V 150 H 460'); animation-delay: 1.2s;"
+  />
 </svg>
 
 <svg
@@ -83,7 +117,15 @@ const desc = t.pipeline.description;
   {mainNodes.map((node, i) => (
     <g transform={`translate(20, ${30 + i * 150})`}>
       <rect width="280" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5" />
-      <text x="140" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+      <text
+        x="140"
+        y="27"
+        text-anchor="middle"
+        fill="var(--text)"
+        font-family="var(--font-heading)"
+        font-size="13"
+        font-weight="600"
+      >
         {node.title}
       </text>
       {node.detail && (
@@ -95,8 +137,24 @@ const desc = t.pipeline.description;
   ))}
 
   <g transform="translate(20, 280)">
-    <rect width="280" height="60" rx="6" fill="var(--surface)" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4 3" />
-    <text x="140" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+    <rect
+      width="280"
+      height="60"
+      rx="6"
+      fill="var(--surface)"
+      stroke="var(--accent-2)"
+      stroke-width="1.5"
+      stroke-dasharray="4 3"
+    />
+    <text
+      x="140"
+      y="27"
+      text-anchor="middle"
+      fill="var(--text)"
+      font-family="var(--font-heading)"
+      font-size="13"
+      font-weight="600"
+    >
       {branchNode.title}
     </text>
     <text x="140" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
@@ -104,8 +162,18 @@ const desc = t.pipeline.description;
     </text>
   </g>
 
-  <circle r="4" fill="var(--accent-3)" class="pipeline-dot" style="offset-path: path('M 160 90 V 630'); animation-delay: 0s;" />
-  <circle r="4" fill="var(--accent-2)" class="pipeline-dot" style="offset-path: path('M 185 215 H 260 V 280'); animation-delay: 1.2s;" />
+  <circle
+    r="4"
+    fill="var(--accent-3)"
+    class="pipeline-dot"
+    style="offset-path: path('M 160 90 V 630'); animation-delay: 0s;"
+  />
+  <circle
+    r="4"
+    fill="var(--accent-2)"
+    class="pipeline-dot"
+    style="offset-path: path('M 185 215 H 260 V 280'); animation-delay: 1.2s;"
+  />
 </svg>
 
 <style>

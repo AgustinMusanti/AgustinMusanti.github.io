@@ -58,7 +58,7 @@ const jsonLd = {
           if (stored === 'light' || stored === 'dark') {
             document.documentElement.setAttribute('data-theme', stored);
           }
-        } catch (e) {}
+        } catch {}
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,7 +87,9 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">{t.nav.skipToContent}</a>
+    <a href="#main-content" class="skip-link">
+      {t.nav.skipToContent}
+    </a>
     <Nav lang={lang} />
     <main id="main-content">
       <slot />

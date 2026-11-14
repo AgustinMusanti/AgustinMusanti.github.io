@@ -21,6 +21,13 @@
     "category": "automation-ai",
     "label": "Automation & AI",
     "order": 4,
-    "tools": ["Power Automate", "n8n", "VBA", "Copilot Studio", "Claude / Claude Code", "Generative AI applied to processes"]
+    "tools": [
+      "Power Automate",
+      "n8n",
+      "VBA",
+      "Copilot Studio",
+      "Claude / Claude Code",
+      "Generative AI applied to processes"
+    ]
   }
 }

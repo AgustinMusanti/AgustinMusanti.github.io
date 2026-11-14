@@ -10,15 +10,29 @@ const t = useTranslations(lang);
 ---
 
 <button
-  id="theme-toggle"
   type="button"
+  data-theme-toggle
   class="grid h-9 w-9 place-items-center rounded border border-[var(--border)] text-[var(--text)] transition hover:border-[var(--accent)]"
   aria-label={t.theme.toggleToDark}
 >
-  <svg class="theme-icon-dark h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+  <svg
+    class="theme-icon-dark h-4 w-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    aria-hidden="true"
+  >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
   </svg>
-  <svg class="theme-icon-light hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+  <svg
+    class="theme-icon-light hidden h-4 w-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    aria-hidden="true"
+  >
     <circle cx="12" cy="12" r="4" />
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
   </svg>
@@ -26,9 +40,7 @@ const t = useTranslations(lang);
 
 <script>
   const STORAGE_KEY = 'theme';
-  const button = document.getElementById('theme-toggle');
-  const iconDark = button?.querySelector('.theme-icon-dark');
-  const iconLight = button?.querySelector('.theme-icon-light');
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]'));
 
   function getStored(): 'light' | 'dark' | null {
     try {
@@ -47,11 +59,13 @@ const t = useTranslations(lang);
 
   function syncIcons() {
     const dark = isDark();
-    iconDark?.classList.toggle('hidden', dark);
-    iconLight?.classList.toggle('hidden', !dark);
+    buttons.forEach((button) => {
+      button.querySelector('.theme-icon-dark')?.classList.toggle('hidden', dark);
+      button.querySelector('.theme-icon-light')?.classList.toggle('hidden', !dark);
+    });
   }
 
-  button?.addEventListener('click', () => {
+  function toggleTheme() {
     const next = isDark() ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try {
@@ -60,7 +74,9 @@ const t = useTranslations(lang);
       // storage unavailable; theme still applies for this page view
     }
     syncIcons();
-  });
+  }
+
+  buttons.forEach((button) => button.addEventListener('click', toggleTheme));
 
   syncIcons();
 </script>
