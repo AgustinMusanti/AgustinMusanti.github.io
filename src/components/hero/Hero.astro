@@ -1,5 +1,5 @@
 ---
-import ProcessAnimation from './ProcessAnimation.astro';
+import ThinkingSteps from './ThinkingSteps.astro';
 import { getProfile } from '../../lib/content';
 import { useTranslations, type Language } from '../../i18n/utils';
 
@@ -13,7 +13,7 @@ const { name, role, location, heroTagline, heroSecondary, linkedin, github } = a
 ---
 
 <section class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-16">
-  <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+  <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-14">
     <div data-reveal>
       <p class="text-sm text-[var(--muted)]">{location}</p>
       <h1 class="mt-3 text-4xl leading-tight md:text-5xl">{name}</h1>
@@ -36,7 +36,7 @@ const { name, role, location, heroTagline, heroSecondary, linkedin, github } = a
     </div>
 
     <div data-reveal style="--d:1">
-      <ProcessAnimation lang={lang} />
+      <ThinkingSteps lang={lang} />
     </div>
   </div>
 </section>

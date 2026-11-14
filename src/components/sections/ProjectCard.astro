@@ -70,21 +70,23 @@ const href = text.caseStudy ? projectPath(slug, lang) : undefined;
     </dl>
 
     {(href || links.demo || links.repo) && (
-      <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 pt-4 text-sm">
+      <div class="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4 text-sm">
         {href && (
           <a href={href} class="link-arrow font-medium text-[var(--accent)] hover:underline">
             {t.projects.viewCase} <span aria-hidden="true">→</span>
           </a>
         )}
         {links.demo && (
-          <a href={links.demo} target="_blank" rel="noopener noreferrer" class="text-[var(--accent-3)] hover:underline">
+          <a href={links.demo} target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-accent">
             {t.projects.demo}
+            <span aria-hidden="true">↗</span>
             <span class="sr-only"> {t.nav.openInNewTab}</span>
           </a>
         )}
         {links.repo && (
-          <a href={links.repo} target="_blank" rel="noopener noreferrer" class="text-[var(--muted)] hover:underline">
+          <a href={links.repo} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
             {t.projects.repo}
+            <span aria-hidden="true">↗</span>
             <span class="sr-only"> {t.nav.openInNewTab}</span>
           </a>
         )}

@@ -125,6 +125,21 @@ h4 {
   border-color: var(--accent);
 }
 
+.btn-sm {
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.btn-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
 .btn-primary {
   background: var(--accent);
   border-color: var(--accent);

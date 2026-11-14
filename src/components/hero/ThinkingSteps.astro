@@ -1,0 +1,195 @@
+---
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const { thinking } = useTranslations(lang);
+---
+
+<div class="thinking" data-thinking role="group" aria-label={thinking.label}>
+  <p class="eyebrow">{thinking.label}</p>
+  <ol class="track">
+    {thinking.steps.map((step, i) => (
+      <li>
+        <button type="button" class="t-step" data-step={i} aria-current={i === 0 ? 'step' : undefined}>
+          <span class="t-dot num">{i + 1}</span>
+          <span class="t-body">
+            <span class="t-title">{step.title}</span>
+            <span class="t-question">{step.question}</span>
+          </span>
+        </button>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .track {
+    --fill: 1;
+    position: relative;
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.25rem;
+  }
+  .track::before,
+  .track::after {
+    content: '';
+    position: absolute;
+    left: 0.95rem;
+    top: 1.2rem;
+    bottom: 1.2rem;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--border);
+  }
+  .track::after {
+    background: var(--accent);
+    transform: scaleY(var(--fill));
+    transform-origin: top;
+  }
+  .t-step {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.9rem;
+    width: 100%;
+    padding: 0.55rem 0.5rem 0.55rem 0;
+    border-radius: 0.5rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .t-dot {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .t-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .t-question {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.925rem;
+    color: var(--muted);
+  }
+
+  .is-live .t-step:not(.is-active) .t-dot {
+    border-color: var(--border);
+    color: var(--muted);
+  }
+  .is-live .t-step:not(.is-active) .t-title,
+  .is-live .t-step:not(.is-active) .t-question {
+    opacity: 0.55;
+  }
+  .is-live .t-step.is-active .t-dot {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .is-live .t-step.is-active .t-title {
+    color: var(--accent);
+  }
+  .is-live .t-step:hover .t-title,
+  .is-live .t-step:hover .t-question {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .track::after,
+    .t-dot,
+    .t-title,
+    .t-question {
+      transition:
+        transform 0.6s ease,
+        opacity 0.4s ease,
+        color 0.4s ease,
+        background-color 0.4s ease,
+        border-color 0.4s ease;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .t-title {
+      font-size: 1rem;
+    }
+    .t-question {
+      font-size: 0.875rem;
+    }
+    .t-step {
+      padding-block: 0.4rem;
+    }
+  }
+</style>
+
+<script>
+  const STEP_MS = 3000;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-thinking]').forEach((root) => {
+    if (reduce) return;
+    const track = root.querySelector<HTMLElement>('.track')!;
+    const steps = Array.from(root.querySelectorAll<HTMLButtonElement>('.t-step'));
+    let active = 0;
+    let paused = false;
+    let timer: number | undefined;
+
+    const show = (n: number) => {
+      active = (n + steps.length) % steps.length;
+      steps.forEach((step, i) => {
+        step.classList.toggle('is-active', i === active);
+        if (i === active) step.setAttribute('aria-current', 'step');
+        else step.removeAttribute('aria-current');
+      });
+      track.style.setProperty('--fill', String(active / (steps.length - 1)));
+    };
+    const restart = () => {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => {
+        if (!paused) show(active + 1);
+      }, STEP_MS);
+    };
+
+    root.classList.add('is-live');
+    show(0);
+    restart();
+
+    root.addEventListener('mouseenter', () => (paused = true));
+    root.addEventListener('mouseleave', () => (paused = root.contains(document.activeElement)));
+    root.addEventListener('focusin', () => (paused = true));
+    root.addEventListener('focusout', (event) => {
+      if (!root.contains(event.relatedTarget as Node)) paused = root.matches(':hover');
+    });
+
+    steps.forEach((step, i) => {
+      step.addEventListener('click', () => {
+        show(i);
+        restart();
+      });
+      step.addEventListener('keydown', (event) => {
+        const delta =
+          event.key === 'ArrowDown' || event.key === 'ArrowRight'
+            ? 1
+            : event.key === 'ArrowUp' || event.key === 'ArrowLeft'
+              ? -1
+              : 0;
+        if (!delta) return;
+        event.preventDefault();
+        show(i + delta);
+        steps[active].focus();
+      });
+    });
+  });
+</script>

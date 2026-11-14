@@ -19,15 +19,8 @@ export interface Dictionary {
   langToggle: { label: string };
   hero: {
     viewProjects: string;
-    before: string;
-    after: string;
-    beforeSteps: string[];
-    afterSteps: string[];
-    humanStep: number;
-    processDescription: string;
-    reducedNote: string;
-    afterNote: string;
   };
+  thinking: { label: string; steps: { title: string; question: string }[] };
   whatIDo: { title: string };
   soja: {
     chartTitle: string;
@@ -107,24 +100,15 @@ export const es: Dictionary = {
   langToggle: { label: 'Cambiar idioma' },
   hero: {
     viewProjects: 'Ver proyectos',
-    before: 'Antes · 7 pasos manuales',
-    after: 'Después · 4 pasos',
-    beforeSteps: [
-      'Recibir solicitud',
-      'Entrar al sistema',
-      'Consultar estados',
-      'Cruzar datos',
-      'Copiar a Excel',
-      'Armar el mail',
-      'Enviar',
+  },
+  thinking: {
+    label: 'Cómo encaro un problema',
+    steps: [
+      { title: 'Entender el problema', question: '¿Qué decisión hay que tomar?' },
+      { title: 'Repensar el proceso', question: '¿Qué pasos sobran?' },
+      { title: 'Elegir la herramienta', question: '¿Cuál lo resuelve mejor? Si no la conozco, la aprendo.' },
+      { title: 'Informar para decidir', question: '¿Qué necesita ver quien decide?' },
     ],
-    afterSteps: ['Formulario', 'Validación automática', 'Revisión humana', 'Confirmación enviada y registrada'],
-    humanStep: 2,
-    processDescription:
-      'Un proceso que se simplifica. Antes: siete pasos manuales (recibir la solicitud, entrar al sistema, consultar estados, cruzar datos, copiar a Excel, armar el mail y enviarlo). Después: cuatro pasos (formulario, validación automática, revisión humana y confirmación enviada y registrada).',
-    reducedNote:
-      'Antes eran 7 pasos manuales: recibir, entrar al sistema, consultar, cruzar, copiar, armar el mail y enviar.',
-    afterNote: 'La automatización reúne, verifica y presenta. La decisión la toma una persona.',
   },
   whatIDo: { title: 'Lo que hago' },
   soja: {

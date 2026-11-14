@@ -19,24 +19,15 @@ export const en: Dictionary = {
   langToggle: { label: 'Switch language' },
   hero: {
     viewProjects: 'View projects',
-    before: 'Before · 7 manual steps',
-    after: 'After · 4 steps',
-    beforeSteps: [
-      'Receive request',
-      'Log into the system',
-      'Look up statuses',
-      'Cross-check data',
-      'Copy to Excel',
-      'Write the email',
-      'Send',
+  },
+  thinking: {
+    label: 'How I approach a problem',
+    steps: [
+      { title: 'Understand the problem', question: 'What decision needs to be made?' },
+      { title: 'Rethink the process', question: 'Which steps don’t need to be there?' },
+      { title: 'Choose the tool', question: 'Which one solves it best? If I don’t know it, I learn it.' },
+      { title: 'Inform the decision', question: 'What does the decision-maker need to see?' },
     ],
-    afterSteps: ['Form', 'Automatic validation', 'Human review', 'Confirmation sent and logged'],
-    humanStep: 2,
-    processDescription:
-      'A process that gets simpler. Before: seven manual steps (receive the request, log into the system, look up statuses, cross-check data, copy to Excel, write the email, and send it). After: four steps (form, automatic validation, human review, and confirmation sent and logged).',
-    reducedNote:
-      'Before, it was 7 manual steps: receive, log in, look up, cross-check, copy, write the email, and send.',
-    afterNote: 'The automation gathers, verifies, and presents. A person makes the decision.',
   },
   whatIDo: { title: 'What I do' },
   soja: {
