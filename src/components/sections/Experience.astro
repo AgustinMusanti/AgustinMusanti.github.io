@@ -12,8 +12,8 @@ const t = useTranslations(lang);
 const roles = await getExperience(lang);
 ---
 
-<section id="experience" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="05" title={t.nav.experience} />
+<section id="experience" class="mx-auto max-w-6xl px-4 py-20">
+  <SectionHeading title={t.nav.experience} />
 
   <ol class="relative border-l border-[var(--border)] pl-8">
     {roles.map((role) => (

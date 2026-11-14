@@ -1,7 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LangToggle from './LangToggle.astro';
-import CommandPalette from './CommandPalette.astro';
 import { useTranslations, localizePath, type Language } from '../../i18n/utils';
 
 interface Props {
@@ -11,6 +10,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
+const home = localizePath('/', lang);
 
 const links = [
   { id: 'about', label: t.nav.about },
@@ -24,16 +24,16 @@ const links = [
 ---
 
 <header class="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
-  <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3" aria-label="Principal">
-    <a href={localizePath('/', lang)} class="font-mono-data text-sm text-[var(--text)]">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3" aria-label={t.nav.main}>
+    <a href={localizePath('/', lang)} class="font-heading text-sm font-semibold text-[var(--text)]">
       AM
     </a>
 
-    <ul class="hidden items-center gap-6 font-mono-data text-xs uppercase tracking-wide md:flex" id="nav-links">
+    <ul class="hidden items-center gap-5 text-sm lg:flex" id="nav-links">
       {links.map((link) => (
         <li>
           <a
-            href={`#${link.id}`}
+            href={`${home}#${link.id}`}
             data-nav-link={link.id}
             class="nav-link text-[var(--muted)] transition hover:text-[var(--text)]"
           >
@@ -43,15 +43,7 @@ const links = [
       ))}
     </ul>
 
-    <div class="hidden items-center gap-3 md:flex">
-      <button
-        id="command-palette-trigger"
-        type="button"
-        aria-label={t.commandPalette.placeholder}
-        class="rounded border border-[var(--border)] px-2 py-1 font-mono-data text-xs text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
-      >
-        Ctrl/⌘ K
-      </button>
+    <div class="hidden items-center gap-3 lg:flex">
       <LangToggle lang={lang} currentPath={currentPath} />
       <ThemeToggle lang={lang} />
     </div>
@@ -59,7 +51,7 @@ const links = [
     <button
       id="mobile-menu-toggle"
       type="button"
-      class="grid h-9 w-9 place-items-center rounded border border-[var(--border)] md:hidden"
+      class="grid h-9 w-9 place-items-center rounded border border-[var(--border)] lg:hidden"
       aria-label={t.nav.openMenu}
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -72,15 +64,15 @@ const links = [
 
   <div
     id="mobile-menu"
-    class="hidden flex-col gap-4 border-t border-[var(--border)] bg-[var(--bg)] px-4 py-4 md:hidden"
+    class="hidden flex-col gap-4 border-t border-[var(--border)] bg-[var(--bg)] px-4 py-4 lg:hidden"
     role="dialog"
     aria-modal="true"
     aria-label={t.nav.openMenu}
   >
-    <ul class="flex flex-col gap-3 font-mono-data text-sm uppercase tracking-wide">
+    <ul class="flex flex-col gap-3 text-base">
       {links.map((link) => (
         <li>
-          <a href={`#${link.id}`} data-nav-link={link.id} class="nav-link block py-1 text-[var(--muted)]">
+          <a href={`${home}#${link.id}`} data-nav-link={link.id} class="nav-link block py-1 text-[var(--muted)]">
             {link.label}
           </a>
         </li>
@@ -92,8 +84,6 @@ const links = [
     </div>
   </div>
 </header>
-
-<CommandPalette lang={lang} />
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');

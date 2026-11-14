@@ -1,6 +1,7 @@
 ---
-import PipelineDiagram from './PipelineDiagram.astro';
-import { getProfile, getSiteConfig } from '../../lib/content';
+import SojaEstimateChart from '../charts/SojaEstimateChart.astro';
+import KpiCard from './KpiCard.astro';
+import { getProfile, getImpact } from '../../lib/content';
 import { useTranslations, type Language } from '../../i18n/utils';
 
 interface Props {
@@ -9,53 +10,77 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
 const { name, role, location, heroTagline, linkedin, github } = await getProfile(lang);
-const { cvEnabled } = await getSiteConfig();
+const impact = await getImpact(lang);
+const kpis = impact.filter((i) => !i.data.compare);
+const comparisons = impact.filter((i) => i.data.compare);
 ---
 
-<section class="mx-auto max-w-5xl px-4 pb-16 pt-20 md:pt-28">
-  <p class="font-mono-data text-sm text-[var(--muted)]">{location}</p>
-  <h1 class="mt-4 text-4xl leading-tight md:text-6xl">{name}</h1>
-  <p class="mt-3 text-lg text-[var(--accent)] md:text-xl">{role}</p>
-  <p class="mt-6 max-w-2xl text-base text-[var(--text)] md:text-lg">{heroTagline}</p>
+<section class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-14">
+  <p class="text-sm text-[var(--muted)]">{location}</p>
+  <h1 class="mt-3 text-4xl leading-tight md:text-5xl">{name}</h1>
+  <p class="mt-2 text-lg text-[var(--accent)] md:text-xl">{role}</p>
+  <p class="mt-4 max-w-2xl text-base text-[var(--text)] md:text-lg">{heroTagline}</p>
 
-  <div class="mt-8 flex flex-wrap items-center gap-3">
-    <a
-      href="#projects"
-      class="rounded bg-[var(--accent)] px-5 py-2.5 font-mono-data text-sm text-[var(--bg)] transition hover:opacity-90"
-    >
+  <div class="mt-6 flex flex-wrap items-center gap-3">
+    <a href="#projects" class="btn btn-primary">
       {t.hero.viewProjects}
     </a>
-    {cvEnabled && (
-      <a
-        href="/cv/CV_AgustinMusanti.pdf"
-        class="rounded border border-[var(--border)] px-5 py-2.5 font-mono-data text-sm text-[var(--text)] transition hover:border-[var(--accent)]"
-      >
-        {t.hero.downloadCv}
-      </a>
-    )}
-    <a
-      href={linkedin}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded border border-[var(--border)] px-5 py-2.5 font-mono-data text-sm text-[var(--text)] transition hover:border-[var(--accent)]"
-    >
-      LinkedIn
-      <span class="sr-only">{t.nav.openInNewTab}</span>
+    <a href={linkedin} target="_blank" rel="noopener noreferrer" class="btn">
+      LinkedIn<span class="sr-only"> {t.nav.openInNewTab}</span>
     </a>
-    <a
-      href={github}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded border border-[var(--border)] px-5 py-2.5 font-mono-data text-sm text-[var(--text)] transition hover:border-[var(--accent)]"
-    >
-      GitHub
-      <span class="sr-only">{t.nav.openInNewTab}</span>
+    <a href={github} target="_blank" rel="noopener noreferrer" class="btn">
+      GitHub<span class="sr-only"> {t.nav.openInNewTab}</span>
     </a>
   </div>
 
-  <div class="mt-16">
-    <PipelineDiagram lang={lang} />
+  <div class="panel mt-8 p-4 md:p-6">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
+      <div class="min-w-0">
+        <SojaEstimateChart lang={lang} />
+        <p class="mt-3 text-xs text-[var(--muted)]">{t.hero.panelSource}</p>
+      </div>
+
+      <div class="min-w-0">
+        <h2 class="eyebrow">{t.hero.kpisTitle}</h2>
+        <ul class="mt-3 grid grid-cols-2 gap-3">
+          {kpis.map((k) => (
+            <KpiCard value={k.data.value} label={k.data.label} />
+          ))}
+          {comparisons.map((k) => (
+            <li class="col-span-2 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-3">
+              <p class="text-sm text-[var(--text)]">{k.data.label}</p>
+              <dl class="mt-2 grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-1.5 text-xs">
+                <dt class="num text-[var(--muted)]">{k.data.compare!.beforeLabel}</dt>
+                <dd class="m-0 h-3 rounded-sm bg-[var(--bar)]" />
+                <dt class="num text-[var(--accent)]">{k.data.compare!.afterLabel}</dt>
+                <dd class="m-0">
+                  <div
+                    class="h-3 rounded-sm bg-[var(--accent)]"
+                    style={`width:${Math.max((k.data.compare!.after / k.data.compare!.before) * 100, 2)}%`}
+                  />
+                </dd>
+              </dl>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-6 border-t border-[var(--border)] pt-4">
+      <h2 class="eyebrow">{t.hero.workflowTitle}</h2>
+      <ol class="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2 text-sm text-[var(--text)]">
+        {t.hero.workflow.map((step, i) => (
+          <li class="flex items-center gap-1">
+            <span class="rounded-full border border-[var(--border)] bg-[var(--bg)] px-3 py-1">{step}</span>
+            {i < t.hero.workflow.length - 1 && (
+              <span class="px-1 text-[var(--muted)]" aria-hidden="true">
+                →
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

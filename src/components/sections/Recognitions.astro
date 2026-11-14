@@ -12,8 +12,8 @@ const t = useTranslations(lang);
 const recognitions = await getRecognitions(lang);
 ---
 
-<section id="recognitions" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="06" title={t.nav.recognitions} />
+<section id="recognitions" class="mx-auto max-w-6xl px-4 py-20">
+  <SectionHeading title={t.nav.recognitions} />
 
   <div class="grid gap-5 sm:grid-cols-3">
     {recognitions.map((item) => (

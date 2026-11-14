@@ -1,88 +1,108 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { useTranslations, type Language } from '../i18n/utils';
+import SojaEstimateChart from '../components/charts/SojaEstimateChart.astro';
+import SojaMaeChart from '../components/charts/SojaMaeChart.astro';
+import SojaImportance from '../components/charts/SojaImportance.astro';
+import InflationChart from '../components/charts/InflationChart.astro';
+import type { Project } from '../lib/content';
+import { useTranslations, localizePath, type Language } from '../i18n/utils';
 
 interface Props {
   lang: Language;
-  slug: string;
-  title: string;
-  description: string;
-  tags: string[];
-  stack: string[];
-  problem: string;
-  approach: string;
-  result: string;
-  learnings: string;
-  repo?: string;
-  demo?: string;
+  project: Project;
 }
 
-const { lang, slug, title, description, tags, stack, problem, approach, result, learnings, repo, demo } = Astro.props;
+const { lang, project } = Astro.props;
 const t = useTranslations(lang);
-const backHref = lang === 'en' ? '/en/#projects' : '/#projects';
+const { text, links, tags, stack, metric, visual, slug } = project;
+const caseStudy = text.caseStudy!;
 const ogImagePath = lang === 'en' ? `/og/en/project/${slug}.png` : `/og/project/${slug}.png`;
 
 const blocks = [
-  { label: t.caseStudy.problem, text: problem },
-  { label: t.caseStudy.approach, text: approach },
-  { label: t.caseStudy.result, text: result },
-  { label: t.caseStudy.learnings, text: learnings },
+  { label: t.caseStudy.problem, text: caseStudy.problem },
+  { label: t.caseStudy.approach, text: caseStudy.approach },
+  { label: t.caseStudy.result, text: caseStudy.result },
+  { label: t.caseStudy.learnings, text: caseStudy.learnings },
 ];
 ---
 
-<BaseLayout lang={lang} title={`${title} · Agustín Musanti`} description={description} ogImagePath={ogImagePath}>
-  <article class="mx-auto max-w-3xl px-4 py-24">
-    <a href={backHref} class="font-mono-data text-xs text-[var(--accent-3)] hover:underline">
+<BaseLayout lang={lang} title={`${text.title} · Agustín Musanti`} description={text.result} ogImagePath={ogImagePath}>
+  <article class="mx-auto max-w-4xl px-4 py-16">
+    <a href={`${localizePath('/', lang)}#projects`} class="text-sm text-[var(--accent-3)] hover:underline">
       ← {t.caseStudy.back}
     </a>
 
-    <h1 class="mt-6 text-3xl text-[var(--text)] md:text-4xl">{title}</h1>
-    <p class="mt-3 text-[var(--muted)]">{description}</p>
+    <h1 class="mt-6 text-3xl text-[var(--text)] md:text-4xl">{text.title}</h1>
+    <p class="mt-3 text-lg text-[var(--muted)]">{text.question}</p>
 
-    <ul class="mt-4 flex flex-wrap gap-2">
+    <ul class="mt-4 flex flex-wrap gap-1.5">
       {tags.map((tag) => (
-        <li class="rounded border border-[var(--border)] px-2 py-0.5 font-mono-data text-[10px] uppercase text-[var(--muted)]">
-          {tag}
+        <li class="rounded-full bg-[var(--surface)] px-2.5 py-0.5 text-xs text-[var(--muted)]">
+          {t.projects.tags[tag]}
         </li>
       ))}
     </ul>
 
+    {metric && (
+      <p class="panel mt-8 p-5">
+        <span class="num block text-4xl leading-none text-[var(--accent)]">{metric}</span>
+        <span class="mt-2 block text-sm text-[var(--muted)]">{text.metricLabel}</span>
+      </p>
+    )}
+
+    {visual === 'soja' && (
+      <section class="mt-10" aria-label={t.caseStudy.charts}>
+        <div class="panel p-4 md:p-6">
+          <SojaEstimateChart lang={lang} />
+        </div>
+        <div class="mt-5 grid gap-5 md:grid-cols-2">
+          <div class="panel p-4 md:p-5">
+            <SojaMaeChart lang={lang} />
+          </div>
+          <div class="panel p-4 md:p-5">
+            <SojaImportance lang={lang} />
+          </div>
+        </div>
+      </section>
+    )}
+    {visual === 'inflation-seasonality' && (
+      <section class="panel mt-10 p-4 md:p-6" aria-label={t.caseStudy.charts}>
+        <InflationChart lang={lang} />
+      </section>
+    )}
+
     <div class="mt-10 space-y-8">
       {blocks.map((block) => (
-        <div>
-          <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{block.label}</h2>
+        <section>
+          <h2 class="eyebrow">{block.label}</h2>
           <p class="mt-2 text-[var(--text)]">{block.text}</p>
-        </div>
+        </section>
       ))}
     </div>
 
-    <div class="mt-10">
-      <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{t.caseStudy.stack}</h2>
-      <ul class="mt-2 flex flex-wrap gap-2">
-        {stack.map((tool) => (
-          <li class="rounded border border-[var(--border)] px-2.5 py-1 text-sm text-[var(--text)]">{tool}</li>
-        ))}
-      </ul>
-    </div>
+    <section class="mt-10">
+      <h2 class="eyebrow">{t.caseStudy.stack}</h2>
+      <p class="mt-2 text-[var(--text)]">{stack.join(' · ')}</p>
+    </section>
 
-    {(repo || demo) && (
-      <div class="mt-10">
-        <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{t.caseStudy.links}</h2>
-        <div class="mt-3 flex gap-4 font-mono-data text-sm text-[var(--accent-3)]">
-          {repo && (
-            <a href={repo} target="_blank" rel="noopener noreferrer" class="hover:underline">
-              {t.projects.repo}
-              <span class="sr-only"> {t.nav.openInNewTab}</span>
-            </a>
-          )}
-          {demo && (
-            <a href={demo} target="_blank" rel="noopener noreferrer" class="hover:underline">
+    {(links.repo || links.demo) && (
+      <section class="mt-10">
+        <h2 class="eyebrow">{t.caseStudy.links}</h2>
+        <div class="mt-3 flex flex-wrap gap-3">
+          {links.demo && (
+            <a href={links.demo} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
               {t.projects.demo}
               <span class="sr-only"> {t.nav.openInNewTab}</span>
             </a>
           )}
+          {links.repo && (
+            <a href={links.repo} target="_blank" rel="noopener noreferrer" class="btn">
+              {t.projects.repo}
+              <span class="sr-only"> {t.nav.openInNewTab}</span>
+            </a>
+          )}
         </div>
-      </div>
+      </section>
     )}
   </article>
 </BaseLayout>

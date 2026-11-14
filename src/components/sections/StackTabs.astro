@@ -15,12 +15,12 @@ const { lang, tabs } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter stack by category">
+<div class="mb-8 flex flex-wrap gap-2" role="group" aria-label={t.stack.filterLabel}>
   <button
     type="button"
     data-stack-tab="all"
     aria-pressed="true"
-    class="stack-tab-btn rounded-full border border-[var(--accent)] px-3 py-1 font-mono-data text-xs text-[var(--accent)] transition"
+    class="stack-tab-btn rounded-full border border-[var(--accent)] px-3 py-1 text-sm text-[var(--accent)] transition"
   >
     {t.stack.allCategories}
   </button>
@@ -29,7 +29,7 @@ const t = useTranslations(lang);
       type="button"
       data-stack-tab={tab.category}
       aria-pressed="false"
-      class="stack-tab-btn rounded-full border border-[var(--border)] px-3 py-1 font-mono-data text-xs text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
+      class="stack-tab-btn rounded-full border border-[var(--border)] px-3 py-1 text-sm text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
     >
       {tab.label}
     </button>

@@ -14,15 +14,15 @@ const categories = await getStack(lang);
 const tabs = categories.map((c) => ({ category: c.data.category, label: c.data.label }));
 ---
 
-<section id="stack" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="08" title={t.nav.stack} />
+<section id="stack" class="mx-auto max-w-6xl px-4 py-20">
+  <SectionHeading title={t.nav.stack} />
 
   <StackTabs lang={lang} tabs={tabs} />
 
   <div class="grid gap-6 sm:grid-cols-2">
     {categories.map((category) => (
-      <div data-stack-category={category.data.category} class="rounded-lg border border-[var(--border)] p-5">
-        <h3 class="font-mono-data text-xs uppercase tracking-wide text-[var(--muted)]">{category.data.label}</h3>
+      <div data-stack-category={category.data.category} class="panel p-5">
+        <h3 class="eyebrow">{category.data.label}</h3>
         <ul class="mt-3 flex flex-wrap gap-2">
           {category.data.tools.map((tool) => (
             <li class="rounded border border-[var(--border)] px-2.5 py-1 text-sm text-[var(--text)]">{tool}</li>

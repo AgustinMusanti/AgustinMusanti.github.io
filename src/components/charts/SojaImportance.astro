@@ -1,0 +1,41 @@
+---
+import soja from '../../data/soja.json';
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang).soja;
+const max = 25;
+---
+
+<figure class="m-0">
+  <figcaption class="mb-3">
+    <p class="font-heading text-base font-semibold text-[var(--text)] md:text-lg">{t.importanceTitle}</p>
+    <p class="mt-1 text-xs text-[var(--muted)]">{t.importanceSubtitle}</p>
+  </figcaption>
+  <ol class="space-y-3">
+    {soja.importance.top.map((item, i) => (
+      <li class="grid grid-cols-[1.5rem_1fr] items-start gap-x-2">
+        <span class="num text-sm text-[var(--muted)]">{i + 1}</span>
+        <div>
+          <div class="flex items-baseline justify-between gap-3 text-sm text-[var(--text)]">
+            <span>{t.importance[item.feature]}</span>
+            {item.approxShare !== null && (
+              <span class="shrink-0 text-xs text-[var(--muted)]">
+                {t.approx} <span class="num text-[var(--text)]">{item.approxShare}%</span>
+              </span>
+            )}
+          </div>
+          {item.approxShare !== null && (
+            <div class="mt-1.5 h-2 rounded-full bg-[var(--border)]">
+              <div class="h-2 rounded-full bg-[var(--accent)]" style={`width:${(item.approxShare / max) * 100}%`} />
+            </div>
+          )}
+        </div>
+      </li>
+    ))}
+  </ol>
+</figure>

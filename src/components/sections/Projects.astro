@@ -2,8 +2,8 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import ProjectFilter from './ProjectFilter.astro';
 import ProjectCard from './ProjectCard.astro';
-import { getProjectsProfessional, getProjectsPersonal } from '../../lib/content';
-import { getRepoMeta } from '../../lib/github';
+import { TAGS, type Tag } from '../../lib/taxonomy';
+import { getProjects } from '../../lib/content';
 import { useTranslations, type Language } from '../../i18n/utils';
 
 interface Props {
@@ -12,61 +12,33 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const projects = await getProjects(lang);
 
-const professional = await getProjectsProfessional(lang);
-const personal = await getProjectsPersonal(lang);
+const counts = TAGS.map((tag) => [tag, projects.filter((p) => p.tags.includes(tag)).length] as const).filter(
+  ([, n]) => n > 0,
+) as [Tag, number][];
 
-const personalWithMeta = await Promise.all(
-  personal.map(async (project) => ({
-    project,
-    repoMeta: project.data.repo ? await getRepoMeta(project.data.repo, lang) : null,
-  })),
-);
-
-const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) => p.data.tags))).sort();
+const groups = [
+  { title: t.projects.personalGroup, items: projects.filter((p) => p.kind === 'personal') },
+  { title: t.projects.professionalGroup, items: projects.filter((p) => p.kind === 'profesional') },
+].filter((g) => g.items.length > 0);
 ---
 
-<section id="projects" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="04" title={t.nav.projects} />
+<section id="projects" class="mx-auto max-w-6xl px-4 py-20">
+  <SectionHeading title={t.nav.projects} />
 
-  <ProjectFilter lang={lang} tags={allTags} />
+  <ProjectFilter lang={lang} counts={counts} total={projects.length} />
 
-  <h3 class="mb-4 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">{t.projects.personalGroup}</h3>
-  <div class="grid gap-5 sm:grid-cols-2">
-    {personalWithMeta.map(({ project, repoMeta }) => (
-      <ProjectCard
-        lang={lang}
-        title={project.data.title}
-        type={t.projects.personalType}
-        description={project.data.description}
-        tags={project.data.tags}
-        href={
-          project.data.caseStudy
-            ? lang === 'en'
-              ? `/en/projects/${project.id}`
-              : `/proyectos/${project.id}`
-            : undefined
-        }
-        repo={project.data.repo}
-        demo={project.data.demo}
-        repoMeta={repoMeta}
-        featured={project.data.featured}
-      />
-    ))}
-  </div>
+  {groups.map((group, i) => (
+    <div data-project-group class:list={[i > 0 && 'mt-12']}>
+      <h3 class="eyebrow mb-4">{group.title}</h3>
+      <div class="grid gap-5 md:grid-cols-2">
+        {group.items.map((project) => (
+          <ProjectCard lang={lang} project={project} />
+        ))}
+      </div>
+    </div>
+  ))}
 
-  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">
-    {t.projects.professionalGroup}
-  </h3>
-  <div class="grid gap-5 sm:grid-cols-2">
-    {professional.map((project) => (
-      <ProjectCard
-        lang={lang}
-        title={project.data.title}
-        type={t.projects.professionalType}
-        description={project.data.description}
-        tags={project.data.tags}
-      />
-    ))}
-  </div>
+  <p class="mt-10 text-sm text-[var(--muted)]">{t.projects.moreSoon}</p>
 </section>

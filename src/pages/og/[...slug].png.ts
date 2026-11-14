@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { generateOgImage } from '../../lib/og-image';
-import { getProfile, getProjectsPersonal } from '../../lib/content';
+import { getProfile, getProjects } from '../../lib/content';
 import type { Language } from '../../i18n/utils';
 
 export const prerender = true;
@@ -23,15 +23,15 @@ export async function getStaticPaths() {
       props: { eyebrow: profile.role, title: profile.name, description: profile.heroTagline },
     });
 
-    const personal = await getProjectsPersonal(lang);
-    for (const project of personal) {
-      if (!project.data.caseStudy) continue;
+    const projects = await getProjects(lang);
+    for (const project of projects) {
+      if (!project.text.caseStudy) continue;
       paths.push({
-        params: { slug: `${prefix}project/${project.id}` },
+        params: { slug: `${prefix}project/${project.slug}` },
         props: {
           eyebrow: profile.name,
-          title: project.data.title,
-          description: project.data.description,
+          title: project.text.title,
+          description: project.text.result,
         },
       });
     }

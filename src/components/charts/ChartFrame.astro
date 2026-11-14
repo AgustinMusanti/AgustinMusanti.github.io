@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  size?: 'lg' | 'sm';
+}
+
+const { title, subtitle, size = 'lg' } = Astro.props;
+---
+
+<figure class="chart relative m-0">
+  <figcaption class="mb-3">
+    <p
+      class:list={['font-heading font-semibold text-[var(--text)]', size === 'lg' ? 'text-base md:text-lg' : 'text-sm']}
+    >
+      {title}
+    </p>
+    {subtitle && <p class="mt-1 text-xs text-[var(--muted)]">{subtitle}</p>}
+  </figcaption>
+  <slot />
+  <div
+    class="chart-tip num pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap rounded border border-[var(--border)] bg-[var(--surface)] px-2 py-1 text-xs text-[var(--text)] shadow-sm"
+    hidden
+  ></div>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.chart').forEach((figure) => {
+    const tip = figure.querySelector<HTMLElement>('.chart-tip');
+    if (!tip) return;
+
+    figure.addEventListener('pointerover', (event) => {
+      const target = (event.target as Element).closest<SVGElement>('[data-tip]');
+      if (!target) return;
+      tip.textContent = target.dataset.tip ?? '';
+      tip.hidden = false;
+      const box = target.getBoundingClientRect();
+      const frame = figure.getBoundingClientRect();
+      const half = tip.offsetWidth / 2;
+      const center = box.left + box.width / 2 - frame.left;
+      const left = Math.min(Math.max(center, half), frame.width - half);
+      tip.style.transform = `translate(${left - half}px, ${box.top - frame.top - tip.offsetHeight - 6}px)`;
+    });
+
+    figure.addEventListener('pointerout', (event) => {
+      const next = (event.relatedTarget as Element | null)?.closest('[data-tip]');
+      if (!next) tip.hidden = true;
+    });
+  });
+</script>

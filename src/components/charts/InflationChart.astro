@@ -1,0 +1,61 @@
+---
+import ChartFrame from './ChartFrame.astro';
+import inflacion from '../../data/inflacion.json';
+import { scale } from '../../lib/chart';
+import { useTranslations, formatNumber, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang).inflation;
+const fmt = (v: number) => formatNumber(v, lang, 2);
+
+const w = 340;
+const h = 130;
+const m = { l: 4, r: 4, t: 18, b: 18 };
+const values = inflacion.monthlyAverage;
+const band = (w - m.l - m.r) / values.length;
+const x = (i: number) => m.l + (i + 0.5) * band;
+const y = scale([0, 7.5], [h - m.b, m.t]);
+const threshold = 5;
+---
+
+<ChartFrame title={t.chartTitle} size="sm">
+  <svg class="block h-auto w-full" viewBox={`0 0 ${w} ${h}`} aria-hidden="true">
+    <line x1={m.l} x2={w - m.r} y1={y(threshold)} y2={y(threshold)} stroke="var(--muted)" stroke-dasharray="3 3" />
+    <text x={m.l} y={m.t - 6} class="num" font-size="9.5" fill="var(--muted)">
+      - - 5%
+    </text>
+    {values.map((v, i) => (
+      <g>
+        <rect
+          x={x(i) - band * 0.32}
+          width={band * 0.64}
+          y={y(v)}
+          height={y(0) - y(v)}
+          rx="2"
+          fill={v > threshold ? 'var(--accent)' : 'var(--bar)'}
+          data-tip={`${t.months[i]} · ${fmt(v)}%`}
+        />
+        <text x={x(i)} y={h - 4} text-anchor="middle" font-size="10" fill="var(--muted)">
+          {t.months[i]}
+        </text>
+      </g>
+    ))}
+  </svg>
+  <div class="sr-only">
+    <table>
+      <caption>{t.tableCaption}</caption>
+      <tbody>
+        {values.map((v, i) => (
+          <tr>
+            <th scope="row">{i + 1}</th>
+            <td>{fmt(v)}%</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</ChartFrame>

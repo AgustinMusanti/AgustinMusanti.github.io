@@ -15,7 +15,6 @@ interface Props {
 
 const { lang, title, description, ogImagePath } = Astro.props;
 const t = useTranslations(lang);
-const repoUrl = 'https://github.com/AgustinMusanti/AgustinMusanti.github.io';
 const profile = await getProfile(lang);
 
 const currentPath = Astro.url.pathname;
@@ -94,6 +93,6 @@ const jsonLd = {
     <main id="main-content">
       <slot />
     </main>
-    <Footer lang={lang} repoUrl={repoUrl} />
+    <Footer />
   </body>
 </html>
