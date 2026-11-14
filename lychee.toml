@@ -3,6 +3,14 @@
 
 no_progress = true
 
+# Same-origin links are absolute (canonical/OG/sitemap all use the production
+# domain), but this runs against the just-built dist/ *before* it's deployed —
+# checking agustinmusanti.github.io over the network would 404 on every run
+# until the first successful deploy, and stay a flaky external dependency after
+# that. Remap them to the local build output instead; only genuinely external
+# domains hit the network.
+remap = ["https://agustinmusanti.github.io file://./dist"]
+
 exclude = [
   # Local dashboards/demos may be slow or blocked by anonymous crawlers.
   "^https://app\\.powerbi\\.com",
