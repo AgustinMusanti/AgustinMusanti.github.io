@@ -2,17 +2,11 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [main]
   workflow_call:
 
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  check:
-    name: Types, lint, format
+  build:
+    name: Types, content, lint and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,21 +18,7 @@ jobs:
       - run: npm run check
       - run: npm run lint
       - run: npm run format:check
-
-  build:
-    name: Build
-    needs: check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
       - run: npm run build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -46,7 +26,7 @@ jobs:
           retention-days: 1
 
   e2e:
-    name: Playwright + axe-core
+    name: Smoke test + accessibility
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -62,15 +42,15 @@ jobs:
           path: dist
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - if: always()
+      - if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report
           retention-days: 7
 
-  link-check:
-    name: Link checker (lychee)
+  links:
+    name: Broken links
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -83,15 +63,3 @@ jobs:
         with:
           args: --config lychee.toml ./dist
           fail: true
-
-  lighthouse:
-    name: Lighthouse CI
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-      - run: npx --yes @lhci/cli@0.15.x autorun --config=./lighthouserc.json

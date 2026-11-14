@@ -1,0 +1,48 @@
+import { test, expect } from '@playwright/test';
+
+test('home shows the results panel and navigates by anchors', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Agustín Musanti');
+  await expect(page.getByText('Cinco meses antes de la cosecha', { exact: false }).first()).toBeVisible();
+
+  await page.getByRole('link', { name: 'Proyectos', exact: true }).first().click();
+  await expect(page).toHaveURL(/#projects$/);
+  await expect(page.locator('#projects')).toBeInViewport();
+});
+
+test('project filter narrows cards and syncs the URL', async ({ page }) => {
+  await page.goto('/#projects');
+  const all = page.locator('[data-tags]');
+  const visible = page.locator('[data-tags]:not(.hidden)');
+  const total = await all.count();
+
+  await page.getByRole('button', { name: /^Agro/ }).click();
+  await expect(page).toHaveURL(/\?tag=agro/);
+  expect(await visible.count()).toBeLessThan(total);
+
+  await page.getByRole('button', { name: /^Todos/ }).click();
+  expect(await visible.count()).toBe(total);
+});
+
+test('theme toggle persists across reloads', async ({ page }) => {
+  await page.goto('/');
+  const html = page.locator('html');
+  await page.locator('[data-theme-toggle]').first().click();
+  const theme = await html.getAttribute('data-theme');
+  await page.reload();
+  await expect(html).toHaveAttribute('data-theme', theme ?? '');
+});
+
+test('English home and case study are reachable and translated', async ({ page }) => {
+  await page.goto('/en/');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await page
+    .getByRole('link', { name: /Read the full case/ })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/en\/projects\/estimacion-rinde-soja\/?$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Early soybean yield estimation');
+
+  await page.getByRole('link', { name: 'ES', exact: true }).first().click();
+  await expect(page).toHaveURL(/\/proyectos\/estimacion-rinde-soja\/?$/);
+});

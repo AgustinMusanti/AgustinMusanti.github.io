@@ -1,115 +1,106 @@
 # agustinmusanti.github.io
 
-Portfolio personal de Agustín Musanti — Data & Reporting Analyst. Sitio estático bilingüe (ES/EN) construido con Astro, con todo el contenido validado por esquemas Zod, deploy automático a GitHub Pages y una suite de CI (tipos, lint, E2E, accesibilidad, link-checking, Lighthouse).
+Portfolio de Agustín Musanti, Data & Reporting Analyst: BI, data science y automatización de procesos. Sitio estático bilingüe (ES/EN) con resultados reales de proyectos, publicado en https://agustinmusanti.github.io.
 
-**Sitio:** https://agustinmusanti.github.io
+## Correrlo
 
-## Stack
-
-- [Astro](https://astro.build) (salida 100% estática) + TypeScript strict.
-- [Tailwind CSS v4](https://tailwindcss.com) vía el plugin de Vite, combinado con tokens de diseño en CSS custom properties (`src/styles/global.css`) para el tema claro/oscuro.
-- Fuentes self-hosted con `@fontsource` (Space Grotesk, Inter, JetBrains Mono) — nada de Google Fonts por CDN.
-- Islas de JS vanilla (sin frameworks de UI) para el toggle de tema, el filtro de proyectos, los contadores animados, el command palette y el botón de copiar email.
-- Content Collections de Astro con esquemas Zod como única fuente de verdad del contenido.
-- `satori` + `@resvg/resvg-js` para generar las imágenes Open Graph en build-time.
-- Playwright (E2E) + `@axe-core/playwright` (accesibilidad), `lychee` (link checking) y Lighthouse CI.
-
-## Arquitectura: de JSON a página
-
-```mermaid
-flowchart LR
-    subgraph Contenido
-        A[src/content/**/*.json<br/>y *.en.json]
-    end
-    subgraph Build
-        B[src/content.config.ts<br/>esquemas Zod]
-        C[src/lib/content.ts<br/>getters por idioma]
-    end
-    subgraph Render
-        D[Componentes .astro<br/>src/components/]
-        E[Layouts<br/>BaseLayout / CaseStudyLayout]
-    end
-    subgraph Salida
-        F[Páginas estáticas<br/>/ · /en/ · /proyectos/slug · /en/projects/slug]
-        G[OG images<br/>/og/**.png]
-        H[sitemap.xml · robots.txt]
-    end
-
-    A -->|"loader: file() / glob()"| B
-    B -->|build falla si no cumple el esquema| C
-    C --> D
-    D --> E
-    E --> F
-    C --> G
-    F --> H
-```
-
-Si un archivo de contenido no cumple su esquema, `astro build` falla antes de generar una sola página: el contenido nunca llega "roto" a producción.
-
-## Cómo editar contenido
-
-**Nunca se edita HTML/JS para cambiar texto.** Todo el contenido vive en `src/content/`:
-
-| Qué                                              | Dónde                                             |
-| ------------------------------------------------ | ------------------------------------------------- |
-| Perfil, bio, tagline                             | `src/content/profile/profile.json` (+ `.en.json`) |
-| Contadores de impacto                            | `src/content/impact/impact.json`                  |
-| Experiencia (timeline)                           | `src/content/experience/experience.json`          |
-| Proyectos profesionales (PwC, anonimizados)      | `src/content/projects/professional.json`          |
-| Proyectos personales (uno por archivo = un slug) | `src/content/projects/personal/*.json`            |
-| Reconocimientos                                  | `src/content/recognitions/recognitions.json`      |
-| "Cómo aprendo" + "Ahora estoy construyendo"      | `src/content/learning/learning.json`              |
-| Stack / herramientas                             | `src/content/stack/stack.json`                    |
-| Config del sitio (CV, analytics, foto)           | `src/content/config/site.json`                    |
-
-Cada archivo en español tiene un espejo `*.en.json` con la traducción (misma estructura e IDs). El esquema de cada colección está en `src/content.config.ts`; si agregás un campo nuevo, agregalo ahí primero.
-
-### Cómo agregar un proyecto personal
-
-1. Creá `src/content/projects/personal/mi-proyecto.json` (el nombre del archivo es el slug) y su espejo en `src/content/projects/personal-en/mi-proyecto.json`.
-2. Completá `title`, `description`, `tags`, `order`, `stack`, y opcionalmente `repo`, `demo`.
-3. Si querés una página de caso (`/proyectos/mi-proyecto`), agregá el bloque `caseStudy` con `problem`, `approach`, `result`, `learnings` (en ambos idiomas). Sin ese bloque, el proyecto aparece solo como tarjeta.
-4. Si el proyecto tiene `repo` en GitHub, las estrellas y la fecha de actualización se obtienen en build-time (`src/lib/github.ts`); si la API falla o hay rate limit, el build no se rompe, solo se omite ese dato.
-
-## Desarrollo local
-
-Requiere Node 20+ (probado con Node 22/24).
+Requiere Node 22+.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Comandos principales:
+| Comando            | Qué hace                                                      |
+| ------------------ | ------------------------------------------------------------- |
+| `npm run dev`      | Servidor de desarrollo en `localhost:4321`                    |
+| `npm run build`    | Build estático a `dist/` (incluye las imágenes para redes)    |
+| `npm run preview`  | Sirve `dist/`                                                 |
+| `npm run check`    | Tipos y validación del contenido contra sus esquemas          |
+| `npm run lint`     | ESLint                                                        |
+| `npm run format`   | Prettier                                                      |
+| `npm run test:e2e` | Smoke test (navegación, filtros, tema, versión EN) y axe-core |
 
-| Comando                           | Qué hace                                                    |
-| --------------------------------- | ----------------------------------------------------------- |
-| `npm run dev`                     | Server de desarrollo en `localhost:4321`                    |
-| `npm run build`                   | Build estático a `dist/` (incluye las imágenes OG)          |
-| `npm run preview`                 | Sirve el build de `dist/`                                   |
-| `npm run check`                   | `astro check` — tipos + validación de esquemas de contenido |
-| `npm run lint`                    | ESLint (Astro + TypeScript)                                 |
-| `npm run format` / `format:check` | Prettier (con soporte para `.astro`)                        |
-| `npm run test:e2e`                | Playwright (E2E + accesibilidad con axe-core)               |
+## Cómo agregar, editar o quitar un proyecto
 
-## CI/CD
+Cada proyecto es **un solo archivo** en `src/content/projects/<slug>.json`, con los textos en español y en inglés dentro del mismo archivo. El nombre del archivo es la URL de la página de caso (`/proyectos/<slug>/` y `/en/projects/<slug>/`).
 
-- **`.github/workflows/ci.yml`** corre en cada PR y push a `main`: tipos/esquemas (`astro check`), lint, format check, build, Playwright (navegación, tema sin flash, filtro de proyectos, copiar email, command palette, versión `/en/`) + axe-core sin violaciones serias/críticas, link checking con `lychee` sobre el build, y Lighthouse CI con budgets de ≥95 en las 4 categorías (mobile).
-- **`.github/workflows/deploy.yml`** reutiliza el CI como gate: si pasa, hace build y deploya a GitHub Pages con `actions/deploy-pages` en cada push a `main`.
+- **Agregar:** copiá `src/content/projects/_template.json` (no se publica porque empieza con `_`), renombralo y completalo.
+- **Ocultar sin borrar:** `"draft": true`.
+- **Quitar:** borrá el archivo.
 
-### Activar GitHub Pages
+Los filtros, sus contadores, la página de caso, el sitemap y la imagen para redes se generan solos. Si falta un campo o un idioma, `npm run build` falla y dice qué corregir.
 
-En el repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**. No hace falta configurar nada más; `deploy.yml` ya apunta a Pages vía `actions/deploy-pages`.
+```json
+{
+  "kind": "personal",
+  "tags": ["bi", "finanzas"],
+  "stack": ["Power BI", "SQL"],
+  "links": { "repo": "https://github.com/AgustinMusanti/mi-repo", "demo": "https://..." },
+  "metric": "+15%",
+  "featured": false,
+  "order": 5,
+  "draft": false,
+  "es": {
+    "title": "Título",
+    "question": "¿Qué pregunta responde?",
+    "result": "Qué resultado dio, con números reales.",
+    "summary": "Contexto en una o dos líneas.",
+    "metricLabel": "qué mide la cifra de metric"
+  },
+  "en": {
+    "title": "Title",
+    "question": "What question does it answer?",
+    "result": "What result it produced.",
+    "summary": "One or two lines of context.",
+    "metricLabel": "what the metric figure measures"
+  }
+}
+```
 
-## Decisiones técnicas
+| Campo                             |                                                                                      |
+| --------------------------------- | ------------------------------------------------------------------------------------ |
+| `kind`                            | `personal` o `profesional` (los profesionales van anonimizados y sin links)          |
+| `tags`                            | `bi`, `data-science`, `automatizacion`, `sql`, `finanzas`, `agro`, `ia`              |
+| `metric` + `metricLabel`          | Cifra grande de la tarjeta (opcional; si está, va el label en los dos idiomas)       |
+| `visual`                          | Gráfico de la tarjeta (opcional): `soja`, `inflation-seasonality` o `dashboard`      |
+| `process` (dentro de `es`/`en`)   | Esquema antes → después: `{ "before": "...", "after": "..." }` (opcional)            |
+| `caseStudy` (dentro de `es`/`en`) | `problem`, `approach`, `result`, `learnings`. Si existe, se genera la página de caso |
+| `featured`, `order`               | Tarjeta ancha y orden de aparición                                                   |
 
-- **Sin framework de UI (React/Vue/etc.)**: todas las islas interactivas son Web Components-style vanilla JS embebidas en componentes `.astro`, para mantener el JS enviado al cliente mínimo.
-- **Content Collections con loaders `file()`/`glob()`** en vez de Markdown: el contenido es estructurado (objetos, no prosa), así que JSON + Zod da validación de tipos real en build sin una capa extra de parsing.
-- **i18n con archivos paralelos `*.en.json`** en vez de una librería de i18n: con 9 colecciones y contenido mayormente estructurado, duplicar el archivo por idioma es más simple de mantener y de revisar (diff directo) que anidar `{es, en}` dentro de cada campo.
-- **Ilustraciones SVG genéricas por categoría de tags** (no capturas) para los proyectos: cumple el requisito de "diagrama, no foto" sin tener que diseñar una ilustración única por cada uno de los 11 proyectos.
-- **Paleta ajustada tras medir contraste**: el dorado de acento en tema claro se oscureció de `#A86F0C` a `#8C5E0A` porque el original no llegaba a 4.5:1 (WCAG AA) contra el fondo crema en texto chico; se verificó con un cálculo de luminancia relativa, no a ojo.
+Un `visual` nuevo con datos propios se agrega como componente en `src/components/charts/`, con sus datos en `src/data/` (indicando de dónde salen) y su nombre en `src/lib/taxonomy.ts`.
 
-## Pendientes conocidos
+## Resto del contenido
 
-- Foto de perfil (`public/img/agustin.jpg` o `src/assets/agustin.jpg`): mientras no exista, se muestra un placeholder con las iniciales "AM".
-- CV en PDF (`public/cv/CV_AgustinMusanti.pdf`): el botón de descarga está oculto por la flag `cv.enabled` en `src/content/config/site.json` hasta que se suba el archivo.
+Todo el texto vive en `src/content/` (cada archivo tiene su espejo `*.en.json`): perfil y certificación, KPIs del hero, experiencia, reconocimientos, "Cómo aprendo" y herramientas. Los textos de interfaz están en `src/i18n/es.ts` y `src/i18n/en.ts`.
+
+Los datos de los gráficos están en `src/data/`, con su fuente y fecha en el campo `_source`:
+
+- `soja.json`: copia de `dashboard/data.json` del repo [prediccion-rinde-soja](https://github.com/AgustinMusanti/prediccion-rinde-soja). Al actualizar el modelo, actualizar este archivo.
+- `inflacion.json`: resultados del notebook de [InflacionArgentina2017-2024](https://github.com/AgustinMusanti/InflacionArgentina2017-2024).
+
+## Estructura
+
+```
+src/
+├── content/          # contenido validado con Zod (un archivo por proyecto en projects/)
+├── content.config.ts # esquemas
+├── data/             # datos reales para los gráficos
+├── components/
+│   ├── charts/       # gráficos SVG propios (sin librerías) con tooltip y tabla accesible
+│   ├── hero/         # panel de resultados
+│   ├── nav/          # navegación, tema e idioma
+│   ├── sections/     # secciones de la home
+│   └── ui/
+├── layouts/          # BaseLayout (SEO), HomePage, CaseStudyLayout
+├── pages/            # / · /en/ · páginas de caso · imágenes para redes (og/)
+├── i18n/             # textos de interfaz ES/EN
+├── lib/              # lectura de contenido, escalas de gráficos, imagen OG
+└── styles/
+tests/                # smoke test y accesibilidad (Playwright + axe-core)
+```
+
+## Publicación
+
+- `.github/workflows/ci.yml`, en cada pull request: tipos y contenido, lint, formato, build, smoke test con axe-core y links rotos (lychee).
+- `.github/workflows/deploy.yml`, en cada push a `main`: corre el CI y, si pasa, publica en GitHub Pages.
