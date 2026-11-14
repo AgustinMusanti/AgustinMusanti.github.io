@@ -75,6 +75,10 @@ export interface Dictionary {
     links: string;
     back: string;
   };
+  footer: {
+    madeWith: string;
+    repoLink: string;
+  };
   commandPalette: {
     placeholder: string;
     hint: string;
@@ -162,6 +166,10 @@ export const es: Dictionary = {
     stack: 'Stack',
     links: 'Links',
     back: 'Volver a proyectos',
+  },
+  footer: {
+    madeWith: 'Hecho con Astro, deployado con GitHub Actions ·',
+    repoLink: 'repo del sitio',
   },
   commandPalette: {
     placeholder: 'Buscar secciones, proyectos, acciones…',

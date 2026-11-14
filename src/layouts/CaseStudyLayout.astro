@@ -4,6 +4,7 @@ import { useTranslations, type Language } from '../i18n/utils';
 
 interface Props {
   lang: Language;
+  slug: string;
   title: string;
   description: string;
   tags: string[];
@@ -16,9 +17,10 @@ interface Props {
   demo?: string;
 }
 
-const { lang, title, description, tags, stack, problem, approach, result, learnings, repo, demo } = Astro.props;
+const { lang, slug, title, description, tags, stack, problem, approach, result, learnings, repo, demo } = Astro.props;
 const t = useTranslations(lang);
 const backHref = lang === 'en' ? '/en/#projects' : '/#projects';
+const ogImagePath = lang === 'en' ? `/og/en/project/${slug}.png` : `/og/project/${slug}.png`;
 
 const blocks = [
   { label: t.caseStudy.problem, text: problem },
@@ -28,7 +30,7 @@ const blocks = [
 ];
 ---
 
-<BaseLayout lang={lang} title={`${title} · Agustín Musanti`} description={description}>
+<BaseLayout lang={lang} title={`${title} · Agustín Musanti`} description={description} ogImagePath={ogImagePath}>
   <article class="mx-auto max-w-3xl px-4 py-24">
     <a href={backHref} class="font-mono-data text-xs text-[var(--accent-3)] hover:underline">← {t.caseStudy.back}</a>
 

@@ -1,18 +1,22 @@
 ---
+import { useTranslations, type Language } from '../i18n/utils';
+
 interface Props {
+  lang: Language;
   repoUrl: string;
 }
 
-const { repoUrl } = Astro.props;
+const { lang, repoUrl } = Astro.props;
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
 <footer class="mx-auto max-w-5xl border-t border-[var(--border)] px-4 py-8 text-sm text-[var(--muted)]">
   <p>© {year} Agustín Musanti · La Plata, Argentina</p>
   <p class="mt-1">
-    Hecho con Astro, deployado con GitHub Actions ·
+    {t.footer.madeWith}
     <a href={repoUrl} class="underline hover:text-[var(--text)]" target="_blank" rel="noopener noreferrer">
-      repo del sitio
+      {t.footer.repoLink}<span class="sr-only"> {t.nav.openInNewTab}</span>
     </a>
   </p>
 </footer>

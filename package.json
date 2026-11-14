@@ -15,7 +15,9 @@
     "@fontsource/inter": "^5.3.0",
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/space-grotesk": "^5.3.0",
-    "astro": "^7.4.12"
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^7.4.12",
+    "satori": "^0.63.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",

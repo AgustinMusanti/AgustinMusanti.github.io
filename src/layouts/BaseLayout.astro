@@ -2,17 +2,49 @@
 import '../styles/global.css';
 import Nav from '../components/nav/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { useTranslations, type Language } from '../i18n/utils';
+import { useTranslations, toEsPath, toEnPath, type Language } from '../i18n/utils';
+import { getProfile } from '../lib/content';
+import spaceGroteskPreload from '@fontsource/space-grotesk/files/space-grotesk-latin-600-normal.woff2?url';
 
 interface Props {
   lang: Language;
   title: string;
   description: string;
+  ogImagePath?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, ogImagePath } = Astro.props;
 const t = useTranslations(lang);
 const repoUrl = 'https://github.com/AgustinMusanti/AgustinMusanti.github.io';
+const profile = await getProfile(lang);
+
+const currentPath = Astro.url.pathname;
+const esPath = toEsPath(currentPath);
+const enPath = toEnPath(currentPath);
+const canonicalUrl = new URL(currentPath, Astro.site).toString();
+const esUrl = new URL(esPath, Astro.site).toString();
+const enUrl = new URL(enPath, Astro.site).toString();
+
+const defaultOgPath = lang === 'en' ? '/og/en/home.png' : '/og/home.png';
+const ogImageUrl = new URL(ogImagePath ?? defaultOgPath, Astro.site).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.role,
+  worksFor: {
+    '@type': 'Organization',
+    name: profile.company,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'La Plata',
+    addressRegion: 'Buenos Aires',
+    addressCountry: 'AR',
+  },
+  sameAs: [profile.linkedin, profile.github],
+};
 ---
 
 <!doctype html>
@@ -31,9 +63,28 @@ const repoUrl = 'https://github.com/AgustinMusanti/AgustinMusanti.github.io';
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={spaceGroteskPreload} as="font" type="font/woff2" crossorigin="anonymous" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_AR'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">{t.nav.skipToContent}</a>
@@ -41,6 +92,6 @@ const repoUrl = 'https://github.com/AgustinMusanti/AgustinMusanti.github.io';
     <main id="main-content">
       <slot />
     </main>
-    <Footer repoUrl={repoUrl} />
+    <Footer lang={lang} repoUrl={repoUrl} />
   </body>
 </html>

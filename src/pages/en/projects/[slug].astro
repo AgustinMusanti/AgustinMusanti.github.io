@@ -16,6 +16,7 @@ if (!caseStudy) throw new Error(`Missing case study for ${project.id}`);
 
 <CaseStudyLayout
   lang="en"
+  slug={project.id}
   title={title}
   description={description}
   tags={tags}

@@ -78,6 +78,10 @@ export const en: Dictionary = {
     links: 'Links',
     back: 'Back to projects',
   },
+  footer: {
+    madeWith: 'Built with Astro, deployed with GitHub Actions ·',
+    repoLink: "site's repo",
+  },
   commandPalette: {
     placeholder: 'Search sections, projects, actions…',
     hint: 'Ctrl/⌘ + K',

@@ -1,5 +1,5 @@
 ---
-import { useTranslations, type Language } from '../../i18n/utils';
+import { useTranslations, toEsPath, toEnPath, type Language } from '../../i18n/utils';
 
 interface Props {
   lang: Language;
@@ -9,19 +9,8 @@ interface Props {
 const { lang, currentPath } = Astro.props;
 const t = useTranslations(lang);
 
-function toEs(path: string): string {
-  const stripped = path.replace(/^\/en/, '') || '/';
-  return stripped.replace(/^\/projects\//, '/proyectos/');
-}
-
-function toEn(path: string): string {
-  const stripped = path.replace(/^\/en/, '') || '/';
-  const translated = stripped.replace(/^\/proyectos\//, '/projects/');
-  return `/en${translated === '/' ? '' : translated}`;
-}
-
-const esHref = toEs(currentPath);
-const enHref = toEn(currentPath);
+const esHref = toEsPath(currentPath);
+const enHref = toEnPath(currentPath);
 ---
 
 <div class="flex items-center gap-1 font-mono-data text-xs" aria-label={t.lang_toggle.label}>

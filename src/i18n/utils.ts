@@ -21,3 +21,14 @@ export function localizePath(path: string, lang: Language): string {
   if (lang === defaultLang) return path;
   return `/${lang}${path}`;
 }
+
+export function toEsPath(path: string): string {
+  const stripped = path.replace(/^\/en/, '') || '/';
+  return stripped.replace(/^\/projects\//, '/proyectos/');
+}
+
+export function toEnPath(path: string): string {
+  const stripped = path.replace(/^\/en/, '') || '/';
+  const translated = stripped.replace(/^\/proyectos\//, '/projects/');
+  return `/en${translated === '/' ? '' : translated}`;
+}
