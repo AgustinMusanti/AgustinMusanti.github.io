@@ -1,0 +1,25 @@
+{
+  "kind": "personal",
+  "tags": ["bi", "sql"],
+  "stack": ["SQL Server", "Power BI", "Excel"],
+  "links": {
+    "repo": "https://github.com/AgustinMusanti/DataAnalysisProject-SalesProject-SQL-PowerBI",
+    "demo": "https://app.powerbi.com/view?r=eyJrIjoiOTBjMWJiNTMtZTY3Ny00ZjE5LWFiNTktNjk0MzI0NGQ2NWY5IiwidCI6IjZhOTU4ZDQxLWU3MWYtNGRiMC1iNmU3LWU1MzU5MzQxMTdhNCJ9"
+  },
+  "visual": "dashboard",
+  "featured": false,
+  "order": 4,
+  "draft": false,
+  "es": {
+    "title": "Análisis de ventas · AdventureWorks",
+    "question": "¿Cómo vienen las ventas por región y por tipo de cliente?",
+    "result": "Tablero interactivo con performance de ventas por región y segmentación de clientes, armado sobre un modelo en SQL Server.",
+    "summary": "Exploración, limpieza, modelado y visualización de punta a punta sobre la base de ejemplo de Microsoft."
+  },
+  "en": {
+    "title": "Sales analysis · AdventureWorks",
+    "question": "How are sales performing by region and customer type?",
+    "result": "An interactive dashboard with sales performance by region and customer segmentation, built on a SQL Server model.",
+    "summary": "End-to-end exploration, cleaning, modeling, and visualization on Microsoft's sample database."
+  }
+}

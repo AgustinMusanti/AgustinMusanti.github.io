@@ -9,25 +9,18 @@
     "category": "programming-db",
     "label": "Programming & Databases",
     "order": 2,
-    "tools": ["Python", "SQL", "R", "JavaScript", "SQL Server", "MySQL", "PostgreSQL", "BigQuery"]
+    "tools": ["Python", "SQL", "R", "SQL Server", "MySQL", "PostgreSQL", "BigQuery"]
   },
   "ml": {
     "category": "ml",
     "label": "Machine Learning",
     "order": 3,
-    "tools": ["Pandas", "NumPy", "Scikit-learn", "SHAP", "Google Earth Engine"]
+    "tools": ["Pandas", "NumPy", "Scikit-learn", "SHAP"]
   },
   "automation-ai": {
     "category": "automation-ai",
     "label": "Automation & AI",
     "order": 4,
-    "tools": [
-      "Power Automate",
-      "n8n",
-      "VBA",
-      "Copilot Studio",
-      "Claude / Claude Code",
-      "Generative AI applied to processes"
-    ]
+    "tools": ["Power Automate", "n8n", "VBA", "Copilot Studio", "Claude", "Generative AI applied to processes"]
   }
 }

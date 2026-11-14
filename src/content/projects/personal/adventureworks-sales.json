@@ -1,9 +1,0 @@
-{
-  "title": "Análisis de ventas — AdventureWorks",
-  "description": "Dashboard interactivo de ventas, performance por región y segmentación de clientes.",
-  "tags": ["power bi", "sql", "bi"],
-  "featured": false,
-  "order": 5,
-  "demo": "https://app.powerbi.com/view?r=eyJrIjoiOTBjMWJiNTMtZTY3Ny00ZjE5LWFiNTktNjk0MzI0NGQ2NWY5IiwidCI6IjZhOTU4ZDQxLWU3MWYtNGRiMC1iNmU3LWU1MzU5MzQxMTdhNCJ9",
-  "stack": ["SQL Server", "Power BI"]
-}

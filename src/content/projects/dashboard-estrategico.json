@@ -1,0 +1,21 @@
+{
+  "kind": "profesional",
+  "tags": ["bi"],
+  "stack": ["Power BI"],
+  "links": {},
+  "featured": false,
+  "order": 15,
+  "draft": false,
+  "es": {
+    "title": "Dashboard estratégico para la gerencia",
+    "question": "¿Qué necesita ver la gerencia para tomar decisiones?",
+    "result": "Diseño y desarrollo liderado por mí, reconocido con el premio PwC Te Reconoce.",
+    "summary": "Tablero estratégico para la toma de decisiones de la gerencia."
+  },
+  "en": {
+    "title": "Strategic dashboard for management",
+    "question": "What does management need to see to make decisions?",
+    "result": "Design and development led by me, recognized with the PwC Te Reconoce award.",
+    "summary": "A strategic dashboard for management decision-making."
+  }
+}

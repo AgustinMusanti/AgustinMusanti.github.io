@@ -15,20 +15,6 @@
         "title": "IA como multiplicador",
         "description": "Uso IA generativa a diario para diseñar, programar y probar más rápido, pero las decisiones y la validación son mías."
       }
-    ],
-    "buildingNow": [
-      {
-        "title": "Campo Data",
-        "description": "Portal público de indicadores agrícolas de Argentina (precios de granos, producción, dólar) conectado a APIs públicas. Next.js + TypeScript. En desarrollo, sin link todavía."
-      },
-      {
-        "title": "Estimación de soja — ampliación regional",
-        "description": "Llevar el modelo de 5 a 17 partidos del norte y oeste bonaerense para entender dónde transfiere y dónde no."
-      },
-      {
-        "title": "Mi primer agente con Claude Agent SDK",
-        "description": "Aprendiendo a construir agentes propios en Python."
-      }
     ]
   }
 }

@@ -1,0 +1,32 @@
+{
+  "kind": "profesional",
+  "tags": ["automatizacion"],
+  "stack": ["Python"],
+  "links": {},
+  "metric": "~25",
+  "featured": false,
+  "order": 11,
+  "draft": false,
+  "es": {
+    "title": "Detección temprana de cambios en datos organizacionales",
+    "question": "¿Cómo enterarse de los cambios en los datos antes de que lleguen a los reportes?",
+    "result": "Detecta ~25 cambios por semana y los anticipa hasta un mes antes de que impacten en los reportes. Lo usa todo el equipo.",
+    "summary": "Script en Python que compara los datos semana a semana.",
+    "metricLabel": "cambios detectados por semana",
+    "process": {
+      "before": "Los cambios impactaban en los reportes",
+      "after": "Se detectan hasta un mes antes"
+    }
+  },
+  "en": {
+    "title": "Early detection of changes in organizational data",
+    "question": "How do you catch data changes before they reach the reports?",
+    "result": "Detects ~25 changes per week and flags them up to a month before they hit the reports. Used by the whole team.",
+    "summary": "Python script that compares the data week over week.",
+    "metricLabel": "changes detected per week",
+    "process": {
+      "before": "Changes hit the reports",
+      "after": "Flagged up to a month earlier"
+    }
+  }
+}

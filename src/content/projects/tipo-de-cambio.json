@@ -1,0 +1,25 @@
+{
+  "kind": "personal",
+  "tags": ["bi", "finanzas"],
+  "stack": ["Power BI", "DolarAPI"],
+  "links": {
+    "repo": "https://github.com/AgustinMusanti/ExchangeRatesAnalysis",
+    "demo": "https://project.novypro.com/GmMej8"
+  },
+  "visual": "dashboard",
+  "featured": false,
+  "order": 3,
+  "draft": false,
+  "es": {
+    "title": "Tipos de cambio del dólar en Power BI",
+    "question": "¿Cómo se mueven los distintos tipos de cambio del dólar frente al peso?",
+    "result": "Tablero que muestra al instante los tipos de cambio y los compara con KPIs, con datos actualizados desde una API.",
+    "summary": "Pensado para empresas con operaciones internacionales, inversores y analistas que siguen el dólar."
+  },
+  "en": {
+    "title": "US dollar exchange rates in Power BI",
+    "question": "How do the different US dollar exchange rates move against the Argentine peso?",
+    "result": "A dashboard that shows exchange rates at a glance and compares them through KPIs, with data refreshed from an API.",
+    "summary": "Built for companies with international operations, investors, and analysts who track the dollar."
+  }
+}

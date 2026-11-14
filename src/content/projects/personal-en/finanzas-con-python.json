@@ -1,9 +1,0 @@
-{
-  "title": "Finance with Python",
-  "description": "Scripts and tools for financial data analysis, simulations, and what-if scenarios.",
-  "tags": ["python", "finance"],
-  "featured": false,
-  "order": 4,
-  "repo": "https://github.com/AgustinMusanti/FinanzasConPython",
-  "stack": ["Python", "Pandas", "NumPy", "Matplotlib"]
-}

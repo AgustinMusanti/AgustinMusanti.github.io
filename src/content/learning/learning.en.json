@@ -15,20 +15,6 @@
         "title": "AI as a multiplier",
         "description": "I use generative AI daily to design, code, and test faster, but the decisions and validation are mine."
       }
-    ],
-    "buildingNow": [
-      {
-        "title": "Campo Data",
-        "description": "Public portal of Argentine agricultural indicators (grain prices, production, exchange rate) connected to public APIs. Next.js + TypeScript. In progress, no link yet."
-      },
-      {
-        "title": "Soybean estimation — regional expansion",
-        "description": "Taking the model from 5 to 17 counties in the north and west of Buenos Aires province to understand where it transfers and where it doesn't."
-      },
-      {
-        "title": "My first agent with the Claude Agent SDK",
-        "description": "Learning to build my own agents in Python."
-      }
     ]
   }
 }

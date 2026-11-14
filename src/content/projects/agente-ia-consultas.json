@@ -1,0 +1,32 @@
+{
+  "kind": "profesional",
+  "tags": ["ia", "automatizacion"],
+  "stack": ["Copilot Studio"],
+  "links": {},
+  "metric": "~500",
+  "featured": false,
+  "order": 14,
+  "draft": false,
+  "es": {
+    "title": "Agente de IA para consultas internas",
+    "question": "¿Cómo responder consultas internas repetitivas sin que lleguen por mail?",
+    "result": "Agente co-desarrollado en Copilot Studio, usado en toda la firma, que absorbe ~500 consultas mensuales.",
+    "summary": "Responde consultas que antes llegaban por mail.",
+    "metricLabel": "consultas resueltas por mes",
+    "process": {
+      "before": "Consultas por mail",
+      "after": "Las responde un agente de IA"
+    }
+  },
+  "en": {
+    "title": "AI agent for internal queries",
+    "question": "How do you answer repetitive internal queries without them landing in email?",
+    "result": "Agent co-developed in Copilot Studio, used firm-wide, that handles ~500 queries a month.",
+    "summary": "Answers queries that used to arrive by email.",
+    "metricLabel": "queries resolved per month",
+    "process": {
+      "before": "Queries by email",
+      "after": "An AI agent answers them"
+    }
+  }
+}

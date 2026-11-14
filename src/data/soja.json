@@ -1,0 +1,152 @@
+{
+  "_source": "github.com/AgustinMusanti/prediccion-rinde-soja · dashboard/data.json (meta.ultima_actualizacion 2026-11-09). MAE por ventana recalculado desde ese archivo; coincide con README y docs v4.",
+  "updated": "2026-11-09",
+  "historicalMean": 31.1,
+  "baselineMae": 4.04,
+  "validation": {
+    "mae": 2.42,
+    "r2": 0.72,
+    "directionHit": 69,
+    "pValue": 0.008,
+    "improvementVsBaseline": 40,
+    "testSeasons": 9,
+    "predictions": 45,
+    "districts": 5,
+    "seasons": 25,
+    "firstSeason": "2000/01",
+    "lastSeason": "2024/25",
+    "coverageMin": 77,
+    "coverageMax": 87,
+    "drought2223": {
+      "actualDrop": 49,
+      "anticipatedDrop": 43
+    }
+  },
+  "maeByWindow": [
+    {
+      "window": "oct_nov",
+      "mesesAntes": 5,
+      "mae": 2.42
+    },
+    {
+      "window": "oct_dic",
+      "mesesAntes": 4,
+      "mae": 2.63
+    },
+    {
+      "window": "oct_ene",
+      "mesesAntes": 3,
+      "mae": 3.01
+    },
+    {
+      "window": "oct_feb",
+      "mesesAntes": 2,
+      "mae": 2.93
+    },
+    {
+      "window": "oct_mar",
+      "mesesAntes": 1,
+      "mae": 3.02
+    }
+  ],
+  "seasons": [
+    {
+      "id": "2016/17",
+      "observed": 36,
+      "estimateNov": 32.9
+    },
+    {
+      "id": "2017/18",
+      "observed": 28.8,
+      "estimateNov": 31.9
+    },
+    {
+      "id": "2018/19",
+      "observed": 34,
+      "estimateNov": 32.9
+    },
+    {
+      "id": "2019/20",
+      "observed": 33.3,
+      "estimateNov": 32.4
+    },
+    {
+      "id": "2020/21",
+      "observed": 29.5,
+      "estimateNov": 32.2
+    },
+    {
+      "id": "2021/22",
+      "observed": 29.7,
+      "estimateNov": 29.7
+    },
+    {
+      "id": "2022/23",
+      "observed": 16.3,
+      "estimateNov": 17.4
+    },
+    {
+      "id": "2023/24",
+      "observed": 31.1,
+      "estimateNov": 33.3
+    },
+    {
+      "id": "2024/25",
+      "observed": 31.6,
+      "estimateNov": 29.8
+    }
+  ],
+  "current": {
+    "id": "2025/26",
+    "estimates": [
+      {
+        "window": "oct_nov",
+        "estimate": 31.7,
+        "low": 28.9,
+        "high": 33.7
+      },
+      {
+        "window": "oct_dic",
+        "estimate": 33.3,
+        "low": 30.1,
+        "high": 34.6
+      },
+      {
+        "window": "oct_ene",
+        "estimate": 33.9,
+        "low": 30.3,
+        "high": 35.6
+      },
+      {
+        "window": "oct_feb",
+        "estimate": 33.6,
+        "low": 30.2,
+        "high": 35.2
+      },
+      {
+        "window": "oct_mar",
+        "estimate": 34.1,
+        "low": 30.3,
+        "high": 35.8
+      }
+    ]
+  },
+  "importance": {
+    "window": "oct_ene",
+    "top": [
+      {
+        "feature": "humidity",
+        "approxShare": 20
+      },
+      {
+        "feature": "vpd",
+        "approxShare": 15
+      },
+      {
+        "feature": "ndviAnomalyNov",
+        "approxShare": null
+      }
+    ],
+    "note": "docs v4 §5.6: solo se publican aproximaciones de las dos primeras."
+  }
+}

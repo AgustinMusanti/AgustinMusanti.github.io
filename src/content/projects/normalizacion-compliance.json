@@ -1,0 +1,32 @@
+{
+  "kind": "profesional",
+  "tags": ["automatizacion"],
+  "stack": ["Python"],
+  "links": {},
+  "metric": "~20 h",
+  "featured": false,
+  "order": 12,
+  "draft": false,
+  "es": {
+    "title": "Normalización automatizada de una base de compliance",
+    "question": "¿Cómo dejar de actualizar a mano una base de compliance?",
+    "result": "~20 h mensuales ahorradas, datos trazables y auditables, y KPIs disponibles más rápido.",
+    "summary": "Estandarización en Python de una base que se actualizaba a mano.",
+    "metricLabel": "ahorradas por mes",
+    "process": {
+      "before": "Actualización manual",
+      "after": "Estandarización automática en Python"
+    }
+  },
+  "en": {
+    "title": "Automated normalization of a compliance database",
+    "question": "How do you stop updating a compliance database by hand?",
+    "result": "~20 hours saved monthly, traceable and auditable data, and KPIs available faster.",
+    "summary": "Python standardization of a database that used to be updated by hand.",
+    "metricLabel": "saved per month",
+    "process": {
+      "before": "Manual updates",
+      "after": "Automated standardization in Python"
+    }
+  }
+}
