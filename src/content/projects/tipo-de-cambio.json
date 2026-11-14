@@ -3,8 +3,7 @@
   "tags": ["bi", "finanzas"],
   "stack": ["Power BI", "DolarAPI"],
   "links": {
-    "repo": "https://github.com/AgustinMusanti/ExchangeRatesAnalysis",
-    "demo": "https://project.novypro.com/GmMej8"
+    "repo": "https://github.com/AgustinMusanti/ExchangeRatesAnalysis"
   },
   "visual": "dashboard",
   "featured": false,
