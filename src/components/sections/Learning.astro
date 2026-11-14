@@ -1,0 +1,49 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { getEntry } from 'astro:content';
+
+const learning = await getEntry('learning', 'main');
+if (!learning) throw new Error('Missing learning content');
+const { title, text, principles, buildingNow } = learning.data;
+---
+
+<section id="learning" class="mx-auto max-w-5xl px-4 py-24">
+  <SectionHeading index="07" title="Cómo aprendo" />
+
+  <h3 class="text-xl text-[var(--text)]">{title}</h3>
+  <p class="mt-4 max-w-2xl text-[var(--muted)]">{text}</p>
+
+  <div class="mt-8 grid gap-5 sm:grid-cols-3">
+    {principles.map((principle) => (
+      <div class="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5">
+        <h4 class="text-sm text-[var(--accent)]">{principle.title}</h4>
+        <p class="mt-2 text-sm text-[var(--muted)]">{principle.description}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-12 rounded-lg border border-[var(--border)] p-6">
+    <h3 class="font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">Ahora estoy construyendo</h3>
+    <ul class="mt-4 space-y-4">
+      {buildingNow.map((item) => (
+        <li class="flex gap-3">
+          <span class="relative mt-1.5 flex h-2 w-2 shrink-0">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent-2)] opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent-2)]"></span>
+          </span>
+          <div>
+            {item.link ? (
+              <a href={item.link} target="_blank" rel="noopener noreferrer" class="text-[var(--text)] hover:text-[var(--accent)]">
+                {item.title}
+                <span class="sr-only"> (se abre en una pestaña nueva)</span>
+              </a>
+            ) : (
+              <p class="text-[var(--text)]">{item.title}</p>
+            )}
+            <p class="mt-1 text-sm text-[var(--muted)]">{item.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { getCollection } from 'astro:content';
+
+const recognitions = (await getCollection('recognitions')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="recognitions" class="mx-auto max-w-5xl px-4 py-24">
+  <SectionHeading index="06" title="Reconocimientos" />
+
+  <div class="grid gap-5 sm:grid-cols-3">
+    {recognitions.map((item) => (
+      <div class="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5">
+        <p class="text-2xl" aria-hidden="true">🏆</p>
+        <h3 class="mt-3 text-base text-[var(--text)]">{item.data.title}</h3>
+        <p class="mt-2 text-sm text-[var(--muted)]">{item.data.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

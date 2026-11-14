@@ -1,0 +1,14 @@
+---
+import Counter from '../ui/Counter.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('impact')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="mx-auto max-w-5xl px-4 py-16">
+  <div class="grid grid-cols-2 gap-8 md:grid-cols-5">
+    {items.map((item) => (
+      <Counter value={item.data.value} label={item.data.label} />
+    ))}
+  </div>
+</section>

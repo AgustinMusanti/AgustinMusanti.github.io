@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import ProjectFilter from './ProjectFilter.astro';
+import ProjectCard from './ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { getRepoMeta } from '../../lib/github';
+import { localizePath, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const professional = (await getCollection('projectsProfessional')).sort((a, b) => a.data.order - b.data.order);
+const personal = (await getCollection('projectsPersonal')).sort((a, b) => a.data.order - b.data.order);
+
+const personalWithMeta = await Promise.all(
+  personal.map(async (project) => ({
+    project,
+    repoMeta: project.data.repo ? await getRepoMeta(project.data.repo) : null,
+  })),
+);
+
+const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) => p.data.tags))).sort();
+---
+
+<section id="projects" class="mx-auto max-w-5xl px-4 py-24">
+  <SectionHeading index="04" title="Proyectos" />
+
+  <ProjectFilter tags={allTags} />
+
+  <h3 class="mb-4 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">Personales</h3>
+  <div class="grid gap-5 sm:grid-cols-2">
+    {personalWithMeta.map(({ project, repoMeta }) => (
+      <ProjectCard
+        title={project.data.title}
+        type="Proyecto personal"
+        description={project.data.description}
+        tags={project.data.tags}
+        href={project.data.caseStudy ? localizePath(`/proyectos/${project.id}`, lang) : undefined}
+        repo={project.data.repo}
+        demo={project.data.demo}
+        repoMeta={repoMeta}
+        featured={project.data.featured}
+      />
+    ))}
+  </div>
+
+  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">Profesionales (PwC, anonimizados)</h3>
+  <div class="grid gap-5 sm:grid-cols-2">
+    {professional.map((project) => (
+      <ProjectCard
+        title={project.data.title}
+        type="Proyecto profesional"
+        description={project.data.description}
+        tags={project.data.tags}
+      />
+    ))}
+  </div>
+</section>

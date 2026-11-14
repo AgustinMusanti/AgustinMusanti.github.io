@@ -1,0 +1,69 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos por tag">
+  <button
+    type="button"
+    data-tag-filter="all"
+    aria-pressed="true"
+    class="tag-filter-btn rounded-full border border-[var(--accent)] px-3 py-1 font-mono-data text-xs text-[var(--accent)] transition"
+  >
+    Todos
+  </button>
+  {tags.map((tag) => (
+    <button
+      type="button"
+      data-tag-filter={tag}
+      aria-pressed="false"
+      class="tag-filter-btn rounded-full border border-[var(--border)] px-3 py-1 font-mono-data text-xs text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
+    >
+      {tag}
+    </button>
+  ))}
+</div>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.tag-filter-btn'));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-tags]'));
+
+  function applyFilter(tag: string) {
+    cards.forEach((card) => {
+      const cardTags = card.dataset.tags?.split(',') ?? [];
+      const show = tag === 'all' || cardTags.includes(tag);
+      card.classList.toggle('hidden', !show);
+    });
+
+    buttons.forEach((button) => {
+      const isActive = button.dataset.tagFilter === tag;
+      button.setAttribute('aria-pressed', String(isActive));
+      button.classList.toggle('border-[var(--accent)]', isActive);
+      button.classList.toggle('text-[var(--accent)]', isActive);
+      button.classList.toggle('border-[var(--border)]', !isActive);
+      button.classList.toggle('text-[var(--muted)]', !isActive);
+    });
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tag = button.dataset.tagFilter ?? 'all';
+      const url = new URL(window.location.href);
+      if (tag === 'all') {
+        url.searchParams.delete('tag');
+      } else {
+        url.searchParams.set('tag', tag);
+      }
+      history.replaceState({}, '', url);
+      applyFilter(tag);
+    });
+  });
+
+  const initialTag = new URLSearchParams(window.location.search).get('tag');
+  if (initialTag && buttons.some((button) => button.dataset.tagFilter === initialTag)) {
+    applyFilter(initialTag);
+  }
+</script>

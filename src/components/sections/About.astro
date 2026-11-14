@@ -1,0 +1,62 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('Missing profile content');
+const { bio, role, currentFocus, location, languages } = profile.data;
+
+const photos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/agustin.{jpg,jpeg,png}', { eager: true });
+const photoModule = Object.values(photos)[0];
+
+const facts = [
+  { label: 'Rol', value: role },
+  { label: 'Foco', value: currentFocus },
+  { label: 'Ubicación', value: location },
+  { label: 'Idiomas', value: languages.join(' · ') },
+];
+---
+
+<section id="about" class="mx-auto max-w-5xl px-4 py-24">
+  <SectionHeading index="03" title="Sobre mí" />
+
+  <div class="grid gap-10 md:grid-cols-[200px_1fr]">
+    <div class="shrink-0">
+      {photoModule ? (
+        <Image
+          src={photoModule.default}
+          alt="Agustín Musanti"
+          width={200}
+          height={200}
+          class="aspect-square w-full rounded-lg object-cover"
+        />
+      ) : (
+        <div
+          class="grid aspect-square w-full place-items-center rounded-lg border border-[var(--border)] bg-[var(--surface)] font-mono-data text-3xl text-[var(--muted)]"
+          aria-label="Agustín Musanti"
+          role="img"
+        >
+          AM
+        </div>
+      )}
+    </div>
+
+    <div>
+      <div class="space-y-4 text-[var(--text)]">
+        {bio.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+
+      <dl class="mt-8 grid grid-cols-2 gap-4 border-t border-[var(--border)] pt-6 sm:grid-cols-4">
+        {facts.map((fact) => (
+          <div>
+            <dt class="font-mono-data text-xs uppercase tracking-wide text-[var(--muted)]">{fact.label}</dt>
+            <dd class="mt-1 text-sm text-[var(--text)]">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

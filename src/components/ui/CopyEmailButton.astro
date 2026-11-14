@@ -1,0 +1,37 @@
+---
+interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+---
+
+<button
+  id="copy-email-btn"
+  type="button"
+  data-email={email}
+  class="rounded border border-[var(--border)] px-5 py-2.5 font-mono-data text-sm text-[var(--text)] transition hover:border-[var(--accent)]"
+>
+  <span id="copy-email-label">Copiar email</span>
+</button>
+<span id="copy-email-status" class="sr-only" aria-live="polite"></span>
+
+<script>
+  const button = document.getElementById('copy-email-btn');
+  const label = document.getElementById('copy-email-label');
+  const status = document.getElementById('copy-email-status');
+
+  button?.addEventListener('click', async () => {
+    const email = button.dataset.email ?? '';
+    try {
+      await navigator.clipboard.writeText(email);
+      if (label) label.textContent = '¡Copiado!';
+      if (status) status.textContent = 'Email copiado al portapapeles';
+    } catch {
+      if (status) status.textContent = 'No se pudo copiar el email';
+    }
+    setTimeout(() => {
+      if (label) label.textContent = 'Copiar email';
+    }, 2000);
+  });
+</script>

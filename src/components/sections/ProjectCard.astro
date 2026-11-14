@@ -1,0 +1,64 @@
+---
+import ProjectIllustration from './ProjectIllustration.astro';
+
+interface Props {
+  title: string;
+  type: string;
+  description: string;
+  tags: string[];
+  href?: string;
+  repo?: string;
+  demo?: string;
+  repoMeta?: { stars: number; updatedLabel: string } | null;
+  featured?: boolean;
+}
+
+const { title, type, description, tags, href, repo, demo, repoMeta, featured = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    'flex flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 transition hover:-translate-y-0.5 hover:border-[var(--accent)]',
+    featured && 'md:col-span-2',
+  ]}
+  data-tags={tags.join(',')}
+>
+  <ProjectIllustration tags={tags} />
+
+  <p class="mt-4 font-mono-data text-xs uppercase tracking-wide text-[var(--muted)]">{type}</p>
+
+  {href ? (
+    <h3 class="mt-1 text-lg text-[var(--text)]">
+      <a href={href} class="hover:text-[var(--accent)]">{title}</a>
+    </h3>
+  ) : (
+    <h3 class="mt-1 text-lg text-[var(--text)]">{title}</h3>
+  )}
+
+  <p class="mt-2 line-clamp-2 text-sm text-[var(--muted)]">{description}</p>
+
+  <ul class="mt-4 flex flex-wrap gap-2">
+    {tags.map((tag) => (
+      <li class="rounded border border-[var(--border)] px-2 py-0.5 font-mono-data text-[10px] uppercase text-[var(--muted)]">{tag}</li>
+    ))}
+  </ul>
+
+  <div class="mt-4 flex items-center gap-4 font-mono-data text-xs text-[var(--accent-3)]">
+    {href && (
+      <a href={href} class="hover:underline">Ver caso</a>
+    )}
+    {repo && (
+      <a href={repo} target="_blank" rel="noopener noreferrer" class="hover:underline">
+        Repo<span class="sr-only"> (se abre en una pestaña nueva)</span>
+      </a>
+    )}
+    {demo && (
+      <a href={demo} target="_blank" rel="noopener noreferrer" class="hover:underline">
+        Demo<span class="sr-only"> (se abre en una pestaña nueva)</span>
+      </a>
+    )}
+    {repoMeta && (
+      <span class="ml-auto text-[var(--muted)]">★ {repoMeta.stars} · {repoMeta.updatedLabel}</span>
+    )}
+  </div>
+</article>

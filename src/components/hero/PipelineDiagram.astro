@@ -1,0 +1,133 @@
+---
+interface Node {
+  id: string;
+  title: string;
+  detail: string;
+}
+
+const mainNodes: Node[] = [
+  { id: 'sources', title: 'Fuentes', detail: 'Excel · SQL · APIs' },
+  { id: 'processing', title: 'Procesamiento', detail: 'Python · Power Query' },
+  { id: 'storage', title: 'Modelo / Almacenamiento', detail: '' },
+  { id: 'viz', title: 'Visualización', detail: 'Power BI' },
+  { id: 'decision', title: 'Decisión', detail: '' },
+];
+
+const branchNode: Node = { id: 'automation', title: 'Automatización', detail: 'Power Automate · IA' };
+
+const desc =
+  'Diagrama de flujo: Fuentes de datos (Excel, SQL, APIs) alimentan el Procesamiento (Python, Power Query), que pasa a un Modelo o Almacenamiento, luego a Visualización (Power BI) y termina en una Decisión. Desde el Procesamiento sale una rama hacia Automatización (Power Automate e IA).';
+---
+
+<svg
+  class="pipeline-diagram pipeline-diagram--desktop hidden w-full md:block"
+  viewBox="0 0 980 260"
+  role="img"
+  aria-labelledby="pipeline-title-desktop pipeline-desc-desktop"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title id="pipeline-title-desktop">Pipeline de datos</title>
+  <desc id="pipeline-desc-desktop">{desc}</desc>
+
+  <path d="M 140 60 H 860" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />
+  <path d="M 280 85 V 150 H 460" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />
+
+  {mainNodes.map((node, i) => (
+    <g transform={`translate(${60 + i * 200}, 30)`}>
+      <rect width="160" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5" />
+      <text x="80" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+        {node.title}
+      </text>
+      {node.detail && (
+        <text x="80" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
+          {node.detail}
+        </text>
+      )}
+    </g>
+  ))}
+
+  <g transform="translate(380, 150)">
+    <rect width="160" height="60" rx="6" fill="var(--surface)" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4 3" />
+    <text x="80" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+      {branchNode.title}
+    </text>
+    <text x="80" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
+      {branchNode.detail}
+    </text>
+  </g>
+
+  <circle r="4" fill="var(--accent-3)" class="pipeline-dot" style="offset-path: path('M 140 60 H 860'); animation-delay: 0s;" />
+  <circle r="4" fill="var(--accent-2)" class="pipeline-dot" style="offset-path: path('M 280 85 V 150 H 460'); animation-delay: 1.2s;" />
+</svg>
+
+<svg
+  class="pipeline-diagram pipeline-diagram--mobile w-full md:hidden"
+  viewBox="0 0 320 760"
+  role="img"
+  aria-labelledby="pipeline-title-mobile pipeline-desc-mobile"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title id="pipeline-title-mobile">Pipeline de datos</title>
+  <desc id="pipeline-desc-mobile">{desc}</desc>
+
+  <path d="M 160 90 V 630" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />
+  <path d="M 185 215 H 260 V 280" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />
+
+  {mainNodes.map((node, i) => (
+    <g transform={`translate(20, ${30 + i * 150})`}>
+      <rect width="280" height="60" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5" />
+      <text x="140" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+        {node.title}
+      </text>
+      {node.detail && (
+        <text x="140" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
+          {node.detail}
+        </text>
+      )}
+    </g>
+  ))}
+
+  <g transform="translate(20, 280)">
+    <rect width="280" height="60" rx="6" fill="var(--surface)" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4 3" />
+    <text x="140" y="27" text-anchor="middle" fill="var(--text)" font-family="var(--font-heading)" font-size="13" font-weight="600">
+      {branchNode.title}
+    </text>
+    <text x="140" y="45" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="10">
+      {branchNode.detail}
+    </text>
+  </g>
+
+  <circle r="4" fill="var(--accent-3)" class="pipeline-dot" style="offset-path: path('M 160 90 V 630'); animation-delay: 0s;" />
+  <circle r="4" fill="var(--accent-2)" class="pipeline-dot" style="offset-path: path('M 185 215 H 260 V 280'); animation-delay: 1.2s;" />
+</svg>
+
+<style>
+  .pipeline-dot {
+    animation: flow 3.4s linear infinite;
+    offset-rotate: 0deg;
+  }
+
+  @keyframes flow {
+    from {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    to {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pipeline-dot {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

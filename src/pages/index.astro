@@ -1,20 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/hero/Hero.astro';
+import ImpactCounters from '../components/sections/ImpactCounters.astro';
+import About from '../components/sections/About.astro';
+import Projects from '../components/sections/Projects.astro';
+import Experience from '../components/sections/Experience.astro';
+import Recognitions from '../components/sections/Recognitions.astro';
+import Learning from '../components/sections/Learning.astro';
+import Stack from '../components/sections/Stack.astro';
+import Contact from '../components/sections/Contact.astro';
 import { getEntry } from 'astro:content';
 
+const lang = 'es' as const;
 const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('Missing profile content');
 ---
 
-<BaseLayout lang="es" title={`${profile?.data.name} · ${profile?.data.role}`} description={profile?.data.heroTagline ?? ''}>
-  <section id="about" class="mx-auto max-w-5xl px-4 py-24">
-    <h1 class="text-3xl">{profile?.data.name}</h1>
-    <p class="mt-2 text-[var(--muted)]">{profile?.data.role}</p>
-    <p class="mt-6 max-w-2xl">{profile?.data.heroTagline}</p>
-  </section>
-  <section id="projects" class="mx-auto max-w-5xl px-4 py-24"><h2>Proyectos (placeholder)</h2></section>
-  <section id="experience" class="mx-auto max-w-5xl px-4 py-24"><h2>Experiencia (placeholder)</h2></section>
-  <section id="recognitions" class="mx-auto max-w-5xl px-4 py-24"><h2>Reconocimientos (placeholder)</h2></section>
-  <section id="learning" class="mx-auto max-w-5xl px-4 py-24"><h2>Cómo aprendo (placeholder)</h2></section>
-  <section id="stack" class="mx-auto max-w-5xl px-4 py-24"><h2>Stack (placeholder)</h2></section>
-  <section id="contact" class="mx-auto max-w-5xl px-4 py-24"><h2>Contacto (placeholder)</h2></section>
+<BaseLayout lang={lang} title={`${profile.data.name} · ${profile.data.role}`} description={profile.data.heroTagline}>
+  <Hero lang={lang} />
+  <ImpactCounters />
+  <About />
+  <Projects lang={lang} />
+  <Experience />
+  <Recognitions />
+  <Learning />
+  <Stack />
+  <Contact />
 </BaseLayout>
