@@ -1,0 +1,7 @@
+{
+  "users": { "value": "+100", "label": "usuarios de mis dashboards", "order": 1 },
+  "countries": { "value": "6", "label": "países usan mis tableros", "order": 2 },
+  "hours": { "value": "+25 h", "label": "semanales liberadas al equipo con automatizaciones", "order": 3 },
+  "agent": { "value": "~500", "label": "consultas mensuales que resuelve un agente de IA que co-desarrollé", "order": 4 },
+  "reporting": { "value": "4 h → 10 min", "label": "un proceso de reporting tras automatizarlo", "order": 5 }
+}

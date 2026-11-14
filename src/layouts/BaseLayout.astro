@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations, type Language } from '../i18n/utils';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const repoUrl = 'https://github.com/AgustinMusanti/AgustinMusanti.github.io';
+---
+
+<!doctype html>
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">{t.nav.skipToContent}</a>
+    <Nav lang={lang} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer repoUrl={repoUrl} />
+  </body>
+</html>

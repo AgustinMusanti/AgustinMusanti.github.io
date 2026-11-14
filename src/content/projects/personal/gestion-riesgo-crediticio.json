@@ -1,0 +1,9 @@
+{
+  "title": "Gestión de riesgo crediticio (SQL)",
+  "description": "Diseño end-to-end de una base relacional para riesgo crediticio: modelado de clientes, vistas, stored procedures y consultas para análisis y segmentación.",
+  "tags": ["sql", "finanzas", "bases de datos"],
+  "featured": false,
+  "order": 2,
+  "repo": "https://github.com/AgustinMusanti/gestion_riesgo_crediticio-agustin-musanti",
+  "stack": ["SQL", "MySQL"]
+}

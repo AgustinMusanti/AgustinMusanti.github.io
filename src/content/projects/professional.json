@@ -1,0 +1,32 @@
+{
+  "data-change-detection": {
+    "title": "Detección temprana de cambios en datos organizacionales",
+    "description": "Script en Python que compara los datos semana a semana, detecta ~25 cambios por semana y los anticipa hasta un mes antes de que impacten en los reportes. Lo usa todo el equipo.",
+    "tags": ["python", "automatización", "calidad de datos"],
+    "order": 1
+  },
+  "compliance-normalization": {
+    "title": "Normalización automatizada de una base de compliance",
+    "description": "Estandarización en Python de una base que se actualizaba a mano: ~20 h mensuales ahorradas, datos trazables y auditables, KPIs disponibles más rápido.",
+    "tags": ["python", "calidad de datos", "automatización"],
+    "order": 2
+  },
+  "kpi-action-reports": {
+    "title": "Reportes con KPIs y acciones recomendadas",
+    "description": "Reportes automatizados para líderes de distintas industrias que no solo muestran el indicador, sino qué hacer; mejoraron en 20 p.p. un indicador interno de cumplimiento.",
+    "tags": ["reporting", "power automate", "negocio"],
+    "order": 3
+  },
+  "internal-ai-agent": {
+    "title": "Agente de IA para consultas internas",
+    "description": "Co-desarrollo de un agente en Copilot Studio usado en toda la firma; absorbe ~500 consultas mensuales.",
+    "tags": ["ia", "copilot studio"],
+    "order": 4
+  },
+  "strategic-dashboard": {
+    "title": "Dashboard estratégico para gerencia",
+    "description": "Diseño y desarrollo liderado por mí; premiado internamente.",
+    "tags": ["power bi", "bi", "negocio"],
+    "order": 5
+  }
+}

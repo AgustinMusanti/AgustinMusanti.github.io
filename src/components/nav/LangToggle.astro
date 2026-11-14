@@ -1,0 +1,33 @@
+---
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+
+const strippedPath = currentPath.replace(/^\/en/, '') || '/';
+const esHref = strippedPath;
+const enHref = `/en${strippedPath === '/' ? '' : strippedPath}`;
+---
+
+<div class="flex items-center gap-1 font-mono-data text-xs" aria-label={t.lang_toggle.label}>
+  <a
+    href={esHref}
+    class:list={['rounded px-2 py-1', lang === 'es' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]']}
+    aria-current={lang === 'es' ? 'true' : undefined}
+  >
+    ES
+  </a>
+  <span class="text-[var(--border)]">/</span>
+  <a
+    href={enHref}
+    class:list={['rounded px-2 py-1', lang === 'en' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]']}
+    aria-current={lang === 'en' ? 'true' : undefined}
+  >
+    EN
+  </a>
+</div>

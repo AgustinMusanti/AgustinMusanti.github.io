@@ -1,0 +1,26 @@
+{
+  "data-bi": {
+    "category": "data-bi",
+    "label": "Datos & BI",
+    "order": 1,
+    "tools": ["Power BI", "DAX", "Power Query", "Looker Studio", "Tableau", "Excel"]
+  },
+  "programming-db": {
+    "category": "programming-db",
+    "label": "Programación & Bases de datos",
+    "order": 2,
+    "tools": ["Python", "SQL", "R", "JavaScript", "SQL Server", "MySQL", "PostgreSQL", "BigQuery"]
+  },
+  "ml": {
+    "category": "ml",
+    "label": "Machine Learning",
+    "order": 3,
+    "tools": ["Pandas", "NumPy", "Scikit-learn", "SHAP", "Google Earth Engine"]
+  },
+  "automation-ai": {
+    "category": "automation-ai",
+    "label": "Automatización & IA",
+    "order": 4,
+    "tools": ["Power Automate", "n8n", "VBA", "Copilot Studio", "Claude / Claude Code", "IA generativa aplicada a procesos"]
+  }
+}

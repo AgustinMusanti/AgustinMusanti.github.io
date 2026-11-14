@@ -1,0 +1,9 @@
+{
+  "title": "SQL Finance Mini Cases",
+  "description": "Casos cortos de SQL sobre métricas de negocio y finanzas: cash flow, churn, cohortes, rentabilidad.",
+  "tags": ["sql", "finanzas", "análisis"],
+  "featured": false,
+  "order": 3,
+  "repo": "https://github.com/AgustinMusanti/SQL-Finance-Mini-Cases",
+  "stack": ["T-SQL"]
+}
