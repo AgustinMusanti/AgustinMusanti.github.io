@@ -11,9 +11,16 @@ no_progress = true
 # domains hit the network.
 remap = ["https://agustinmusanti.github.io file://./dist"]
 
+# Root-relative links (nav anchors, /_astro/* assets) need a filesystem root
+# to resolve against; the built site's root is dist/.
+root_dir = "./dist"
+
 exclude = [
   # Local dashboards/demos may be slow or blocked by anonymous crawlers.
   "^https://app\\.powerbi\\.com",
+  # LinkedIn returns a non-standard 999 to any automated client regardless of
+  # whether the profile exists; it isn't a signal of link rot.
+  "^https://www\\.linkedin\\.com",
 ]
 
 # mailto: links aren't fetchable, just structurally valid.
