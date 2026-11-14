@@ -8,7 +8,7 @@ interface Props {
 const { title, subtitle, size = 'lg' } = Astro.props;
 ---
 
-<figure class="chart relative m-0">
+<figure class="chart relative m-0" data-draw>
   <figcaption class="mb-3">
     <p
       class:list={['font-heading font-semibold text-[var(--text)]', size === 'lg' ? 'text-base md:text-lg' : 'text-sm']}

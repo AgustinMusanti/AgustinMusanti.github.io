@@ -32,14 +32,9 @@ const jsonLd = {
   '@type': 'Person',
   name: profile.name,
   jobTitle: profile.role,
-  worksFor: {
-    '@type': 'Organization',
-    name: profile.company,
-  },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'La Plata',
-    addressRegion: 'Buenos Aires',
+    addressLocality: 'Buenos Aires',
     addressCountry: 'AR',
   },
   sameAs: [profile.linkedin, profile.github],
@@ -52,6 +47,7 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <script is:inline>
       (function () {
+        document.documentElement.classList.add('js');
         try {
           var stored = localStorage.getItem('theme');
           if (stored === 'light' || stored === 'dark') {
@@ -89,10 +85,14 @@ const jsonLd = {
     <a href="#main-content" class="skip-link">
       {t.nav.skipToContent}
     </a>
+    <div class="read-progress" aria-hidden="true"></div>
     <Nav lang={lang} />
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>

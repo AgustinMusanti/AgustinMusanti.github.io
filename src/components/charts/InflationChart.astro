@@ -14,7 +14,7 @@ const fmt = (v: number) => formatNumber(v, lang, 2);
 
 const w = 340;
 const h = 130;
-const m = { l: 4, r: 4, t: 18, b: 18 };
+const m = { l: 4, r: 26, t: 10, b: 18 };
 const values = inflacion.monthlyAverage;
 const band = (w - m.l - m.r) / values.length;
 const x = (i: number) => m.l + (i + 0.5) * band;
@@ -24,9 +24,9 @@ const threshold = 5;
 
 <ChartFrame title={t.chartTitle} size="sm">
   <svg class="block h-auto w-full" viewBox={`0 0 ${w} ${h}`} aria-hidden="true">
-    <line x1={m.l} x2={w - m.r} y1={y(threshold)} y2={y(threshold)} stroke="var(--muted)" stroke-dasharray="3 3" />
-    <text x={m.l} y={m.t - 6} class="num" font-size="9.5" fill="var(--muted)">
-      - - 5%
+    <line x1={m.l} x2={w - m.r + 2} y1={y(threshold)} y2={y(threshold)} stroke="var(--muted)" stroke-dasharray="3 3" />
+    <text x={w - 2} y={y(threshold) + 3.5} text-anchor="end" class="num" font-size="9.5" fill="var(--muted)">
+      5%
     </text>
     {values.map((v, i) => (
       <g>
@@ -36,6 +36,8 @@ const threshold = 5;
           y={y(v)}
           height={y(0) - y(v)}
           rx="2"
+          class="draw-bar"
+          style={`--i:${i}`}
           fill={v > threshold ? 'var(--accent)' : 'var(--bar)'}
           data-tip={`${t.months[i]} · ${fmt(v)}%`}
         />

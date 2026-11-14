@@ -26,7 +26,12 @@ const blocks = [
 ];
 ---
 
-<BaseLayout lang={lang} title={`${text.title} · Agustín Musanti`} description={text.result} ogImagePath={ogImagePath}>
+<BaseLayout
+  lang={lang}
+  title={`${text.title} · Agustín Musanti`}
+  description={text.result ?? text.summary}
+  ogImagePath={ogImagePath}
+>
   <article class="mx-auto max-w-4xl px-4 py-16">
     <a href={`${localizePath('/', lang)}#projects`} class="text-sm text-[var(--accent-3)] hover:underline">
       ← {t.caseStudy.back}
@@ -35,13 +40,9 @@ const blocks = [
     <h1 class="mt-6 text-3xl text-[var(--text)] md:text-4xl">{text.title}</h1>
     <p class="mt-3 text-lg text-[var(--muted)]">{text.question}</p>
 
-    <ul class="mt-4 flex flex-wrap gap-1.5">
-      {tags.map((tag) => (
-        <li class="rounded-full bg-[var(--surface)] px-2.5 py-0.5 text-xs text-[var(--muted)]">
-          {t.projects.tags[tag]}
-        </li>
-      ))}
-    </ul>
+    <p class="eyebrow mt-4">
+      {tags.map((tag) => t.projects.tags[tag]).join(' · ')} · {text.sector}
+    </p>
 
     {metric && (
       <p class="panel mt-8 p-5">

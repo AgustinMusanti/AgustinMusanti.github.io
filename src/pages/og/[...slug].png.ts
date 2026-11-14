@@ -31,7 +31,7 @@ export async function getStaticPaths() {
         props: {
           eyebrow: profile.name,
           title: project.text.title,
-          description: project.text.result,
+          description: project.text.result ?? project.text.summary,
         },
       });
     }

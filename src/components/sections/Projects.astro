@@ -12,16 +12,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const projects = await getProjects(lang);
+const projects = (await getProjects(lang)).filter((p) => p.kind === 'personal');
 
 const counts = TAGS.map((tag) => [tag, projects.filter((p) => p.tags.includes(tag)).length] as const).filter(
   ([, n]) => n > 0,
 ) as [Tag, number][];
-
-const groups = [
-  { title: t.projects.personalGroup, items: projects.filter((p) => p.kind === 'personal') },
-  { title: t.projects.professionalGroup, items: projects.filter((p) => p.kind === 'profesional') },
-].filter((g) => g.items.length > 0);
 ---
 
 <section id="projects" class="mx-auto max-w-6xl px-4 py-20">
@@ -29,16 +24,11 @@ const groups = [
 
   <ProjectFilter lang={lang} counts={counts} total={projects.length} />
 
-  {groups.map((group, i) => (
-    <div data-project-group class:list={[i > 0 && 'mt-12']}>
-      <h3 class="eyebrow mb-4">{group.title}</h3>
-      <div class="grid gap-5 md:grid-cols-2">
-        {group.items.map((project) => (
-          <ProjectCard lang={lang} project={project} />
-        ))}
-      </div>
-    </div>
-  ))}
+  <div class="grid gap-5 md:grid-cols-2">
+    {projects.map((project, i) => (
+      <ProjectCard lang={lang} project={project} index={i} />
+    ))}
+  </div>
 
   <p class="mt-10 text-sm text-[var(--muted)]">{t.projects.moreSoon}</p>
 </section>

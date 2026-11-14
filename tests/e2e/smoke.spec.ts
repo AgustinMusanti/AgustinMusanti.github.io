@@ -16,8 +16,8 @@ test('project filter narrows cards and syncs the URL', async ({ page }) => {
   const visible = page.locator('[data-tags]:not(.hidden)');
   const total = await all.count();
 
-  await page.getByRole('button', { name: /^Agro/ }).click();
-  await expect(page).toHaveURL(/\?tag=agro/);
+  await page.getByRole('button', { name: /^SQL/ }).click();
+  await expect(page).toHaveURL(/\?tag=sql/);
   expect(await visible.count()).toBeLessThan(total);
 
   await page.getByRole('button', { name: /^Todos/ }).click();

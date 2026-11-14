@@ -1,6 +1,6 @@
 # agustinmusanti.github.io
 
-Portfolio de Agustín Musanti, Data & Reporting Analyst: BI, data science y automatización de procesos. Sitio estático bilingüe (ES/EN) con resultados reales de proyectos, publicado en https://agustinmusanti.github.io.
+Sitio de Agustín Musanti, Data & AI Analyst: datos, BI, modelos y automatización con agentes de IA. Estático y bilingüe (ES/EN), publicado en https://agustinmusanti.github.io.
 
 ## Correrlo
 
@@ -23,7 +23,7 @@ npm run dev
 
 ## Cómo agregar, editar o quitar un proyecto
 
-Cada proyecto es **un solo archivo** en `src/content/projects/<slug>.json`, con los textos en español y en inglés dentro del mismo archivo. El nombre del archivo es la URL de la página de caso (`/proyectos/<slug>/` y `/en/projects/<slug>/`).
+Cada proyecto (personal o caso de trabajo) es **un solo archivo** en `src/content/projects/<slug>.json`, con los textos en español y en inglés dentro del mismo archivo. El nombre del archivo es la URL de la página de caso, si la tiene (`/proyectos/<slug>/` y `/en/projects/<slug>/`). Los `personal` aparecen en Proyectos; los `profesional`, en Casos de trabajo.
 
 - **Agregar:** copiá `src/content/projects/_template.json` (no se publica porque empieza con `_`), renombralo y completalo.
 - **Ocultar sin borrar:** `"draft": true`.
@@ -34,7 +34,7 @@ Los filtros, sus contadores, la página de caso, el sitemap y la imagen para red
 ```json
 {
   "kind": "personal",
-  "tags": ["bi", "finanzas"],
+  "tags": ["bi", "sql"],
   "stack": ["Power BI", "SQL"],
   "links": { "repo": "https://github.com/AgustinMusanti/mi-repo", "demo": "https://..." },
   "metric": "+15%",
@@ -43,6 +43,7 @@ Los filtros, sus contadores, la página de caso, el sitemap y la imagen para red
   "draft": false,
   "es": {
     "title": "Título",
+    "sector": "Retail",
     "question": "¿Qué pregunta responde?",
     "result": "Qué resultado dio, con números reales.",
     "summary": "Contexto en una o dos líneas.",
@@ -50,6 +51,7 @@ Los filtros, sus contadores, la página de caso, el sitemap y la imagen para red
   },
   "en": {
     "title": "Title",
+    "sector": "Retail",
     "question": "What question does it answer?",
     "result": "What result it produced.",
     "summary": "One or two lines of context.",
@@ -58,21 +60,21 @@ Los filtros, sus contadores, la página de caso, el sitemap y la imagen para red
 }
 ```
 
-| Campo                             |                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------ |
-| `kind`                            | `personal` o `profesional` (los profesionales van anonimizados y sin links)          |
-| `tags`                            | `bi`, `data-science`, `automatizacion`, `sql`, `finanzas`, `agro`, `ia`              |
-| `metric` + `metricLabel`          | Cifra grande de la tarjeta (opcional; si está, va el label en los dos idiomas)       |
-| `visual`                          | Gráfico de la tarjeta (opcional): `soja`, `inflation-seasonality` o `dashboard`      |
-| `process` (dentro de `es`/`en`)   | Esquema antes → después: `{ "before": "...", "after": "..." }` (opcional)            |
-| `caseStudy` (dentro de `es`/`en`) | `problem`, `approach`, `result`, `learnings`. Si existe, se genera la página de caso |
-| `featured`, `order`               | Tarjeta ancha y orden de aparición                                                   |
+| Campo                             |                                                                                                                                                                                            |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `kind`                            | `personal` (Proyectos: requiere `question` y `result`) o `profesional` (Casos de trabajo, anonimizados: requiere `problem` y `changed`; opcionales `decision` y `did`, una lista de pasos) |
+| `tags`                            | Disciplina: `bi`, `data-science`, `automatizacion`, `sql`, `ia`                                                                                                                            |
+| `sector` (dentro de `es`/`en`)    | Rubro, como dato secundario                                                                                                                                                                |
+| `metric` + `metricLabel`          | Cifra grande de la tarjeta (opcional; si está, va el label en los dos idiomas)                                                                                                             |
+| `visual`                          | Gráfico de la tarjeta (opcional): `soja`, `inflation-seasonality` o `validation-flow`                                                                                                      |
+| `caseStudy` (dentro de `es`/`en`) | `problem`, `approach`, `result`, `learnings`. Si existe, se genera la página de caso                                                                                                       |
+| `featured`, `order`               | Tarjeta ancha y orden de aparición                                                                                                                                                         |
 
 Un `visual` nuevo con datos propios se agrega como componente en `src/components/charts/`, con sus datos en `src/data/` (indicando de dónde salen) y su nombre en `src/lib/taxonomy.ts`.
 
 ## Resto del contenido
 
-Todo el texto vive en `src/content/` (cada archivo tiene su espejo `*.en.json`): perfil y certificación, KPIs del hero, experiencia, reconocimientos, "Cómo aprendo" y herramientas. Los textos de interfaz están en `src/i18n/es.ts` y `src/i18n/en.ts`.
+Todo el texto vive en `src/content/` (cada archivo tiene su espejo `*.en.json`): perfil y textos del hero, "Lo que hago" (`highlights`), trayectoria con los premios (`experience`), "Cómo trabajo" (`how-i-work`) y herramientas (`stack`). Los textos de interfaz, incluidos los pasos de las animaciones, están en `src/i18n/es.ts` y `src/i18n/en.ts`.
 
 Los datos de los gráficos están en `src/data/`, con su fuente y fecha en el campo `_source`:
 
@@ -87,8 +89,8 @@ src/
 ├── content.config.ts # esquemas
 ├── data/             # datos reales para los gráficos
 ├── components/
-│   ├── charts/       # gráficos SVG propios (sin librerías) con tooltip y tabla accesible
-│   ├── hero/         # panel de resultados
+│   ├── charts/       # gráficos SVG y diagramas de flujo propios (sin librerías), accesibles
+│   ├── hero/         # hero y animación de proceso (antes/después)
 │   ├── nav/          # navegación, tema e idioma
 │   ├── sections/     # secciones de la home
 │   └── ui/
@@ -96,9 +98,14 @@ src/
 ├── pages/            # / · /en/ · páginas de caso · imágenes para redes (og/)
 ├── i18n/             # textos de interfaz ES/EN
 ├── lib/              # lectura de contenido, escalas de gráficos, imagen OG
+├── scripts/          # motion.ts: aparición al scroll, dibujo de gráficos, conteo y barra de lectura
 └── styles/
 tests/                # smoke test y accesibilidad (Playwright + axe-core)
 ```
+
+## Movimiento
+
+Todo con CSS e IntersectionObserver, sin librerías de animación. Con `prefers-reduced-motion` las animaciones se desactivan y el hero muestra el estado "Después" fijo. Las transiciones entre páginas usan View Transitions nativas (`@view-transition`); en navegadores sin soporte la navegación es normal.
 
 ## Publicación
 

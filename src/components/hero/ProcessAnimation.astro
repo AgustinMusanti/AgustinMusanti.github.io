@@ -1,0 +1,169 @@
+---
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const { hero } = useTranslations(lang);
+const lastBefore = hero.beforeSteps.length - 1;
+let folded = 0;
+---
+
+<div class="process panel p-4 md:p-6" role="img" aria-label={hero.processDescription}>
+  <div class="stage" aria-hidden="true">
+    <div class="ghost">
+      <p class="eyebrow">{hero.before}</p>
+      <ol class="flow">
+        {hero.beforeSteps.map((step) => (
+          <li class="flow-item">
+            <span class="flow-step">{step}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="before">
+      <p class="eyebrow">{hero.before}</p>
+      <ol class="flow">
+        {hero.beforeSteps.map((step, i) => {
+          const fold = i !== 0 && i !== lastBefore;
+          return (
+            <li class:list={['flow-item', fold && 'fold']} style={fold ? `--k:${folded++}` : undefined}>
+              <span class="flow-step">{step}</span>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+    <div class="after">
+      <p class="eyebrow after-label">{hero.after}</p>
+      <ol class="flow">
+        {hero.afterSteps.map((step, i) => (
+          <li class="flow-item" style={`--i:${i}`}>
+            <span class:list={['flow-step is-auto', i === hero.humanStep && 'is-human']}>
+              <span class="flow-dot" />
+              {step}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-4 max-w-sm text-sm text-[var(--muted)]">{hero.afterNote}</p>
+    </div>
+  </div>
+  <p class="reduced-note text-xs text-[var(--muted)]">{hero.reducedNote}</p>
+</div>
+
+<style>
+  .stage {
+    display: grid;
+  }
+  .ghost,
+  .before,
+  .after {
+    grid-area: 1 / 1;
+  }
+  .ghost {
+    visibility: hidden;
+  }
+  .after-label {
+    color: var(--accent);
+  }
+  .reduced-note {
+    display: none;
+    margin-top: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .before {
+      animation: before-cycle 9s ease-in-out infinite;
+    }
+    .after {
+      animation: after-cycle 9s ease-in-out infinite;
+    }
+    .fold {
+      animation: fold 9s ease-in-out infinite;
+      animation-delay: calc(var(--k) * 0.12s);
+    }
+    .after .flow-dot {
+      animation: flow-travel 9s linear infinite;
+      animation-delay: calc(4.6s + var(--i) * 0.9s);
+    }
+    .process:hover *,
+    .process:hover *::after {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .before,
+    .ghost {
+      display: none;
+    }
+    .reduced-note {
+      display: block;
+    }
+  }
+
+  @keyframes before-cycle {
+    0%,
+    40% {
+      opacity: 1;
+      visibility: visible;
+    }
+    46%,
+    94% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @keyframes after-cycle {
+    0%,
+    44% {
+      opacity: 0;
+      transform: translateY(6px);
+      visibility: hidden;
+    }
+    50%,
+    92% {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+    }
+    97%,
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  @keyframes fold {
+    0%,
+    22% {
+      opacity: 1;
+      max-width: 22rem;
+      max-height: 4rem;
+      filter: none;
+    }
+    28% {
+      opacity: 0.35;
+      max-width: 22rem;
+      max-height: 4rem;
+      filter: grayscale(1);
+    }
+    38%,
+    96% {
+      opacity: 0;
+      max-width: 0;
+      max-height: 0;
+    }
+    100% {
+      opacity: 1;
+      max-width: 22rem;
+      max-height: 4rem;
+    }
+  }
+</style>

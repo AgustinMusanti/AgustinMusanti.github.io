@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+// Measure the settled page, not elements mid fade-in.
+test.use({ reducedMotion: 'reduce' });
+
 const pages = ['/', '/en/', '/proyectos/estimacion-rinde-soja/', '/en/projects/estimacion-rinde-soja/'];
 
 for (const path of pages) {

@@ -63,6 +63,7 @@ const tip = (p: (typeof points)[number]) =>
             rx="3"
             fill="var(--accent-3)"
             opacity="0.22"
+            class="draw-fade"
           />
         ) : (
           <rect
@@ -72,10 +73,19 @@ const tip = (p: (typeof points)[number]) =>
             height={v.y(Y_MIN) - v.y(p.observed)}
             rx="2"
             fill={p.id === '2022/23' ? 'var(--accent)' : 'var(--bar)'}
+            class="draw-bar"
+            style={`--i:${i}`}
           />
         ),
       )}
-      <path d={estimatePath(v)} fill="none" stroke="var(--accent-3)" stroke-width="2" stroke-dasharray="0" />
+      <path
+        d={estimatePath(v)}
+        fill="none"
+        stroke="var(--accent-3)"
+        stroke-width="2"
+        pathLength="1"
+        class="draw-line"
+      />
       {points.map((p, i) => (
         <circle
           cx={v.x(i)}
@@ -84,6 +94,7 @@ const tip = (p: (typeof points)[number]) =>
           fill={p.current ? 'var(--surface)' : 'var(--accent-3)'}
           stroke="var(--accent-3)"
           stroke-width="2"
+          class="draw-fade"
         />
       ))}
       {points.map((p, i) =>

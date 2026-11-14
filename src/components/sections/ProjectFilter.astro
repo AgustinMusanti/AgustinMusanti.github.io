@@ -37,15 +37,11 @@ const base = 'tag-filter-btn rounded-full border px-3 py-1 text-sm transition';
 <script>
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.tag-filter-btn'));
   const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-tags]'));
-  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-project-group]'));
 
   function applyFilter(tag: string) {
     cards.forEach((card) => {
       const show = tag === 'all' || (card.dataset.tags ?? '').split(',').includes(tag);
       card.classList.toggle('hidden', !show);
-    });
-    groups.forEach((group) => {
-      group.classList.toggle('hidden', !group.querySelector('[data-tags]:not(.hidden)'));
     });
     buttons.forEach((button) => {
       const active = button.dataset.tagFilter === tag;

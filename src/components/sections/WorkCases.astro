@@ -1,0 +1,86 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import ValidationFlow from '../charts/ValidationFlow.astro';
+import { getProjects } from '../../lib/content';
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const cases = (await getProjects(lang)).filter((p) => p.kind === 'profesional');
+---
+
+<section id="cases" class="mx-auto max-w-6xl px-4 py-20">
+  <SectionHeading title={t.nav.cases} />
+  <p class="-mt-4 mb-8 max-w-2xl text-[var(--muted)]">{t.cases.intro}</p>
+
+  <div class="grid gap-5 md:grid-cols-2">
+    {cases.map(({ text, stack, tags, featured, visual }, i) => (
+      <article
+        class:list={['panel lift flex flex-col p-5 md:p-6', featured && 'md:col-span-2']}
+        data-reveal
+        style={`--d:${i % 2}`}
+      >
+        <p class="eyebrow">
+          {tags.map((tag) => t.projects.tags[tag]).join(' · ')} · {text.sector}
+        </p>
+        <h3 class="mt-2 text-lg leading-snug text-[var(--text)] md:text-xl">{text.title}</h3>
+
+        <div class:list={['mt-4 grid gap-5', featured && 'lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-8']}>
+          <dl class="space-y-3 text-sm">
+            <div>
+              <dt class="eyebrow">{t.cases.problem}</dt>
+              <dd class="mt-0.5 text-[var(--text)]">{text.problem}</dd>
+            </div>
+            {text.decision && (
+              <div>
+                <dt class="eyebrow">{t.cases.decision}</dt>
+                <dd class="mt-0.5 text-[var(--text)]">{text.decision}</dd>
+              </div>
+            )}
+            {text.did && (
+              <div>
+                <dt class="eyebrow">{t.cases.did}</dt>
+                <dd class="mt-0.5 text-[var(--text)]">
+                  {text.did.length === 1 ? (
+                    text.did[0]
+                  ) : (
+                    <ol class="list-decimal space-y-1 pl-5">
+                      {text.did.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ol>
+                  )}
+                </dd>
+              </div>
+            )}
+            {!featured && (
+              <div>
+                <dt class="eyebrow">{t.cases.changed}</dt>
+                <dd class="mt-0.5 text-[var(--text)]">{text.changed}</dd>
+              </div>
+            )}
+          </dl>
+
+          {featured && (
+            <div class="space-y-5">
+              {visual === 'validation-flow' && <ValidationFlow lang={lang} />}
+              <div class="rounded-lg border border-[var(--accent)] bg-[var(--bg)] p-4 text-sm">
+                <p class="eyebrow">{t.cases.changed}</p>
+                <p class="mt-1 text-[var(--text)]">{text.changed}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <p class="mt-auto pt-4 text-sm text-[var(--muted)]">
+          <span class="eyebrow mr-2">{t.cases.tools}</span>
+          {stack.join(' · ')}
+        </p>
+      </article>
+    ))}
+  </div>
+</section>
