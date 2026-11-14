@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LangToggle from './LangToggle.astro';
+import CommandPalette from './CommandPalette.astro';
 import { useTranslations, localizePath, type Language } from '../../i18n/utils';
 
 interface Props {
@@ -40,6 +41,7 @@ const links = [
       <button
         id="command-palette-trigger"
         type="button"
+        aria-label={t.commandPalette.placeholder}
         class="rounded border border-[var(--border)] px-2 py-1 font-mono-data text-xs text-[var(--muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
       >
         Ctrl/⌘ K
@@ -78,6 +80,8 @@ const links = [
     </div>
   </div>
 </header>
+
+<CommandPalette lang={lang} />
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');

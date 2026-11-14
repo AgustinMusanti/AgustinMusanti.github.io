@@ -1,0 +1,16 @@
+{
+  "title": "Early soybean yield estimation",
+  "description": "Python pipeline that combines satellite data, weather, and official yields to estimate the soybean campaign months before harvest.",
+  "tags": ["machine learning", "python", "agriculture", "satellite data"],
+  "featured": true,
+  "order": 1,
+  "repo": "https://github.com/AgustinMusanti/prediccion-rinde-soja",
+  "demo": "https://estimacion-rinde-soja.vercel.app",
+  "stack": ["Python", "Pandas", "Scikit-learn", "SHAP", "Google Earth Engine", "NASA POWER", "Vercel"],
+  "caseStudy": {
+    "problem": "Knowing how the soybean campaign is shaping up in northwestern Buenos Aires province months before harvest, using only public data.",
+    "approach": "A reusable Python pipeline that combines satellite NDVI (MODIS via Google Earth Engine), weather (NASA POWER), and official yields (MAGyP) for 5 counties and 25 campaigns. Random Forest with walk-forward temporal validation and SHAP interpretability. I tried other algorithms (Ridge, Lasso, XGBoost, SVR, KNN) and crop masks: none beat the base model.",
+    "result": "With data through January (≈3 months before harvest), a mean error of ~3.3 qq/ha (R² ≈ 0.54) and 71% accuracy on the direction of the campaign. Public dashboard that updates with every push.",
+    "learnings": "The ceiling is the data, not the algorithm; validate over time instead of fitting to the test; document the errors you find (I found and fixed an error in the satellite data that was inflating the results)."
+  }
+}

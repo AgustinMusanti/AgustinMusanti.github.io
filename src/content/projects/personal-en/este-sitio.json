@@ -1,0 +1,9 @@
+{
+  "title": "This site",
+  "description": "Portfolio built with Astro from a single data source validated with Zod, bilingual, with CI (E2E tests, accessibility, Lighthouse) and automatic deploy.",
+  "tags": ["astro", "ci/cd", "web"],
+  "featured": false,
+  "order": 6,
+  "repo": "https://github.com/AgustinMusanti/AgustinMusanti.github.io",
+  "stack": ["Astro", "TypeScript", "Tailwind CSS", "GitHub Actions"]
+}

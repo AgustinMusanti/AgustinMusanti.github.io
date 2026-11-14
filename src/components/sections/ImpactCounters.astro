@@ -1,8 +1,14 @@
 ---
 import Counter from '../ui/Counter.astro';
-import { getCollection } from 'astro:content';
+import { getImpact } from '../../lib/content';
+import type { Language } from '../../i18n/utils';
 
-const items = (await getCollection('impact')).sort((a, b) => a.data.order - b.data.order);
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const items = await getImpact(lang);
 ---
 
 <section class="mx-auto max-w-5xl px-4 py-16">

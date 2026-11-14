@@ -1,0 +1,19 @@
+{
+  "main": {
+    "name": "Agustín Musanti",
+    "role": "Data & Reporting Analyst",
+    "company": "PwC Argentina",
+    "location": "La Plata, Buenos Aires, Argentina",
+    "languages": ["Spanish (native)", "English (intermediate)"],
+    "email": "agustinmusanti@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/agustinmusanti/",
+    "github": "https://github.com/AgustinMusanti",
+    "heroTagline": "I build dashboards, automations, and models that people actually use to make decisions. I work on reporting and automation at PwC, and in my own projects I apply data to agriculture and finance.",
+    "bio": [
+      "I've worked with data since 2023 at PwC Argentina, where I went from Associate to Senior Associate with two promotions. Today I'm responsible for reporting automation on my team and support other teams as well.",
+      "Before automating anything, I rethink the process: which steps are unnecessary, what data is actually needed, and what decision the report has to enable. I work with Power BI, Python, SQL, and Power Automate, and I use generative AI every day to design, test, and implement solutions.",
+      "Outside of work I build projects with public data, mostly in agriculture and finance, because it's how I learn best: picking a real problem and solving it end to end."
+    ],
+    "currentFocus": "Reporting, automation and applied AI · Data science applied to agriculture"
+  }
+}

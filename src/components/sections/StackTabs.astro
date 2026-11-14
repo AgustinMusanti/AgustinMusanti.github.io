@@ -1,24 +1,28 @@
 ---
+import { useTranslations, type Language } from '../../i18n/utils';
+
 interface Tab {
   category: string;
   label: string;
 }
 
 interface Props {
+  lang: Language;
   tabs: Tab[];
 }
 
-const { tabs } = Astro.props;
+const { lang, tabs } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<div class="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filtrar stack por categoría">
+<div class="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filter stack by category">
   <button
     type="button"
     data-stack-tab="all"
     aria-pressed="true"
     class="stack-tab-btn rounded-full border border-[var(--accent)] px-3 py-1 font-mono-data text-xs text-[var(--accent)] transition"
   >
-    Todas
+    {t.stack.allCategories}
   </button>
   {tabs.map((tab) => (
     <button

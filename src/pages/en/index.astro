@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/hero/Hero.astro';
+import ImpactCounters from '../../components/sections/ImpactCounters.astro';
+import About from '../../components/sections/About.astro';
+import Projects from '../../components/sections/Projects.astro';
+import Experience from '../../components/sections/Experience.astro';
+import Recognitions from '../../components/sections/Recognitions.astro';
+import Learning from '../../components/sections/Learning.astro';
+import Stack from '../../components/sections/Stack.astro';
+import Contact from '../../components/sections/Contact.astro';
+import { getProfile } from '../../lib/content';
+
+const lang = 'en' as const;
+const profile = await getProfile(lang);
+---
+
+<BaseLayout lang={lang} title={`${profile.name} · ${profile.role}`} description={profile.heroTagline}>
+  <Hero lang={lang} />
+  <ImpactCounters lang={lang} />
+  <About lang={lang} />
+  <Projects lang={lang} />
+  <Experience lang={lang} />
+  <Recognitions lang={lang} />
+  <Learning lang={lang} />
+  <Stack lang={lang} />
+  <Contact lang={lang} />
+</BaseLayout>

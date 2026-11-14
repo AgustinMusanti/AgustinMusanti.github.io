@@ -1,0 +1,9 @@
+{
+  "title": "Credit risk management (SQL)",
+  "description": "End-to-end design of a relational database for credit risk: customer modeling, views, stored procedures and queries for analysis and segmentation.",
+  "tags": ["sql", "finance", "databases"],
+  "featured": false,
+  "order": 2,
+  "repo": "https://github.com/AgustinMusanti/gestion_riesgo_crediticio-agustin-musanti",
+  "stack": ["SQL", "MySQL"]
+}

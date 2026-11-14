@@ -1,0 +1,29 @@
+---
+import CaseStudyLayout from '../../../layouts/CaseStudyLayout.astro';
+import { getProjectsPersonal } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjectsPersonal('en');
+  return projects
+    .filter((project) => project.data.caseStudy)
+    .map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { title, description, tags, stack, repo, demo, caseStudy } = project.data;
+if (!caseStudy) throw new Error(`Missing case study for ${project.id}`);
+---
+
+<CaseStudyLayout
+  lang="en"
+  title={title}
+  description={description}
+  tags={tags}
+  stack={stack}
+  problem={caseStudy.problem}
+  approach={caseStudy.approach}
+  result={caseStudy.result}
+  learnings={caseStudy.learnings}
+  repo={repo}
+  demo={demo}
+/>

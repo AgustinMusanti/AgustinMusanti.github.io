@@ -1,22 +1,29 @@
 ---
+import { useTranslations, type Language } from '../../i18n/utils';
+
+interface Props {
+  lang: Language;
+}
+
 interface Node {
   id: string;
   title: string;
   detail: string;
 }
 
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
 const mainNodes: Node[] = [
-  { id: 'sources', title: 'Fuentes', detail: 'Excel · SQL · APIs' },
-  { id: 'processing', title: 'Procesamiento', detail: 'Python · Power Query' },
-  { id: 'storage', title: 'Modelo / Almacenamiento', detail: '' },
-  { id: 'viz', title: 'Visualización', detail: 'Power BI' },
-  { id: 'decision', title: 'Decisión', detail: '' },
+  { id: 'sources', title: t.pipeline.sources, detail: t.pipeline.sourcesDetail },
+  { id: 'processing', title: t.pipeline.processing, detail: t.pipeline.processingDetail },
+  { id: 'storage', title: t.pipeline.storage, detail: '' },
+  { id: 'viz', title: t.pipeline.viz, detail: t.pipeline.vizDetail },
+  { id: 'decision', title: t.pipeline.decision, detail: '' },
 ];
 
-const branchNode: Node = { id: 'automation', title: 'Automatización', detail: 'Power Automate · IA' };
-
-const desc =
-  'Diagrama de flujo: Fuentes de datos (Excel, SQL, APIs) alimentan el Procesamiento (Python, Power Query), que pasa a un Modelo o Almacenamiento, luego a Visualización (Power BI) y termina en una Decisión. Desde el Procesamiento sale una rama hacia Automatización (Power Automate e IA).';
+const branchNode: Node = { id: 'automation', title: t.pipeline.automation, detail: t.pipeline.automationDetail };
+const desc = t.pipeline.description;
 ---
 
 <svg
@@ -26,7 +33,7 @@ const desc =
   aria-labelledby="pipeline-title-desktop pipeline-desc-desktop"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <title id="pipeline-title-desktop">Pipeline de datos</title>
+  <title id="pipeline-title-desktop">{t.pipeline.title}</title>
   <desc id="pipeline-desc-desktop">{desc}</desc>
 
   <path d="M 140 60 H 860" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />
@@ -67,7 +74,7 @@ const desc =
   aria-labelledby="pipeline-title-mobile pipeline-desc-mobile"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <title id="pipeline-title-mobile">Pipeline de datos</title>
+  <title id="pipeline-title-mobile">{t.pipeline.title}</title>
   <desc id="pipeline-desc-mobile">{desc}</desc>
 
   <path d="M 160 90 V 630" class="pipeline-line" fill="none" stroke="var(--border)" stroke-width="2" />

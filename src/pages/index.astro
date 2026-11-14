@@ -9,21 +9,20 @@ import Recognitions from '../components/sections/Recognitions.astro';
 import Learning from '../components/sections/Learning.astro';
 import Stack from '../components/sections/Stack.astro';
 import Contact from '../components/sections/Contact.astro';
-import { getEntry } from 'astro:content';
+import { getProfile } from '../lib/content';
 
 const lang = 'es' as const;
-const profile = await getEntry('profile', 'main');
-if (!profile) throw new Error('Missing profile content');
+const profile = await getProfile(lang);
 ---
 
-<BaseLayout lang={lang} title={`${profile.data.name} · ${profile.data.role}`} description={profile.data.heroTagline}>
+<BaseLayout lang={lang} title={`${profile.name} · ${profile.role}`} description={profile.heroTagline}>
   <Hero lang={lang} />
-  <ImpactCounters />
-  <About />
+  <ImpactCounters lang={lang} />
+  <About lang={lang} />
   <Projects lang={lang} />
-  <Experience />
-  <Recognitions />
-  <Learning />
-  <Stack />
-  <Contact />
+  <Experience lang={lang} />
+  <Recognitions lang={lang} />
+  <Learning lang={lang} />
+  <Stack lang={lang} />
+  <Contact lang={lang} />
 </BaseLayout>

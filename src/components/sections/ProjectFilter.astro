@@ -1,19 +1,23 @@
 ---
+import { useTranslations, type Language } from '../../i18n/utils';
+
 interface Props {
+  lang: Language;
   tags: string[];
 }
 
-const { tags } = Astro.props;
+const { lang, tags } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos por tag">
+<div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects by tag">
   <button
     type="button"
     data-tag-filter="all"
     aria-pressed="true"
     class="tag-filter-btn rounded-full border border-[var(--accent)] px-3 py-1 font-mono-data text-xs text-[var(--accent)] transition"
   >
-    Todos
+    {t.projects.allTags}
   </button>
   {tags.map((tag) => (
     <button

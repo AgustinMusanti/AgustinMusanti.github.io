@@ -1,16 +1,23 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import StackTabs from './StackTabs.astro';
-import { getCollection } from 'astro:content';
+import { getStack } from '../../lib/content';
+import { useTranslations, type Language } from '../../i18n/utils';
 
-const categories = (await getCollection('stack')).sort((a, b) => a.data.order - b.data.order);
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const categories = await getStack(lang);
 const tabs = categories.map((c) => ({ category: c.data.category, label: c.data.label }));
 ---
 
 <section id="stack" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="08" title="Stack" />
+  <SectionHeading index="08" title={t.nav.stack} />
 
-  <StackTabs tabs={tabs} />
+  <StackTabs lang={lang} tabs={tabs} />
 
   <div class="grid gap-6 sm:grid-cols-2">
     {categories.map((category) => (

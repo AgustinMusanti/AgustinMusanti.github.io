@@ -1,7 +1,9 @@
 ---
 import ProjectIllustration from './ProjectIllustration.astro';
+import { useTranslations, type Language } from '../../i18n/utils';
 
 interface Props {
+  lang: Language;
   title: string;
   type: string;
   description: string;
@@ -13,7 +15,8 @@ interface Props {
   featured?: boolean;
 }
 
-const { title, type, description, tags, href, repo, demo, repoMeta, featured = false } = Astro.props;
+const { lang, title, type, description, tags, href, repo, demo, repoMeta, featured = false } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <article
@@ -45,16 +48,16 @@ const { title, type, description, tags, href, repo, demo, repoMeta, featured = f
 
   <div class="mt-4 flex items-center gap-4 font-mono-data text-xs text-[var(--accent-3)]">
     {href && (
-      <a href={href} class="hover:underline">Ver caso</a>
+      <a href={href} class="hover:underline">{t.projects.viewCase}</a>
     )}
     {repo && (
       <a href={repo} target="_blank" rel="noopener noreferrer" class="hover:underline">
-        Repo<span class="sr-only"> (se abre en una pestaña nueva)</span>
+        {t.projects.repo}<span class="sr-only"> {t.nav.openInNewTab}</span>
       </a>
     )}
     {demo && (
       <a href={demo} target="_blank" rel="noopener noreferrer" class="hover:underline">
-        Demo<span class="sr-only"> (se abre en una pestaña nueva)</span>
+        {t.projects.demo}<span class="sr-only"> {t.nav.openInNewTab}</span>
       </a>
     )}
     {repoMeta && (

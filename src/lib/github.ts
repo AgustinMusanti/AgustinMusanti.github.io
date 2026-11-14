@@ -1,3 +1,5 @@
+import type { Language } from '../i18n/utils';
+
 export interface RepoMeta {
   stars: number;
   updatedLabel: string;
@@ -14,9 +16,19 @@ function parseOwnerRepo(repoUrl: string): { owner: string; repo: string } | null
   }
 }
 
-function formatUpdatedLabel(isoDate: string): string {
+function formatUpdatedLabel(isoDate: string, lang: Language): string {
   const diffMs = Date.now() - new Date(isoDate).getTime();
   const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (lang === 'en') {
+    if (days < 1) return 'updated today';
+    if (days < 30) return `updated ${days}d ago`;
+    const months = Math.floor(days / 30);
+    if (months < 12) return `updated ${months} ${months === 1 ? 'month' : 'months'} ago`;
+    const years = Math.floor(months / 12);
+    return `updated ${years} ${years === 1 ? 'year' : 'years'} ago`;
+  }
+
   if (days < 1) return 'actualizado hoy';
   if (days < 30) return `actualizado hace ${days} d`;
   const months = Math.floor(days / 30);
@@ -25,7 +37,7 @@ function formatUpdatedLabel(isoDate: string): string {
   return `actualizado hace ${years} ${years === 1 ? 'año' : 'años'}`;
 }
 
-export async function getRepoMeta(repoUrl: string): Promise<RepoMeta | null> {
+export async function getRepoMeta(repoUrl: string, lang: Language): Promise<RepoMeta | null> {
   const parsed = parseOwnerRepo(repoUrl);
   if (!parsed) return null;
 
@@ -40,7 +52,7 @@ export async function getRepoMeta(repoUrl: string): Promise<RepoMeta | null> {
     const data = (await response.json()) as { stargazers_count: number; pushed_at: string };
     return {
       stars: data.stargazers_count,
-      updatedLabel: formatUpdatedLabel(data.pushed_at),
+      updatedLabel: formatUpdatedLabel(data.pushed_at, lang),
     };
   } catch {
     return null;

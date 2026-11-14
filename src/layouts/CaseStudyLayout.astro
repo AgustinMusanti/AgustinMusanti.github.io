@@ -1,0 +1,80 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { useTranslations, type Language } from '../i18n/utils';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description: string;
+  tags: string[];
+  stack: string[];
+  problem: string;
+  approach: string;
+  result: string;
+  learnings: string;
+  repo?: string;
+  demo?: string;
+}
+
+const { lang, title, description, tags, stack, problem, approach, result, learnings, repo, demo } = Astro.props;
+const t = useTranslations(lang);
+const backHref = lang === 'en' ? '/en/#projects' : '/#projects';
+
+const blocks = [
+  { label: t.caseStudy.problem, text: problem },
+  { label: t.caseStudy.approach, text: approach },
+  { label: t.caseStudy.result, text: result },
+  { label: t.caseStudy.learnings, text: learnings },
+];
+---
+
+<BaseLayout lang={lang} title={`${title} · Agustín Musanti`} description={description}>
+  <article class="mx-auto max-w-3xl px-4 py-24">
+    <a href={backHref} class="font-mono-data text-xs text-[var(--accent-3)] hover:underline">← {t.caseStudy.back}</a>
+
+    <h1 class="mt-6 text-3xl text-[var(--text)] md:text-4xl">{title}</h1>
+    <p class="mt-3 text-[var(--muted)]">{description}</p>
+
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <li class="rounded border border-[var(--border)] px-2 py-0.5 font-mono-data text-[10px] uppercase text-[var(--muted)]">{tag}</li>
+      ))}
+    </ul>
+
+    <div class="mt-10 space-y-8">
+      {blocks.map((block) => (
+        <div>
+          <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{block.label}</h2>
+          <p class="mt-2 text-[var(--text)]">{block.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10">
+      <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{t.caseStudy.stack}</h2>
+      <ul class="mt-2 flex flex-wrap gap-2">
+        {stack.map((tool) => (
+          <li class="rounded border border-[var(--border)] px-2.5 py-1 text-sm text-[var(--text)]">{tool}</li>
+        ))}
+      </ul>
+    </div>
+
+    {(repo || demo) && (
+      <div class="mt-10">
+        <h2 class="font-mono-data text-xs uppercase tracking-wide text-[var(--accent)]">{t.caseStudy.links}</h2>
+        <div class="mt-3 flex gap-4 font-mono-data text-sm text-[var(--accent-3)]">
+          {repo && (
+            <a href={repo} target="_blank" rel="noopener noreferrer" class="hover:underline">
+              {t.projects.repo}<span class="sr-only"> {t.nav.openInNewTab}</span>
+            </a>
+          )}
+          {demo && (
+            <a href={demo} target="_blank" rel="noopener noreferrer" class="hover:underline">
+              {t.projects.demo}<span class="sr-only"> {t.nav.openInNewTab}</span>
+            </a>
+          )}
+        </div>
+      </div>
+    )}
+  </article>
+</BaseLayout>

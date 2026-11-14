@@ -1,25 +1,30 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import { Image } from 'astro:assets';
-import { getEntry } from 'astro:content';
+import { getProfile } from '../../lib/content';
+import { useTranslations, type Language } from '../../i18n/utils';
 
-const profile = await getEntry('profile', 'main');
-if (!profile) throw new Error('Missing profile content');
-const { bio, role, currentFocus, location, languages } = profile.data;
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const { bio, role, currentFocus, location, languages } = await getProfile(lang);
 
 const photos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/agustin.{jpg,jpeg,png}', { eager: true });
 const photoModule = Object.values(photos)[0];
 
 const facts = [
-  { label: 'Rol', value: role },
-  { label: 'Foco', value: currentFocus },
-  { label: 'Ubicación', value: location },
-  { label: 'Idiomas', value: languages.join(' · ') },
+  { label: t.about.role, value: role },
+  { label: t.about.focus, value: currentFocus },
+  { label: t.about.location, value: location },
+  { label: t.about.languages, value: languages.join(' · ') },
 ];
 ---
 
 <section id="about" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="03" title="Sobre mí" />
+  <SectionHeading index="03" title={t.nav.about} />
 
   <div class="grid gap-10 md:grid-cols-[200px_1fr]">
     <div class="shrink-0">

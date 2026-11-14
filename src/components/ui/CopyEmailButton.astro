@@ -1,18 +1,25 @@
 ---
+import { useTranslations, type Language } from '../../i18n/utils';
+
 interface Props {
+  lang: Language;
   email: string;
 }
 
-const { email } = Astro.props;
+const { lang, email } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <button
   id="copy-email-btn"
   type="button"
   data-email={email}
+  data-label-default={t.contact.copyEmail}
+  data-label-copied={t.contact.copied}
+  data-status-failed={t.contact.copyFailed}
   class="rounded border border-[var(--border)] px-5 py-2.5 font-mono-data text-sm text-[var(--text)] transition hover:border-[var(--accent)]"
 >
-  <span id="copy-email-label">Copiar email</span>
+  <span id="copy-email-label">{t.contact.copyEmail}</span>
 </button>
 <span id="copy-email-status" class="sr-only" aria-live="polite"></span>
 
@@ -23,15 +30,19 @@ const { email } = Astro.props;
 
   button?.addEventListener('click', async () => {
     const email = button.dataset.email ?? '';
+    const defaultLabel = button.dataset.labelDefault ?? 'Copy email';
+    const copiedLabel = button.dataset.labelCopied ?? 'Copied!';
+    const failedStatus = button.dataset.statusFailed ?? "Couldn't copy the email";
+
     try {
       await navigator.clipboard.writeText(email);
-      if (label) label.textContent = '¡Copiado!';
-      if (status) status.textContent = 'Email copiado al portapapeles';
+      if (label) label.textContent = copiedLabel;
+      if (status) status.textContent = copiedLabel;
     } catch {
-      if (status) status.textContent = 'No se pudo copiar el email';
+      if (status) status.textContent = failedStatus;
     }
     setTimeout(() => {
-      if (label) label.textContent = 'Copiar email';
+      if (label) label.textContent = defaultLabel;
     }, 2000);
   });
 </script>

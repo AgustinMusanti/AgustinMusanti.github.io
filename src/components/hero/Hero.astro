@@ -1,6 +1,6 @@
 ---
 import PipelineDiagram from './PipelineDiagram.astro';
-import { getEntry } from 'astro:content';
+import { getProfile, getSiteConfig } from '../../lib/content';
 import { useTranslations, type Language } from '../../i18n/utils';
 
 interface Props {
@@ -10,12 +10,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const profile = await getEntry('profile', 'main');
-const siteConfig = await getEntry('siteConfig', 'main');
-if (!profile || !siteConfig) throw new Error('Missing profile or siteConfig content');
-
-const { name, role, location, heroTagline, linkedin, github } = profile.data;
-const { cvEnabled } = siteConfig.data;
+const { name, role, location, heroTagline, linkedin, github } = await getProfile(lang);
+const { cvEnabled } = await getSiteConfig();
 ---
 
 <section class="mx-auto max-w-5xl px-4 pb-16 pt-20 md:pt-28">
@@ -60,6 +56,6 @@ const { cvEnabled } = siteConfig.data;
   </div>
 
   <div class="mt-16">
-    <PipelineDiagram />
+    <PipelineDiagram lang={lang} />
   </div>
 </section>

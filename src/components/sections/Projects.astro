@@ -2,23 +2,24 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import ProjectFilter from './ProjectFilter.astro';
 import ProjectCard from './ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getProjectsProfessional, getProjectsPersonal } from '../../lib/content';
 import { getRepoMeta } from '../../lib/github';
-import { localizePath, type Language } from '../../i18n/utils';
+import { useTranslations, type Language } from '../../i18n/utils';
 
 interface Props {
   lang: Language;
 }
 
 const { lang } = Astro.props;
+const t = useTranslations(lang);
 
-const professional = (await getCollection('projectsProfessional')).sort((a, b) => a.data.order - b.data.order);
-const personal = (await getCollection('projectsPersonal')).sort((a, b) => a.data.order - b.data.order);
+const professional = await getProjectsProfessional(lang);
+const personal = await getProjectsPersonal(lang);
 
 const personalWithMeta = await Promise.all(
   personal.map(async (project) => ({
     project,
-    repoMeta: project.data.repo ? await getRepoMeta(project.data.repo) : null,
+    repoMeta: project.data.repo ? await getRepoMeta(project.data.repo, lang) : null,
   })),
 );
 
@@ -26,19 +27,20 @@ const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) =>
 ---
 
 <section id="projects" class="mx-auto max-w-5xl px-4 py-24">
-  <SectionHeading index="04" title="Proyectos" />
+  <SectionHeading index="04" title={t.nav.projects} />
 
-  <ProjectFilter tags={allTags} />
+  <ProjectFilter lang={lang} tags={allTags} />
 
-  <h3 class="mb-4 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">Personales</h3>
+  <h3 class="mb-4 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">{t.projects.personalGroup}</h3>
   <div class="grid gap-5 sm:grid-cols-2">
     {personalWithMeta.map(({ project, repoMeta }) => (
       <ProjectCard
+        lang={lang}
         title={project.data.title}
-        type="Proyecto personal"
+        type={t.projects.personalType}
         description={project.data.description}
         tags={project.data.tags}
-        href={project.data.caseStudy ? localizePath(`/proyectos/${project.id}`, lang) : undefined}
+        href={project.data.caseStudy ? (lang === 'en' ? `/en/projects/${project.id}` : `/proyectos/${project.id}`) : undefined}
         repo={project.data.repo}
         demo={project.data.demo}
         repoMeta={repoMeta}
@@ -47,12 +49,13 @@ const allTags = Array.from(new Set([...professional, ...personal].flatMap((p) =>
     ))}
   </div>
 
-  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">Profesionales (PwC, anonimizados)</h3>
+  <h3 class="mb-4 mt-12 font-mono-data text-sm uppercase tracking-wide text-[var(--muted)]">{t.projects.professionalGroup}</h3>
   <div class="grid gap-5 sm:grid-cols-2">
     {professional.map((project) => (
       <ProjectCard
+        lang={lang}
         title={project.data.title}
-        type="Proyecto profesional"
+        type={t.projects.professionalType}
         description={project.data.description}
         tags={project.data.tags}
       />
