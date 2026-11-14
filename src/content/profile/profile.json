@@ -1,20 +1,12 @@
 {
   "main": {
     "name": "Agustín Musanti",
-    "role": "Data & Reporting Analyst",
-    "company": "PwC Argentina",
-    "location": "La Plata, Buenos Aires, Argentina",
-    "languages": ["Español (nativo)", "Inglés (intermedio)"],
+    "role": "Data & AI Analyst",
     "email": "agustinmusanti@gmail.com",
     "linkedin": "https://www.linkedin.com/in/agustinmusanti/",
     "github": "https://github.com/AgustinMusanti",
-    "heroTagline": "Construyo dashboards, automatizaciones y modelos que la gente usa para decidir. Trabajo en reporting y automatización en PwC, y en mis proyectos aplico datos al agro y a las finanzas.",
-    "bio": [
-      "Trabajo con datos desde 2023 en PwC Argentina, donde pasé de Associate a Senior Associate con dos promociones. Hoy soy el responsable de automatización de reporting de mi equipo y doy soporte a otros equipos.",
-      "Antes de automatizar algo, repienso el proceso: qué pasos sobran, qué datos se necesitan de verdad y qué decisión tiene que habilitar el reporte. Trabajo con Power BI, Python, SQL y Power Automate, y uso IA generativa todos los días para diseñar, probar e implementar soluciones.",
-      "Fuera del trabajo construyo proyectos con datos públicos, sobre todo de agro y finanzas, porque es la forma en la que más aprendo: elegir un problema real y resolverlo de punta a punta."
-    ],
-    "currentFocus": "Reporting, automatización e IA aplicada · Data Science aplicada al agro",
-    "certification": "Idoneidad ante la Comisión Nacional de Valores (CNV)"
+    "location": "Buenos Aires, Argentina",
+    "heroTagline": "Busco la mejor manera de hacer las cosas: saco los pasos que sobran, automatizo lo repetitivo y dejo los datos listos para decidir.",
+    "heroSecondary": "Trabajo con datos, BI, modelos y agentes de IA. No conozco todas las herramientas: cuando un problema pide una nueva, la aprendo usándola."
   }
 }

@@ -1,34 +1,33 @@
 {
   "senior-associate": {
-    "title": "Data & Reporting Analyst – Senior Associate",
+    "title": "Senior Associate · Data & Reporting",
+    "company": "PwC Argentina",
     "period": "Jan 2026 – Present",
-    "order": 1,
-    "bullets": [
-      "Responsible for the team's reporting automation, supporting other teams as well: +10 processes redesigned end-to-end (scoping, workflow, Python script and deployment), +25 weekly hours freed up.",
-      "Power BI point of reference for the area: +10 dashboards built from scratch, used by +100 users across 5+ areas and by regional leadership in 6 countries; I train 5 people on the tool.",
-      "Automated reports for leaders that combine KPIs with recommended actions.",
-      "Power Automate flows that send insights by email, load data, and update reports.",
-      "Selected for the firm's cross-functional AI and Automation team (small group)."
-    ]
+    "summary": "Responsible for my team’s automation and for supporting other areas. Member of the firm’s cross-functional AI and Automation team.",
+    "promotion": true,
+    "order": 1
   },
   "semi-senior": {
-    "title": "Reporting Analyst – Semi Senior",
+    "title": "Semi Senior · Reporting",
+    "company": "PwC Argentina",
     "period": "Jan 2025 – Dec 2025",
-    "order": 2,
-    "award": true,
-    "bullets": [
-      "Led the design and development of a strategic dashboard for management decision-making. \"PwC Te Reconoce\" award.",
-      "Co-developed an AI agent in Copilot Studio used firm-wide that handles ~500 monthly queries that previously came in by email."
-    ]
+    "summary": "Led the design of a strategic dashboard for management and co-developed an AI agent in Copilot Studio used firm-wide.",
+    "promotion": true,
+    "award": {
+      "title": "PwC Te Reconoce",
+      "description": "For leading the design and development of a strategic dashboard for management decision-making."
+    },
+    "order": 2
   },
   "associate": {
-    "title": "Reporting Analyst – Associate",
+    "title": "Associate · Reporting",
+    "company": "PwC Argentina",
     "period": "Oct 2023 – Dec 2024",
-    "order": 3,
-    "award": true,
-    "bullets": [
-      "Power BI dashboards for decision-making across different areas.",
-      "End-to-end reporting automation with Power BI and Excel (VBA): from +4 hours to 10 minutes. \"PwC Te Reconoce\" award."
-    ]
+    "summary": "Power BI dashboards for different areas and end-to-end automation with Power BI and Excel (VBA).",
+    "award": {
+      "title": "PwC Te Reconoce",
+      "description": "For an automation with Power BI and Excel (VBA) that cut a process from over 4 hours to 10 minutes."
+    },
+    "order": 3
   }
 }

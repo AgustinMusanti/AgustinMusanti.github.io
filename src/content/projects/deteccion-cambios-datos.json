@@ -3,30 +3,23 @@
   "tags": ["automatizacion"],
   "stack": ["Python"],
   "links": {},
-  "metric": "~25",
   "featured": false,
   "order": 11,
   "draft": false,
   "es": {
     "title": "Detección temprana de cambios en datos organizacionales",
-    "question": "¿Cómo enterarse de los cambios en los datos antes de que lleguen a los reportes?",
-    "result": "Detecta ~25 cambios por semana y los anticipa hasta un mes antes de que impacten en los reportes. Lo usa todo el equipo.",
-    "summary": "Script en Python que compara los datos semana a semana.",
-    "metricLabel": "cambios detectados por semana",
-    "process": {
-      "before": "Los cambios impactaban en los reportes",
-      "after": "Se detectan hasta un mes antes"
-    }
+    "sector": "Servicios profesionales",
+    "summary": "Los cambios se veían recién cuando llegaban a los reportes.",
+    "problem": "Los cambios en los datos organizacionales aparecían recién cuando impactaban en los reportes.",
+    "did": ["Un script en Python que compara los datos semana a semana y señala lo que cambió."],
+    "changed": "Los cambios se anticipan hasta un mes antes de que impacten en los reportes. Lo usa todo el equipo."
   },
   "en": {
     "title": "Early detection of changes in organizational data",
-    "question": "How do you catch data changes before they reach the reports?",
-    "result": "Detects ~25 changes per week and flags them up to a month before they hit the reports. Used by the whole team.",
-    "summary": "Python script that compares the data week over week.",
-    "metricLabel": "changes detected per week",
-    "process": {
-      "before": "Changes hit the reports",
-      "after": "Flagged up to a month earlier"
-    }
+    "sector": "Professional services",
+    "summary": "Changes only showed up once they reached the reports.",
+    "problem": "Changes in organizational data only surfaced once they hit the reports.",
+    "did": ["A Python script that compares the data week over week and flags what changed."],
+    "changed": "Changes are flagged up to a month before they hit the reports. The whole team uses it."
   }
 }

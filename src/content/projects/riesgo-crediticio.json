@@ -1,0 +1,25 @@
+{
+  "kind": "personal",
+  "tags": ["sql"],
+  "stack": ["MySQL", "SQL"],
+  "links": {
+    "repo": "https://github.com/AgustinMusanti/gestion_riesgo_crediticio-agustin-musanti"
+  },
+  "featured": false,
+  "order": 4,
+  "draft": false,
+  "es": {
+    "title": "Base de datos para gestión de riesgo crediticio",
+    "sector": "Finanzas",
+    "question": "¿Cómo ordenar la información de clientes y créditos para evaluar el riesgo de cada uno?",
+    "result": "Una base relacional en MySQL con modelo de clientes, vistas, funciones, procedimientos almacenados, triggers y roles, lista para consultas de análisis y segmentación. Fue parte del trabajo final de una certificación.",
+    "summary": "Diseño de la base de punta a punta, documentado tabla por tabla."
+  },
+  "en": {
+    "title": "Credit risk management database",
+    "sector": "Finance",
+    "question": "How do you organize customer and credit data to assess each customer’s risk?",
+    "result": "A MySQL relational database with a customer model, views, functions, stored procedures, triggers, and roles, ready for analysis and segmentation queries. It was part of a certification’s final project.",
+    "summary": "End-to-end database design, documented table by table."
+  }
+}

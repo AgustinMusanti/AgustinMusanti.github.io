@@ -7,25 +7,21 @@ export async function getProfile(lang: Language) {
   return entry.data;
 }
 
-export async function getLearning(lang: Language) {
-  const entry = await getEntry(lang === 'en' ? 'learningEn' : 'learning', 'main');
-  if (!entry) throw new Error('Missing learning content');
+export async function getHowIWork(lang: Language) {
+  const entry = await getEntry(lang === 'en' ? 'howIWorkEn' : 'howIWork', 'main');
+  if (!entry) throw new Error('Missing how-i-work content');
   return entry.data;
 }
 
 const byOrder = <T extends { data: { order: number } }>(items: T[]) =>
   items.sort((a, b) => a.data.order - b.data.order);
 
-export async function getImpact(lang: Language) {
-  return byOrder(await getCollection(lang === 'en' ? 'impactEn' : 'impact'));
+export async function getHighlights(lang: Language) {
+  return byOrder(await getCollection(lang === 'en' ? 'highlightsEn' : 'highlights'));
 }
 
 export async function getExperience(lang: Language) {
   return byOrder(await getCollection(lang === 'en' ? 'experienceEn' : 'experience'));
-}
-
-export async function getRecognitions(lang: Language) {
-  return byOrder(await getCollection(lang === 'en' ? 'recognitionsEn' : 'recognitions'));
 }
 
 export async function getStack(lang: Language) {

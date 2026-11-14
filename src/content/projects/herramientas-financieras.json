@@ -1,0 +1,26 @@
+{
+  "kind": "personal",
+  "tags": ["data-science"],
+  "stack": ["Python", "Pandas", "NumPy", "Matplotlib", "Web scraping"],
+  "links": {
+    "repo": "https://github.com/AgustinMusanti/FinanzasConPython",
+    "demo": "https://lecaps-calculator.pages.dev/#key=AGUS-DEMO-123"
+  },
+  "featured": false,
+  "order": 2,
+  "draft": false,
+  "es": {
+    "title": "Calculadora de LECAP y herramientas financieras en Python",
+    "sector": "Finanzas",
+    "question": "¿Cuánto puede rendir una LECAP según el escenario, sin armar el cálculo a mano cada vez?",
+    "result": "Una calculadora web publicada que obtiene los datos con scraping en Python y deja simular escenarios de inversión. Es parte de una colección de calculadoras, simulaciones y proyecciones financieras.",
+    "summary": "Herramientas reutilizables para analizar inversiones y modelar escenarios."
+  },
+  "en": {
+    "title": "LECAP calculator and finance tools in Python",
+    "sector": "Finance",
+    "question": "How much could an Argentine Treasury bill (LECAP) return under different scenarios, without building the math by hand every time?",
+    "result": "A published web calculator that pulls the data with Python scraping and lets you simulate investment scenarios. Part of a collection of financial calculators, simulations, and projections.",
+    "summary": "Reusable tools to analyze investments and model scenarios."
+  }
+}

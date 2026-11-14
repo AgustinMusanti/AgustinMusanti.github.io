@@ -4,18 +4,22 @@
   "stack": ["Power BI"],
   "links": {},
   "featured": false,
-  "order": 15,
+  "order": 13,
   "draft": false,
   "es": {
     "title": "Dashboard estratégico para la gerencia",
-    "question": "¿Qué necesita ver la gerencia para tomar decisiones?",
-    "result": "Diseño y desarrollo liderado por mí, reconocido con el premio PwC Te Reconoce.",
-    "summary": "Tablero estratégico para la toma de decisiones de la gerencia."
+    "sector": "Servicios profesionales",
+    "summary": "Un tablero para la toma de decisiones de la gerencia.",
+    "problem": "La gerencia necesitaba un tablero para tomar decisiones estratégicas.",
+    "did": ["Lideré el diseño y desarrollo del dashboard en Power BI."],
+    "changed": "El tablero se usa para la toma de decisiones de la gerencia y fue reconocido con el premio PwC Te Reconoce."
   },
   "en": {
     "title": "Strategic dashboard for management",
-    "question": "What does management need to see to make decisions?",
-    "result": "Design and development led by me, recognized with the PwC Te Reconoce award.",
-    "summary": "A strategic dashboard for management decision-making."
+    "sector": "Professional services",
+    "summary": "A dashboard for management decision-making.",
+    "problem": "Management needed a dashboard for strategic decisions.",
+    "did": ["I led the design and development of the dashboard in Power BI."],
+    "changed": "The dashboard is used for management decision-making and was recognized with the PwC Te Reconoce award."
   }
 }

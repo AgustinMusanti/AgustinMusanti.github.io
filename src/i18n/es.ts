@@ -2,14 +2,12 @@ import type { Tag } from '../lib/taxonomy';
 
 export interface Dictionary {
   lang: 'es' | 'en';
-  locale: string;
   nav: {
-    about: string;
     projects: string;
-    experience: string;
-    recognitions: string;
-    learning: string;
-    stack: string;
+    cases: string;
+    howIWork: string;
+    path: string;
+    tools: string;
     contact: string;
     skipToContent: string;
     openMenu: string;
@@ -21,12 +19,16 @@ export interface Dictionary {
   langToggle: { label: string };
   hero: {
     viewProjects: string;
-    panelTitle: string;
-    panelSource: string;
-    kpisTitle: string;
-    workflowTitle: string;
-    workflow: string[];
+    before: string;
+    after: string;
+    beforeSteps: string[];
+    afterSteps: string[];
+    humanStep: number;
+    processDescription: string;
+    reducedNote: string;
+    afterNote: string;
   };
+  whatIDo: { title: string };
   soja: {
     chartTitle: string;
     chartSubtitle: string;
@@ -34,8 +36,6 @@ export interface Dictionary {
     estimate: string;
     interval: string;
     current: string;
-    yAxis: string;
-    xAxis: string;
     tableCaption: string;
     season: string;
     maeTitle: string;
@@ -48,25 +48,33 @@ export interface Dictionary {
     importance: Record<string, string>;
     approx: string;
   };
-  inflation: { chartTitle: string; months: string[]; tableCaption: string; month: string; value: string };
-  about: { role: string; focus: string; location: string; languages: string; certification: string };
+  inflation: { chartTitle: string; months: string[]; tableCaption: string };
   projects: {
     filterLabel: string;
     allTags: string;
-    personalGroup: string;
-    professionalGroup: string;
     question: string;
     result: string;
     tools: string;
     viewCase: string;
     repo: string;
     demo: string;
-    before: string;
-    after: string;
     moreSoon: string;
     tags: Record<Tag, string>;
   };
-  stack: { filterLabel: string; allCategories: string };
+  cases: {
+    intro: string;
+    problem: string;
+    decision: string;
+    did: string;
+    changed: string;
+    tools: string;
+    flowSteps: string[];
+    flowHumanStep: number;
+    flowException: string;
+    flowDescription: string;
+  };
+  path: { promotion: string; award: string };
+  tools: { footnote: string };
   contact: { question: string; copyEmail: string; copied: string; copyFailed: string };
   caseStudy: {
     problem: string;
@@ -82,14 +90,12 @@ export interface Dictionary {
 
 export const es: Dictionary = {
   lang: 'es',
-  locale: 'es-AR',
   nav: {
-    about: 'Sobre mí',
     projects: 'Proyectos',
-    experience: 'Experiencia',
-    recognitions: 'Reconocimientos',
-    learning: 'Cómo aprendo',
-    stack: 'Herramientas',
+    cases: 'Casos de trabajo',
+    howIWork: 'Cómo trabajo',
+    path: 'Trayectoria',
+    tools: 'Herramientas',
     contact: 'Contacto',
     skipToContent: 'Ir al contenido',
     openMenu: 'Abrir menú',
@@ -101,12 +107,26 @@ export const es: Dictionary = {
   langToggle: { label: 'Cambiar idioma' },
   hero: {
     viewProjects: 'Ver proyectos',
-    panelTitle: 'Resultados',
-    panelSource: 'Fuente: modelo propio sobre datos MAGyP, NASA POWER y MODIS. Validación walk-forward.',
-    kpisTitle: 'Impacto en el trabajo',
-    workflowTitle: 'Cómo trabajo',
-    workflow: ['Entender el proceso', 'Limpiar y modelar datos', 'Automatizar', 'Visualizar', 'Recomendar una acción'],
+    before: 'Antes · 7 pasos manuales',
+    after: 'Después · 4 pasos',
+    beforeSteps: [
+      'Recibir solicitud',
+      'Entrar al sistema',
+      'Consultar estados',
+      'Cruzar datos',
+      'Copiar a Excel',
+      'Armar el mail',
+      'Enviar',
+    ],
+    afterSteps: ['Formulario', 'Validación automática', 'Revisión humana', 'Confirmación enviada y registrada'],
+    humanStep: 2,
+    processDescription:
+      'Un proceso que se simplifica. Antes: siete pasos manuales (recibir la solicitud, entrar al sistema, consultar estados, cruzar datos, copiar a Excel, armar el mail y enviarlo). Después: cuatro pasos (formulario, validación automática, revisión humana y confirmación enviada y registrada).',
+    reducedNote:
+      'Antes eran 7 pasos manuales: recibir, entrar al sistema, consultar, cruzar, copiar, armar el mail y enviar.',
+    afterNote: 'La automatización reúne, verifica y presenta. La decisión la toma una persona.',
   },
+  whatIDo: { title: 'Lo que hago' },
   soja: {
     chartTitle: 'Cinco meses antes de la cosecha, el modelo ya anticipaba la sequía de 2022/23',
     chartSubtitle: 'Rinde de soja, promedio de 5 partidos del noroeste bonaerense (qq/ha)',
@@ -114,8 +134,6 @@ export const es: Dictionary = {
     estimate: 'Estimado a fin de noviembre',
     interval: 'Intervalo del 80%',
     current: 'campaña sin dato oficial todavía',
-    yAxis: 'qq/ha',
-    xAxis: 'Campaña',
     tableCaption: 'Rinde observado y estimado a fin de noviembre por campaña',
     season: 'Campaña',
     maeTitle: 'Con datos a fin de noviembre el error ya es el más bajo',
@@ -142,43 +160,48 @@ export const es: Dictionary = {
     chartTitle: 'Inflación mensual promedio por mes, 2017–2024 (%)',
     months: ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
     tableCaption: 'Inflación mensual promedio por mes del año',
-    month: 'Mes',
-    value: 'Inflación promedio (%)',
-  },
-  about: {
-    role: 'Rol',
-    focus: 'Foco',
-    location: 'Ubicación',
-    languages: 'Idiomas',
-    certification: 'Certificación',
   },
   projects: {
     filterLabel: 'Filtrar proyectos por disciplina',
     allTags: 'Todos',
-    personalGroup: 'Proyectos propios',
-    professionalGroup: 'En PwC (anonimizados)',
     question: 'Pregunta',
     result: 'Resultado',
     tools: 'Herramientas',
     viewCase: 'Ver el caso completo',
     repo: 'Código',
-    demo: 'Ver tablero',
-    before: 'Antes',
-    after: 'Después',
+    demo: 'Ver en vivo',
     moreSoon: 'Voy a ir publicando acá mis próximos proyectos paralelos.',
     tags: {
       bi: 'BI',
       'data-science': 'Data Science',
       automatizacion: 'Automatización',
       sql: 'SQL',
-      finanzas: 'Finanzas',
-      agro: 'Agro',
-      ia: 'IA aplicada',
+      ia: 'IA y agentes',
     },
   },
-  stack: { filterLabel: 'Filtrar herramientas por categoría', allCategories: 'Todas' },
+  cases: {
+    intro: 'Casos de mi trabajo en una firma de servicios profesionales, contados sin datos confidenciales.',
+    problem: 'Problema',
+    decision: 'Decisión de diseño',
+    did: 'Qué hice',
+    changed: 'Qué cambió',
+    tools: 'Herramientas',
+    flowSteps: [
+      'Recepción automática',
+      'Cruce y verificación',
+      'Revisión humana en Teams',
+      'Excel y mail automáticos',
+      'Registro y seguimiento',
+    ],
+    flowHumanStep: 2,
+    flowException: 'Excepción: el equipo completa lo que falta en el mismo circuito',
+    flowDescription:
+      'Flujo automatizado: recepción de la solicitud, cruce y verificación contra una base de referencia, revisión y aprobación humana en Teams, generación del Excel y envío del mail, y registro. Si falta información, el equipo la completa dentro del mismo circuito y vuelve a la revisión.',
+  },
+  path: { promotion: 'Promoción', award: 'Premio' },
+  tools: { footnote: 'Es lo que uso hoy. La lista cambia: aprendo la herramienta que el problema pide.' },
   contact: {
-    question: '¿Hablamos de datos, reporting o automatización de procesos?',
+    question: '¿Tenés un proceso que podría funcionar mejor?',
     copyEmail: 'Copiar email',
     copied: '¡Copiado!',
     copyFailed: 'No se pudo copiar el email',

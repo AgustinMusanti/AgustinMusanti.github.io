@@ -6,49 +6,37 @@ import { TAGS, VISUALS } from './lib/taxonomy';
 const profileSchema = z.object({
   name: z.string(),
   role: z.string(),
-  company: z.string(),
   location: z.string(),
-  languages: z.array(z.string()),
-  certification: z.string(),
   email: z.email(),
   linkedin: z.url(),
   github: z.url(),
   heroTagline: z.string(),
-  bio: z.array(z.string()),
-  currentFocus: z.string(),
+  heroSecondary: z.string(),
 });
 
-const impactSchema = z.object({
-  value: z.string(),
+const highlightSchema = z.object({
+  value: z.string().optional(),
   label: z.string(),
   order: z.number(),
-  compare: z
-    .object({ before: z.number(), after: z.number(), beforeLabel: z.string(), afterLabel: z.string() })
-    .optional(),
 });
 
 const experienceSchema = z.object({
   title: z.string(),
+  company: z.string(),
   period: z.string(),
-  bullets: z.array(z.string()),
-  award: z.boolean().optional(),
+  summary: z.string(),
+  promotion: z.boolean().default(false),
+  award: z.object({ title: z.string(), description: z.string() }).optional(),
   order: z.number(),
 });
 
-const recognitionSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  order: z.number(),
-});
-
-const learningSchema = z.object({
-  title: z.string(),
-  text: z.string(),
-  principles: z.array(z.object({ title: z.string(), description: z.string() })),
+const howIWorkSchema = z.object({
+  paragraphs: z.array(z.string()).min(1),
+  note: z.string(),
 });
 
 const stackSchema = z.object({
-  category: z.enum(['data-bi', 'programming-db', 'ml', 'automation-ai']),
+  category: z.enum(['bi', 'data', 'ml', 'automation', 'ai']),
   label: z.string(),
   tools: z.array(z.string()),
   order: z.number(),
@@ -56,15 +44,24 @@ const stackSchema = z.object({
 
 const projectText = z.object({
   title: z.string(),
-  question: z.string(),
-  result: z.string(),
   summary: z.string(),
+  sector: z.string(),
+  question: z.string().optional(),
+  result: z.string().optional(),
+  problem: z.string().optional(),
+  decision: z.string().optional(),
+  did: z.array(z.string()).optional(),
+  changed: z.string().optional(),
   metricLabel: z.string().optional(),
-  process: z.object({ before: z.string(), after: z.string() }).optional(),
   caseStudy: z
     .object({ problem: z.string(), approach: z.string(), result: z.string(), learnings: z.string() })
     .optional(),
 });
+
+const both = (
+  p: { es: z.infer<typeof projectText>; en: z.infer<typeof projectText> },
+  f: (t: z.infer<typeof projectText>) => unknown,
+) => Boolean(f(p.es)) && Boolean(f(p.en));
 
 const projectSchema = z
   .object({
@@ -80,8 +77,14 @@ const projectSchema = z
     es: projectText,
     en: projectText,
   })
-  .refine((p) => !p.metric || (p.es.metricLabel && p.en.metricLabel), {
-    message: '`metric` needs `metricLabel` in both es and en',
+  .refine((p) => p.kind !== 'personal' || both(p, (t) => t.question && t.result), {
+    message: 'personal projects need `question` and `result` in es and en',
+  })
+  .refine((p) => p.kind !== 'profesional' || both(p, (t) => t.problem && t.changed), {
+    message: 'work cases need `problem` and `changed` in es and en',
+  })
+  .refine((p) => !p.metric || both(p, (t) => t.metricLabel), {
+    message: '`metric` needs `metricLabel` in es and en',
   })
   .refine((p) => Boolean(p.es.caseStudy) === Boolean(p.en.caseStudy), {
     message: '`caseStudy` must exist in both languages or in neither',
@@ -93,14 +96,12 @@ const fromFile = <T extends z.ZodType>(path: string, schema: T) =>
 export const collections = {
   profile: fromFile('profile/profile.json', profileSchema),
   profileEn: fromFile('profile/profile.en.json', profileSchema),
-  impact: fromFile('impact/impact.json', impactSchema),
-  impactEn: fromFile('impact/impact.en.json', impactSchema),
+  highlights: fromFile('highlights/highlights.json', highlightSchema),
+  highlightsEn: fromFile('highlights/highlights.en.json', highlightSchema),
   experience: fromFile('experience/experience.json', experienceSchema),
   experienceEn: fromFile('experience/experience.en.json', experienceSchema),
-  recognitions: fromFile('recognitions/recognitions.json', recognitionSchema),
-  recognitionsEn: fromFile('recognitions/recognitions.en.json', recognitionSchema),
-  learning: fromFile('learning/learning.json', learningSchema),
-  learningEn: fromFile('learning/learning.en.json', learningSchema),
+  howIWork: fromFile('how-i-work/how-i-work.json', howIWorkSchema),
+  howIWorkEn: fromFile('how-i-work/how-i-work.en.json', howIWorkSchema),
   stack: fromFile('stack/stack.json', stackSchema),
   stackEn: fromFile('stack/stack.en.json', stackSchema),
   projects: defineCollection({

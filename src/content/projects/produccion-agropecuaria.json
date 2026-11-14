@@ -1,0 +1,25 @@
+{
+  "kind": "personal",
+  "tags": ["bi"],
+  "stack": ["Tableau"],
+  "links": {
+    "demo": "https://public.tableau.com/views/EntregaFinal-AgustnMusanti/Dashboard1"
+  },
+  "featured": false,
+  "order": 5,
+  "draft": false,
+  "es": {
+    "title": "Producción agropecuaria de la provincia de Buenos Aires",
+    "sector": "Agro",
+    "question": "¿Cómo se distribuye la producción agrícola en la provincia y qué patrones hay entre regiones?",
+    "result": "Un tablero interactivo en Tableau con distribución de cultivos, volúmenes de producción y patrones regionales. Fue parte del trabajo final de una certificación.",
+    "summary": "Exploración visual de la producción por cultivo y por región."
+  },
+  "en": {
+    "title": "Agricultural production in Buenos Aires province",
+    "sector": "Agriculture",
+    "question": "How is agricultural production distributed across the province, and what patterns show up between regions?",
+    "result": "An interactive Tableau dashboard with crop distribution, production volumes, and regional patterns. It was part of a certification’s final project.",
+    "summary": "Visual exploration of production by crop and by region."
+  }
+}

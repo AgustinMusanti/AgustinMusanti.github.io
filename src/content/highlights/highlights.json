@@ -1,0 +1,20 @@
+{
+  "dashboards": {
+    "value": "+10",
+    "label": "tableros desarrollados en Power BI",
+    "order": 1
+  },
+  "processes": {
+    "value": "+15",
+    "label": "procesos automatizados de punta a punta",
+    "order": 2
+  },
+  "agents": {
+    "label": "Agentes de IA co-desarrollados y en uso",
+    "order": 3
+  },
+  "adhoc": {
+    "label": "Análisis y presentaciones ad-hoc para quien decide",
+    "order": 4
+  }
+}

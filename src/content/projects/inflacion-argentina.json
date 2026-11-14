@@ -1,6 +1,6 @@
 {
   "kind": "personal",
-  "tags": ["data-science", "finanzas"],
+  "tags": ["data-science"],
   "stack": ["Python", "Pandas", "Matplotlib", "Seaborn"],
   "links": {
     "repo": "https://github.com/AgustinMusanti/InflacionArgentina2017-2024"
@@ -8,20 +8,22 @@
   "metric": "6,83%",
   "visual": "inflation-seasonality",
   "featured": false,
-  "order": 2,
+  "order": 6,
   "draft": false,
   "es": {
     "title": "Estacionalidad de la inflación en Argentina",
     "question": "¿Hay meses en los que la inflación suele ser más alta? ¿Qué tan volátil fue entre 2017 y 2024?",
     "result": "Enero, febrero, marzo, septiembre y diciembre promedian más de 5% mensual; diciembre es el más alto, con 6,83%. Desvío estándar de 3,85%.",
     "summary": "Tendencia, estacionalidad y volatilidad de la inflación mensual con datos del INDEC, de enero de 2017 a octubre de 2024.",
-    "metricLabel": "inflación promedio de diciembre, el mes más alto"
+    "metricLabel": "inflación promedio de diciembre, el mes más alto",
+    "sector": "Macroeconomía"
   },
   "en": {
     "title": "Seasonality of inflation in Argentina",
     "question": "Are there months when inflation tends to run higher? How volatile was it between 2017 and 2024?",
     "result": "January, February, March, September, and December average over 5% a month; December is the highest at 6.83%. Standard deviation of 3.85%.",
     "summary": "Trend, seasonality, and volatility of monthly inflation using INDEC data, January 2017 to October 2024.",
-    "metricLabel": "average December inflation, the highest month"
+    "metricLabel": "average December inflation, the highest month",
+    "sector": "Macroeconomics"
   }
 }

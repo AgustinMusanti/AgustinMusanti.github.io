@@ -6,22 +6,21 @@
     "repo": "https://github.com/AgustinMusanti/mi-repo",
     "demo": "https://ejemplo.com"
   },
-  "metric": "+15%",
   "featured": false,
   "order": 99,
   "draft": true,
   "es": {
-    "title": "Título del proyecto",
+    "title": "Título",
+    "sector": "Sector",
     "question": "¿Qué pregunta responde?",
-    "result": "Qué resultado dio, con números reales.",
-    "summary": "Una o dos líneas de contexto.",
-    "metricLabel": "qué mide la cifra de metric"
+    "result": "Qué resultado dio.",
+    "summary": "Contexto en una línea."
   },
   "en": {
-    "title": "Project title",
+    "title": "Title",
+    "sector": "Sector",
     "question": "What question does it answer?",
-    "result": "What result it produced, with real numbers.",
-    "summary": "One or two lines of context.",
-    "metricLabel": "what the metric figure measures"
+    "result": "What result it produced.",
+    "summary": "One line of context."
   }
 }

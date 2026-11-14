@@ -1,0 +1,20 @@
+{
+  "dashboards": {
+    "value": "10+",
+    "label": "dashboards built in Power BI",
+    "order": 1
+  },
+  "processes": {
+    "value": "15+",
+    "label": "processes automated end to end",
+    "order": 2
+  },
+  "agents": {
+    "label": "AI agents co-developed and in use",
+    "order": 3
+  },
+  "adhoc": {
+    "label": "Ad-hoc analyses and presentations for decision-makers",
+    "order": 4
+  }
+}
