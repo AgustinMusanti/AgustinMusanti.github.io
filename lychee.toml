@@ -1,11 +1,7 @@
 # Link checker config for `lychee`, run against the built `dist/` output in CI.
 # https://lychee.cli.rs/usage/config/
 
-base = "dist"
 no_progress = true
-
-# Static files only; the built HTML is what ships.
-include = ["dist/**/*.html"]
 
 exclude = [
   # Local dashboards/demos may be slow or blocked by anonymous crawlers.
