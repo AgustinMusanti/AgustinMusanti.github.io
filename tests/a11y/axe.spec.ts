@@ -26,3 +26,23 @@ test('theme toggle keeps zero serious/critical violations in dark mode', async (
 
   expect(seriousOrCritical, JSON.stringify(seriousOrCritical, null, 2)).toEqual([]);
 });
+
+test.describe('hero with animations running', () => {
+  test.use({ reducedMotion: 'no-preference', colorScheme: 'light' });
+
+  test('light theme: hero text passes AA, including the dimmed inactive steps', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('theme', 'light'));
+    await page.goto('/');
+    await page.evaluate(() => document.querySelectorAll('[data-reveal]').forEach((n) => n.classList.add('is-visible')));
+    // Focus pauses the step cycle, so the dimmed state being measured is stable.
+    await page.locator('.t-step').first().focus();
+    await page.waitForTimeout(1000);
+
+    const results = await new AxeBuilder({ page })
+      .include('#main-content > section:first-child')
+      .withRules(['color-contrast'])
+      .analyze();
+
+    expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
+  });
+});

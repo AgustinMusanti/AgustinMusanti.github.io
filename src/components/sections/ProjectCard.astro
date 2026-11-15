@@ -72,12 +72,12 @@ const href = text.caseStudy ? projectPath(slug, lang) : undefined;
     {(href || links.demo || links.repo) && (
       <div class="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4 text-sm">
         {href && (
-          <a href={href} class="link-arrow font-medium text-[var(--accent)] hover:underline">
+          <a href={href} class="btn btn-sm btn-primary btn-arrow">
             {t.projects.viewCase} <span aria-hidden="true">→</span>
           </a>
         )}
         {links.demo && (
-          <a href={links.demo} target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-accent">
+          <a href={links.demo} target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
             {t.projects.demo}
             <span aria-hidden="true">↗</span>
             <span class="sr-only"> {t.nav.openInNewTab}</span>

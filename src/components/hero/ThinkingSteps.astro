@@ -91,9 +91,11 @@ const { thinking } = useTranslations(lang);
     border-color: var(--border);
     color: var(--muted);
   }
-  .is-live .t-step:not(.is-active) .t-title,
+  .is-live .t-step:not(.is-active) .t-title {
+    opacity: var(--step-dim-title);
+  }
   .is-live .t-step:not(.is-active) .t-question {
-    opacity: 0.55;
+    opacity: var(--step-dim-question);
   }
   .is-live .t-step.is-active .t-dot {
     background: var(--accent);

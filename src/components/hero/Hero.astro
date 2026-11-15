@@ -12,16 +12,16 @@ const t = useTranslations(lang);
 const { name, role, location, heroTagline, heroSecondary, linkedin, github } = await getProfile(lang);
 ---
 
-<section class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-16">
-  <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-14">
+<section class="mx-auto max-w-6xl px-4 pb-6 pt-6 md:pb-12 md:pt-16">
+  <div class="grid items-center gap-6 md:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-14">
     <div data-reveal>
       <p class="text-sm text-[var(--muted)]">{location}</p>
       <h1 class="mt-3 text-4xl leading-tight md:text-5xl">{name}</h1>
       <p class="mt-2 text-lg text-[var(--accent)] md:text-xl">{role}</p>
-      <p class="mt-5 font-heading text-xl leading-snug text-[var(--text)] md:text-2xl">{heroTagline}</p>
-      <p class="mt-4 max-w-xl text-base text-[var(--muted)]">{heroSecondary}</p>
+      <p class="mt-4 font-heading text-xl leading-snug text-[var(--text)] md:mt-5 md:text-2xl">{heroTagline}</p>
+      <p class="mt-3 max-w-xl text-base text-[var(--muted)] md:mt-4">{heroSecondary}</p>
 
-      <div class="mt-7 flex flex-wrap items-center gap-3">
+      <div class="mt-5 flex flex-wrap items-center gap-3 md:mt-7">
         <a href="#projects" class="btn btn-primary btn-arrow">
           {t.hero.viewProjects}
           <span aria-hidden="true">→</span>
