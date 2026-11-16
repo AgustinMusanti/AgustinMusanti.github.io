@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T01:37:35.856Z",
+  "title": "Design System: Agustín Musanti · Data & AI Analyst",
+  "extensions": {
+    "colorMeta": {
+      "paper-cream": {
+        "role": "neutral",
+        "displayName": "Papel crema",
+        "canonical": "oklch(96.5% 0.010 87)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#272624",
+          "#474540",
+          "#686660",
+          "#8c8983",
+          "#b0aea8",
+          "#cfcdc9",
+          "#efeeec"
+        ]
+      },
+      "sheet-white": {
+        "role": "neutral",
+        "displayName": "Hoja blanca",
+        "canonical": "oklch(100.0% 0.000 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#cecece",
+          "#eeeeee"
+        ]
+      },
+      "ruled-line": {
+        "role": "neutral",
+        "displayName": "Línea de cuaderno",
+        "canonical": "oklch(89.5% 0.021 89)",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#292620",
+          "#49453b",
+          "#6b6659",
+          "#8e897b",
+          "#b3aea1",
+          "#d1cdc4",
+          "#f0eee9"
+        ]
+      },
+      "ink-green-black": {
+        "role": "neutral",
+        "displayName": "Tinta verde-negra",
+        "canonical": "oklch(24.1% 0.010 164)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242726",
+          "#414744",
+          "#616864",
+          "#848b87",
+          "#a9b0ac",
+          "#cacfcc",
+          "#ecefee"
+        ]
+      },
+      "muted-graphite": {
+        "role": "neutral",
+        "displayName": "Grafito suave",
+        "canonical": "oklch(50.0% 0.016 152)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#242824",
+          "#404742",
+          "#606962",
+          "#838c85",
+          "#a8b0aa",
+          "#c9d0ca",
+          "#ecefed"
+        ]
+      },
+      "wheat-gold-deep": {
+        "role": "primary",
+        "displayName": "Dorado de trigo profundo",
+        "canonical": "oklch(51.9% 0.106 75)",
+        "tonalRamp": [
+          "#0f0a05",
+          "#372200",
+          "#5e3d01",
+          "#895c0b",
+          "#ae7f38",
+          "#d0a66b",
+          "#e9c89c",
+          "#fdecd4"
+        ]
+      },
+      "field-green": {
+        "role": "secondary",
+        "displayName": "Verde campo",
+        "canonical": "oklch(52.5% 0.101 147)",
+        "tonalRamp": [
+          "#070d08",
+          "#122d16",
+          "#215129",
+          "#3b7544",
+          "#5e9a65",
+          "#89bd8e",
+          "#b2dab5",
+          "#e0f5e2"
+        ]
+      },
+      "data-blue": {
+        "role": "tertiary",
+        "displayName": "Azul dato",
+        "canonical": "oklch(52.0% 0.107 -112)",
+        "tonalRamp": [
+          "#060c12",
+          "#0c2841",
+          "#164871",
+          "#2e6a9e",
+          "#518ec6",
+          "#7eb3e6",
+          "#aad3f9",
+          "#e2f0fe"
+        ]
+      },
+      "bar-sand": {
+        "role": "neutral",
+        "displayName": "Arena de barra",
+        "canonical": "oklch(81.2% 0.028 88)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#29261e",
+          "#4a4537",
+          "#6c6555",
+          "#908977",
+          "#b4ad9d",
+          "#d3cdc1",
+          "#f1eee8"
+        ]
+      },
+      "night-green-black": {
+        "role": "neutral",
+        "displayName": "Verde-negro de noche",
+        "canonical": "oklch(18.5% 0.009 169)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242726",
+          "#414644",
+          "#626865",
+          "#848b88",
+          "#aaafad",
+          "#cacfcd",
+          "#edefee"
+        ]
+      },
+      "night-panel": {
+        "role": "neutral",
+        "displayName": "Panel de noche",
+        "canonical": "oklch(22.3% 0.012 167)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#242726",
+          "#404744",
+          "#606865",
+          "#838b88",
+          "#a8b0ac",
+          "#c9cfcd",
+          "#ecefee"
+        ]
+      },
+      "night-ruled-line": {
+        "role": "neutral",
+        "displayName": "Línea de noche",
+        "canonical": "oklch(29.8% 0.015 169)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#232826",
+          "#3f4744",
+          "#5e6964",
+          "#818c87",
+          "#a6b1ac",
+          "#c8d0cc",
+          "#ebf0ee"
+        ]
+      },
+      "bone-text": {
+        "role": "neutral",
+        "displayName": "Texto hueso",
+        "canonical": "oklch(92.5% 0.010 94)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#272624",
+          "#464540",
+          "#686660",
+          "#8b8983",
+          "#afaea8",
+          "#cfcec9",
+          "#efeeec"
+        ]
+      },
+      "night-muted": {
+        "role": "neutral",
+        "displayName": "Gris verdoso de noche",
+        "canonical": "oklch(70.6% 0.013 157)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#242825",
+          "#404743",
+          "#606863",
+          "#838c86",
+          "#a8b0ab",
+          "#c9cfcb",
+          "#ecefed"
+        ]
+      },
+      "wheat-gold": {
+        "role": "primary",
+        "displayName": "Dorado de trigo",
+        "canonical": "oklch(75.1% 0.130 80)",
+        "tonalRamp": [
+          "#0f0a03",
+          "#352300",
+          "#5c3f00",
+          "#855e04",
+          "#b17f0b",
+          "#d3a656",
+          "#ebc88f",
+          "#feecce"
+        ]
+      },
+      "field-green-light": {
+        "role": "secondary",
+        "displayName": "Verde campo claro",
+        "canonical": "oklch(72.5% 0.091 147)",
+        "tonalRamp": [
+          "#080d08",
+          "#152d18",
+          "#26502d",
+          "#417448",
+          "#639869",
+          "#8dbc92",
+          "#b5d9b8",
+          "#e2f5e3"
+        ]
+      },
+      "data-blue-light": {
+        "role": "tertiary",
+        "displayName": "Azul dato claro",
+        "canonical": "oklch(71.3% 0.097 -113)",
+        "tonalRamp": [
+          "#070c11",
+          "#0e283e",
+          "#1b486d",
+          "#346a99",
+          "#578ec0",
+          "#83b3e0",
+          "#add2f5",
+          "#e2f1ff"
+        ]
+      },
+      "bar-slate": {
+        "role": "neutral",
+        "displayName": "Pizarra de barra",
+        "canonical": "oklch(38.1% 0.019 164)",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222825",
+          "#3e4843",
+          "#5d6a63",
+          "#808d86",
+          "#a5b1ab",
+          "#c7d0cb",
+          "#ebf0ed"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nombre en el hero."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Frase principal del hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección, con barra de acento."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de tarjeta y de caso."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido y de apoyo."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas de campo en mayúsculas; nunca en mono."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Cifras grandes en mono con números tabulares."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-lift",
+        "value": "0 8px 24px -16px color-mix(in srgb, var(--text) 40%, transparent)",
+        "purpose": "Sombra ambiente solo al pasar el mouse sobre tarjetas y recuadros."
+      },
+      {
+        "name": "tooltip",
+        "value": "0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a",
+        "purpose": "Etiqueta flotante de los gráficos."
+      }
+    ],
+    "motion": [
+      {
+        "name": "reveal",
+        "value": "opacity .6s ease, transform .6s ease; translateY(14px); delay 90ms × índice",
+        "purpose": "Aparición al hacer scroll, una sola vez."
+      },
+      {
+        "name": "draw-line",
+        "value": "stroke-dashoffset 1.6s ease .2s",
+        "purpose": "Dibujo de la serie de un gráfico al entrar en pantalla."
+      },
+      {
+        "name": "draw-bar",
+        "value": "transform .7s ease; delay 45ms × índice",
+        "purpose": "Barras que crecen desde la base."
+      },
+      {
+        "name": "hover",
+        "value": ".2s ease",
+        "purpose": "Elevación y borde de acento en tarjetas; flecha 4px en botones."
+      },
+      {
+        "name": "step-cycle",
+        "value": "3s por paso, pausa con mouse o foco",
+        "purpose": "Avance automático de los pasos del hero."
+      },
+      {
+        "name": "flow-loop",
+        "value": "8s, punto recorriendo los pasos",
+        "purpose": "Flujo del caso de validación."
+      },
+      {
+        "name": "marquee",
+        "value": "40s linear infinite, pausa al hover",
+        "purpose": "Cinta de herramientas."
+      },
+      {
+        "name": "count-up",
+        "value": "1100ms ease-out cúbico (JS)",
+        "purpose": "Conteo de las cifras de \"Lo que hago\"."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal: ver proyectos, ver en vivo, ver el caso completo.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Ver en vivo <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);border-radius:.375rem;padding:.45rem .9rem;font:500 .875rem var(--font-body);color:var(--text);text-decoration:none;transition:border-color .15s,opacity .15s}.ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}.ds-btn-primary:hover{opacity:.9}.ds-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline-small",
+      "description": "Acción secundaria del mismo tamaño: código, LinkedIn, GitHub.",
+      "html": "<a class=\"ds-btn ds-btn-outline\" href=\"#\">Código <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.4rem;border-radius:.375rem;padding:.45rem .9rem;font:500 .875rem var(--font-body);color:var(--text);text-decoration:none;transition:border-color .15s}.ds-btn-outline{border:1px solid color-mix(in srgb,var(--muted) 45%,transparent);background:transparent}.ds-btn-outline:hover{border-color:var(--accent)}.ds-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Filtro por disciplina con conteo; el activo toma el acento.",
+      "html": "<div style=\"display:flex;gap:.5rem\"><button class=\"ds-chip ds-chip-active\" aria-pressed=\"true\">Todos <span class=\"ds-n\">6</span></button><button class=\"ds-chip\" aria-pressed=\"false\">BI <span class=\"ds-n\">3</span></button></div>",
+      "css": ".ds-chip{display:inline-flex;gap:.35rem;align-items:baseline;border:1px solid var(--border);border-radius:9999px;background:transparent;color:var(--muted);padding:.25rem .75rem;font:400 .875rem var(--font-body);cursor:pointer;transition:border-color .15s,color .15s}.ds-chip:hover{border-color:var(--accent);color:var(--text)}.ds-chip-active{border-color:var(--accent);color:var(--accent)}.ds-n{font:500 .75rem var(--font-mono);font-variant-numeric:tabular-nums}.ds-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Pregunta, resultado y herramientas; se eleva al pasar el mouse.",
+      "html": "<article class=\"ds-card\"><p class=\"ds-eyebrow\">Data Science · Agro</p><p class=\"ds-figure\">2,42 qq/ha</p><p class=\"ds-sub\">de error medio, 5 meses antes de la cosecha</p><h3 class=\"ds-title\">Estimación temprana del rinde de soja</h3><p class=\"ds-eyebrow\" style=\"margin-top:.75rem\">Pregunta</p><p class=\"ds-text\">¿Se puede saber cómo viene la campaña meses antes de la cosecha?</p></article>",
+      "css": ".ds-card{max-width:22rem;border:1px solid var(--border);border-radius:.75rem;background:var(--surface);padding:1.25rem;color:var(--text);font-family:var(--font-body);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.ds-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px -16px color-mix(in srgb,var(--text) 40%,transparent)}.ds-eyebrow{margin:0;font:500 .75rem var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.ds-figure{margin:.75rem 0 0;font:500 1.875rem/1 var(--font-mono);font-variant-numeric:tabular-nums;color:var(--accent)}.ds-sub{margin:.25rem 0 0;font-size:.75rem;color:var(--muted)}.ds-title{margin:.75rem 0 0;font:600 1.125rem/1.375 var(--font-heading)}.ds-text{margin:.15rem 0 0;font-size:.875rem}"
+    },
+    {
+      "name": "Stat Tile",
+      "kind": "card",
+      "refersTo": "stat-tile",
+      "description": "Cifra grande en mono con su etiqueta, de la franja \"Lo que hago\".",
+      "html": "<div class=\"ds-tile\"><p class=\"ds-tile-n\">+15</p><p class=\"ds-tile-l\">procesos automatizados de punta a punta</p></div>",
+      "css": ".ds-tile{max-width:15rem;border:1px solid var(--border);border-radius:.75rem;background:var(--surface);padding:1.25rem;transition:transform .2s ease,border-color .2s ease}.ds-tile:hover{transform:translateY(-3px);border-color:var(--accent)}.ds-tile-n{margin:0;font:500 2.25rem/1 var(--font-mono);font-variant-numeric:tabular-nums;color:var(--accent)}.ds-tile-l{margin:.5rem 0 0;font:400 .875rem var(--font-body);color:var(--muted)}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Barra superior fija con enlaces, la sección activa en tinta, idioma y tema.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">AM</span><a class=\"ds-link\" href=\"#\">Proyectos</a><a class=\"ds-link ds-on\" href=\"#\">Casos de trabajo</a><a class=\"ds-link\" href=\"#\">Cómo trabajo</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.25rem;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--bg) 90%,transparent);padding:.75rem 1rem;font-family:var(--font-body)}.ds-brand{font:600 .875rem var(--font-heading);color:var(--text);margin-right:auto}.ds-link{font-size:.875rem;color:var(--muted);text-decoration:none;transition:color .15s}.ds-link:hover,.ds-on{color:var(--text)}.ds-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}"
+    },
+    {
+      "name": "Process Step",
+      "kind": "custom",
+      "description": "Paso del hero y del flujo de validación: activo en dorado, inactivos atenuados por token.",
+      "html": "<ol class=\"ds-steps\"><li class=\"ds-step ds-active\"><span class=\"ds-dot\">1</span><span><b class=\"ds-st\">Entender el problema</b><i class=\"ds-sq\">¿Qué decisión hay que tomar?</i></span></li><li class=\"ds-step\"><span class=\"ds-dot\">2</span><span><b class=\"ds-st\">Repensar el proceso</b><i class=\"ds-sq\">¿Qué pasos sobran?</i></span></li></ol>",
+      "css": ".ds-steps{list-style:none;margin:0;padding:0;display:grid;gap:.25rem;font-family:var(--font-body)}.ds-step{display:grid;grid-template-columns:2rem 1fr;gap:.9rem;padding:.55rem 0}.ds-dot{display:grid;place-items:center;width:2rem;height:2rem;border-radius:9999px;border:2px solid var(--border);background:var(--bg);color:var(--muted);font:500 .85rem var(--font-mono)}.ds-st{display:block;font:600 1.05rem var(--font-heading);color:var(--text);opacity:var(--step-dim-title,.7)}.ds-sq{display:block;margin-top:.15rem;font-style:normal;font-size:.925rem;color:var(--muted);opacity:var(--step-dim-question,1)}.ds-active .ds-dot{border-color:var(--accent);background:var(--accent);color:var(--bg)}.ds-active .ds-st{color:var(--accent);opacity:1}.ds-active .ds-sq{opacity:1}"
+    },
+    {
+      "name": "Tool Pill",
+      "kind": "chip",
+      "description": "Píldora de herramienta de la cinta continua.",
+      "html": "<span class=\"ds-pill\">Power Automate</span>",
+      "css": ".ds-pill{display:inline-block;white-space:nowrap;border:1px solid var(--border);border-radius:9999px;background:var(--surface);padding:.5rem 1rem;font:600 1rem var(--font-heading);color:var(--text)}"
+    },
+    {
+      "name": "Award Callout",
+      "kind": "custom",
+      "description": "Premio integrado en la línea de tiempo de la trayectoria.",
+      "html": "<p class=\"ds-award\"><span aria-hidden=\"true\">🏆</span><span><b class=\"ds-ab\">Premio PwC Te Reconoce</b> · Por liderar el diseño y desarrollo de un dashboard estratégico.</span></p>",
+      "css": ".ds-award{display:inline-flex;gap:.5rem;align-items:flex-start;max-width:32rem;margin:0;border:1px solid var(--accent);border-radius:.5rem;background:var(--surface);padding:.5rem .75rem;font:400 .875rem var(--font-body);color:var(--text)}.ds-ab{font-weight:500;color:var(--accent)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El cuaderno del analista",
+    "overview": "Un cuaderno de análisis en papel milimetrado: la precisión de una planilla con la calidez del campo. De día, papel crema con tinta verde-negra; de noche, un verde-negro profundo con texto hueso. Una grilla muy fina de fondo se desvanece hacia abajo, las cifras se escriben en mono con números tabulares y un único dorado de trigo marca lo accionable y lo que importa. Todo lo demás se sostiene con espacio, líneas de 1px y jerarquía tipográfica.\n\nEl tono es sobrio, preciso y cálido. El sistema no pretende impresionar con decoración: muestra evidencia (gráficos propios con datos reales, procesos que se simplifican) y deja que el movimiento explique, no que adorne. Los dos temas son de primera clase y se piensan juntos; ninguno es una inversión automática del otro.\n\nRechazos confirmados: el look de terminal o de desarrollador (el mono vive solo en cifras, nunca en etiquetas, tags ni fechas), el parallax, los cursores custom, las partículas y las librerías pesadas de animación.",
+    "keyCharacteristics": [
+      "Papel crema (claro) o verde-negro (oscuro), con grilla de 32px que se desvanece hacia abajo.",
+      "Un solo acento dorado, usado con escasez; verde campo y azul dato solo en datos y estados.",
+      "Tres voces tipográficas con roles estrictos: Space Grotesk para títulos, Inter para texto, JetBrains Mono solo para cifras.",
+      "Plano en reposo, bordes finos; la elevación aparece solo al pasar el mouse.",
+      "Movimiento con sentido, una vez por elemento, y siempre con equivalente estático.",
+      "Contraste AA verificado en ambos temas, incluso en los estados atenuados."
+    ],
+    "rules": [
+      {
+        "name": "The One Gold Rule",
+        "body": "El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dimmed-State Rule",
+        "body": "Un estado atenuado (pasos inactivos, texto secundario en transición) se define con un token por tema (`--step-dim-title`, `--step-dim-question`), no con una opacidad fija, y debe pasar 4,5:1 en ambos temas. En claro los títulos atenuados usan 0,7 y las preguntas, color pleno; en oscuro, 0,55 y 0,8.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Themes Rule",
+        "body": "El tema sigue al sistema, se alterna manualmente, se guarda en el navegador y se aplica antes del primer pintado. Cualquier ajuste de color se verifica en los dos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Numbers-Only Mono Rule",
+        "body": "El mono es para cifras y, cuando hace falta, ejes de gráficos. Etiquetas, tags, fechas, navegación y botones van en Inter. Es lo que separa un cuaderno de analista de un terminal.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Ninguna superficie tiene sombra en reposo. La profundidad aparece solo como respuesta a hover o foco.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar el dorado solo para acción, cifra clave y estado activo (The One Gold Rule).",
+      "Do poner las cifras en JetBrains Mono con números tabulares y su etiqueta en Inter debajo.",
+      "Do mantener las superficies planas en reposo y reservar la elevación para hover y foco.",
+      "Do definir cualquier estado atenuado con tokens por tema y verificar 4,5:1 en claro y oscuro.",
+      "Do dar a cada animación su equivalente estático bajo `prefers-reduced-motion`, y animar cada elemento una sola vez.",
+      "Do mostrar el hallazgo en el título del gráfico, con unidad, fuente y tabla de datos accesible."
+    ],
+    "donts": [
+      "Don't usar mono en etiquetas, tags, fechas, botones ni navegación: es lo que produce el look de terminal.",
+      "Don't usar parallax, cursores custom, partículas ni librerías pesadas de animación.",
+      "Don't usar texto dorado claro (#a86f0c) sobre papel crema: no pasa AA para texto normal.",
+      "Don't apoyar un estado en una opacidad fija: puede bajar el texto a menos de 4,5:1 en uno de los dos temas.",
+      "Don't sumar sombras en reposo ni bordes gruesos para dar jerarquía; la jerarquía sale de la tipografía y el espacio.",
+      "Don't introducir sectores, adjetivos o decoración que no estén respaldados por un dato o un caso."
+    ]
+  }
+}
