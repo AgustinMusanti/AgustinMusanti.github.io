@@ -94,6 +94,7 @@ h3,
 h4 {
   font-family: var(--font-heading);
   font-weight: 600;
+  text-wrap: balance;
 }
 
 .num {
@@ -372,12 +373,27 @@ h4 {
     animation: marquee 40s linear infinite;
   }
 
-  .marquee:hover .marquee-track {
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee[data-paused] .marquee-track {
     animation-play-state: paused;
+  }
+
+  .marquee-toggle .icon-play,
+  .marquee-toggle[data-paused] .icon-pause {
+    display: none;
+  }
+
+  .marquee-toggle[data-paused] .icon-play {
+    display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee-toggle {
+    display: none;
+  }
+
   .marquee-track {
     flex-wrap: wrap;
     width: auto;
@@ -391,5 +407,15 @@ h4 {
 @keyframes marquee {
   to {
     transform: translateX(calc(-50% - 0.375rem));
+  }
+}
+
+/* Touch: comfortable 44px targets for secondary controls on coarse pointers. */
+@media (pointer: coarse) {
+  .btn,
+  .btn-sm,
+  .tag-filter-btn,
+  .marquee-toggle {
+    min-height: 2.75rem;
   }
 }

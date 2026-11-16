@@ -68,7 +68,7 @@ export interface Dictionary {
     flowDescription: string;
   };
   path: { promotion: string; award: string };
-  tools: { footnote: string };
+  tools: { footnote: string; pause: string; play: string };
   contact: { closing: string; question: string; copyEmail: string; copied: string; copyFailed: string };
   caseStudy: {
     problem: string;
@@ -185,7 +185,11 @@ export const es: Dictionary = {
       'Flujo automatizado: recepción de la solicitud, cruce y verificación contra una base de referencia, revisión y aprobación humana en Teams, generación del Excel y envío del mail, y registro. Si falta información, el equipo la completa dentro del mismo circuito y vuelve a la revisión.',
   },
   path: { promotion: 'Promoción', award: 'Premio' },
-  tools: { footnote: 'Es lo que uso hoy. La lista cambia: aprendo la herramienta que el problema pide.' },
+  tools: {
+    footnote: 'Es lo que uso hoy. La lista cambia: aprendo la herramienta que el problema pide.',
+    pause: 'Pausar la cinta de herramientas',
+    play: 'Reanudar la cinta de herramientas',
+  },
   contact: {
     question: '¿Tenés un proceso que podría funcionar mejor?',
     closing:

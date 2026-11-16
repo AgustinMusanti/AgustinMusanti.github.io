@@ -340,7 +340,7 @@
       },
       {
         "name": "step-cycle",
-        "value": "3s por paso, pausa con mouse o foco",
+        "value": "3s por paso, una sola pasada que descansa en el paso 4; cualquier interacción la detiene",
         "purpose": "Avance automático de los pasos del hero."
       },
       {
