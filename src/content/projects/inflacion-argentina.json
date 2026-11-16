@@ -7,7 +7,7 @@
   },
   "metric": "6,83%",
   "visual": "inflation-seasonality",
-  "featured": false,
+  "featured": true,
   "order": 6,
   "draft": false,
   "es": {

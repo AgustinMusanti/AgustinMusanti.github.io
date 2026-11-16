@@ -15,15 +15,15 @@ const { paragraphs, note } = await getHowIWork(lang);
 <section id="how-i-work" class="mx-auto max-w-6xl px-4 py-20">
   <SectionHeading title={t.nav.howIWork} />
 
-  <div class="grid gap-5 md:grid-cols-2">
+  <ul class="max-w-3xl divide-y divide-[var(--border)] border-y border-[var(--border)]">
     {paragraphs.map((paragraph, i) => (
-      <p class="panel p-5 text-[var(--text)] md:text-lg" data-reveal style={`--d:${i % 2}`}>
-        {paragraph}
-      </p>
+      <li class="py-5 md:text-lg" data-reveal style={`--d:${i % 2}`}>
+        <p class="max-w-[62ch] text-[var(--text)]">{paragraph}</p>
+      </li>
     ))}
-  </div>
+  </ul>
 
-  <p class="mt-6 text-sm text-[var(--muted)]" data-reveal>
+  <p class="mt-6 max-w-3xl text-[var(--text)]" data-reveal>
     {note}
   </p>
 </section>

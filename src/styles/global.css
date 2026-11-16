@@ -61,6 +61,12 @@ html {
   scroll-behavior: smooth;
 }
 
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
