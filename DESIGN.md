@@ -46,6 +46,11 @@ typography:
     fontSize: '1rem'
     fontWeight: 400
     lineHeight: 1.5
+  small:
+    fontFamily: 'Inter, sans-serif'
+    fontSize: '0.875rem'
+    fontWeight: 400
+    lineHeight: 1.5
   label:
     fontFamily: 'Inter, sans-serif'
     fontSize: '0.75rem'
@@ -58,6 +63,7 @@ typography:
     lineHeight: 1
     fontFeature: '"tnum"'
 rounded:
+  line: '2px'
   sm: '0.25rem'
   md: '0.375rem'
   lg: '0.5rem'
@@ -182,7 +188,8 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 - **Lead** (600, 1,25rem / 1,5rem, line-height 1,375): frase principal del hero.
 - **Headline** (600, 1,5rem / 1,875rem): títulos de sección, siempre precedidos por una barra de acento de 4px.
 - **Title** (600, 1,125rem–1,25rem, line-height 1,375): títulos de tarjeta y de caso.
-- **Body** (400, 1rem, line-height 1,5): texto corrido; subtítulos y apoyo en 0,875rem. Líneas de lectura de hasta ~65–75 caracteres (max-w-xl a 2xl).
+- **Small** (400, 0,875rem, line-height 1,5): subtítulos, apoyo, notas y el número del paso del hero.
+- **Body** (400, 1rem, line-height 1,5): texto corrido y la pregunta de cada paso del hero. Líneas de lectura de hasta ~65–75 caracteres (max-w-xl a 2xl).
 - **Label** (500, 0,75rem, +0,06em, mayúsculas, Inter): etiquetas de campo ("Pregunta", "Resultado", "Herramientas"). Nunca en mono.
 - **Figure** (JetBrains Mono 500, 1,875rem–2,25rem, números tabulares, line-height 1): cifras grandes en dorado con su etiqueta chica debajo.
 
@@ -243,7 +250,7 @@ Barra superior fija, de ancho de contenedor, borde inferior de 1px y fondo del t
 
 ### Process steps (signature)
 
-La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. Avanzan solos cada ~3s, se pausan con mouse o foco y se activan con click o flechas.
+La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. En el hero los pasos avanzan solos cada ~3s una única vez y descansan en el cuarto; cualquier toque, tecla o foco detiene el recorrido, y todo el conjunto es una sola parada de tab con flechas para moverse (WCAG 2.2.2).
 
 ### Charts
 
@@ -251,7 +258,7 @@ Gráficos hechos a mano en SVG, sin librerías: barras en arena o pizarra con el
 
 ### Tool marquee
 
-Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que se desvanecen a ambos lados; se pausa al pasar el mouse y con movimiento reducido pasa a una grilla estática.
+Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que se desvanecen a ambos lados; se pausa con el mouse, con el foco de teclado o con un botón visible de pausa/reanudar encima de la cinta, y con movimiento reducido pasa a una grilla estática.
 
 ## Do's and Don'ts
 

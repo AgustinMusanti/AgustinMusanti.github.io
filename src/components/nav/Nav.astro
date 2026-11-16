@@ -24,7 +24,10 @@ const links = [
 
 <header class="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3" aria-label={t.nav.main}>
-    <a href={localizePath('/', lang)} class="font-heading text-sm font-semibold text-[var(--text)]">
+    <a
+      href={localizePath('/', lang)}
+      class="inline-flex min-h-11 min-w-11 items-center font-heading text-sm font-semibold text-[var(--text)]"
+    >
       AM
     </a>
 
@@ -50,7 +53,7 @@ const links = [
     <button
       id="mobile-menu-toggle"
       type="button"
-      class="grid h-9 w-9 place-items-center rounded border border-[var(--border)] lg:hidden"
+      class="grid h-11 w-11 place-items-center rounded border border-[var(--border)] lg:hidden"
       aria-label={t.nav.openMenu}
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -71,7 +74,7 @@ const links = [
     <ul class="flex flex-col gap-3 text-base">
       {links.map((link) => (
         <li>
-          <a href={`${home}#${link.id}`} data-nav-link={link.id} class="nav-link block py-1 text-[var(--muted)]">
+          <a href={`${home}#${link.id}`} data-nav-link={link.id} class="nav-link block py-2 text-[var(--muted)]">
             {link.label}
           </a>
         </li>

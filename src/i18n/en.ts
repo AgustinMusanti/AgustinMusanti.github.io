@@ -104,7 +104,11 @@ export const en: Dictionary = {
       'Automated flow: the request is received, cross-checked and verified against a reference base, reviewed and approved by a person in Teams, the Excel file and email are generated and sent, and everything is logged. If information is missing, the team completes it inside the same flow and it goes back to review.',
   },
   path: { promotion: 'Promotion', award: 'Award' },
-  tools: { footnote: 'This is what I use today. The list changes: I learn the tool the problem calls for.' },
+  tools: {
+    footnote: 'This is what I use today. The list changes: I learn the tool the problem calls for.',
+    pause: 'Pause the tools ticker',
+    play: 'Resume the tools ticker',
+  },
   contact: {
     question: 'Got a process that could work better?',
     closing:
