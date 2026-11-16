@@ -2,116 +2,116 @@
 name: Agustín Musanti · Data & AI Analyst
 description: Sitio personal bilingüe de un analista de datos; papel crema u oscuro verdoso, grilla fina, cifras en mono y un dorado de trigo.
 colors:
-  paper-cream: "#f6f3ec"
-  sheet-white: "#ffffff"
-  ruled-line: "#e2dccd"
-  ink-green-black: "#1b211e"
-  muted-graphite: "#5d665f"
-  wheat-gold-deep: "#8c5e0a"
-  field-green: "#3e7a47"
-  data-blue: "#2f6da3"
-  bar-sand: "#c9c1ae"
-  night-green-black: "#0f1412"
-  night-panel: "#161d1a"
-  night-ruled-line: "#26302c"
-  bone-text: "#e8e6df"
-  night-muted: "#9aa39d"
-  wheat-gold: "#d9a441"
-  field-green-light: "#7fb685"
-  data-blue-light: "#6fa8dc"
-  bar-slate: "#3a4640"
+  paper-cream: '#f6f3ec'
+  sheet-white: '#ffffff'
+  ruled-line: '#e2dccd'
+  ink-green-black: '#1b211e'
+  muted-graphite: '#5d665f'
+  wheat-gold-deep: '#8c5e0a'
+  field-green: '#3e7a47'
+  data-blue: '#2f6da3'
+  bar-sand: '#c9c1ae'
+  night-green-black: '#0f1412'
+  night-panel: '#161d1a'
+  night-ruled-line: '#26302c'
+  bone-text: '#e8e6df'
+  night-muted: '#9aa39d'
+  wheat-gold: '#d9a441'
+  field-green-light: '#7fb685'
+  data-blue-light: '#6fa8dc'
+  bar-slate: '#3a4640'
 typography:
   display:
-    fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "3rem"
+    fontFamily: 'Space Grotesk, sans-serif'
+    fontSize: '3rem'
     fontWeight: 600
     lineHeight: 1.25
   headline:
-    fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "1.875rem"
+    fontFamily: 'Space Grotesk, sans-serif'
+    fontSize: '1.875rem'
     fontWeight: 600
     lineHeight: 1.2
   title:
-    fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "1.125rem"
+    fontFamily: 'Space Grotesk, sans-serif'
+    fontSize: '1.125rem'
     fontWeight: 600
     lineHeight: 1.375
   lead:
-    fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "1.5rem"
+    fontFamily: 'Space Grotesk, sans-serif'
+    fontSize: '1.5rem'
     fontWeight: 600
     lineHeight: 1.375
   body:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "1rem"
+    fontFamily: 'Inter, sans-serif'
+    fontSize: '1rem'
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "0.75rem"
+    fontFamily: 'Inter, sans-serif'
+    fontSize: '0.75rem'
     fontWeight: 500
-    letterSpacing: "0.06em"
+    letterSpacing: '0.06em'
   figure:
-    fontFamily: "JetBrains Mono, monospace"
-    fontSize: "2.25rem"
+    fontFamily: 'JetBrains Mono, monospace'
+    fontSize: '2.25rem'
     fontWeight: 500
     lineHeight: 1
-    fontFeature: "\"tnum\""
+    fontFeature: '"tnum"'
 rounded:
-  sm: "0.25rem"
-  md: "0.375rem"
-  lg: "0.5rem"
-  xl: "0.75rem"
-  full: "9999px"
+  sm: '0.25rem'
+  md: '0.375rem'
+  lg: '0.5rem'
+  xl: '0.75rem'
+  full: '9999px'
 spacing:
-  xs: "0.5rem"
-  sm: "0.75rem"
-  md: "1.25rem"
-  lg: "2rem"
-  section: "5rem"
+  xs: '0.5rem'
+  sm: '0.75rem'
+  md: '1.25rem'
+  lg: '2rem'
+  section: '5rem'
 components:
   button-primary:
-    backgroundColor: "{colors.wheat-gold-deep}"
-    textColor: "{colors.paper-cream}"
-    typography: "{typography.label}"
-    rounded: "{rounded.md}"
-    padding: "0.6rem 1.1rem"
+    backgroundColor: '{colors.wheat-gold-deep}'
+    textColor: '{colors.paper-cream}'
+    typography: '{typography.label}'
+    rounded: '{rounded.md}'
+    padding: '0.6rem 1.1rem'
   button-primary-small:
-    backgroundColor: "{colors.wheat-gold-deep}"
-    textColor: "{colors.paper-cream}"
-    rounded: "{rounded.md}"
-    padding: "0.45rem 0.9rem"
+    backgroundColor: '{colors.wheat-gold-deep}'
+    textColor: '{colors.paper-cream}'
+    rounded: '{rounded.md}'
+    padding: '0.45rem 0.9rem'
   button-outline:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-green-black}"
-    rounded: "{rounded.md}"
-    padding: "0.6rem 1.1rem"
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink-green-black}'
+    rounded: '{rounded.md}'
+    padding: '0.6rem 1.1rem'
   button-outline-small:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-green-black}"
-    rounded: "{rounded.md}"
-    padding: "0.45rem 0.9rem"
+    backgroundColor: 'transparent'
+    textColor: '{colors.ink-green-black}'
+    rounded: '{rounded.md}'
+    padding: '0.45rem 0.9rem'
   card:
-    backgroundColor: "{colors.sheet-white}"
-    textColor: "{colors.ink-green-black}"
-    rounded: "{rounded.xl}"
-    padding: "1.25rem"
+    backgroundColor: '{colors.sheet-white}'
+    textColor: '{colors.ink-green-black}'
+    rounded: '{rounded.xl}'
+    padding: '1.25rem'
   chip-filter:
-    backgroundColor: "transparent"
-    textColor: "{colors.muted-graphite}"
-    rounded: "{rounded.full}"
-    padding: "0.25rem 0.75rem"
+    backgroundColor: 'transparent'
+    textColor: '{colors.muted-graphite}'
+    rounded: '{rounded.full}'
+    padding: '0.25rem 0.75rem'
   chip-filter-active:
-    backgroundColor: "transparent"
-    textColor: "{colors.wheat-gold-deep}"
-    rounded: "{rounded.full}"
-    padding: "0.25rem 0.75rem"
+    backgroundColor: 'transparent'
+    textColor: '{colors.wheat-gold-deep}'
+    rounded: '{rounded.full}'
+    padding: '0.25rem 0.75rem'
   stat-tile:
-    backgroundColor: "{colors.sheet-white}"
-    textColor: "{colors.wheat-gold-deep}"
-    typography: "{typography.figure}"
-    rounded: "{rounded.xl}"
-    padding: "1.25rem"
+    backgroundColor: '{colors.sheet-white}'
+    textColor: '{colors.wheat-gold-deep}'
+    typography: '{typography.figure}'
+    rounded: '{rounded.xl}'
+    padding: '1.25rem'
 ---
 
 # Design System: Agustín Musanti · Data & AI Analyst
@@ -127,6 +127,7 @@ El tono es sobrio, preciso y cálido. El sistema no pretende impresionar con dec
 Rechazos confirmados: el look de terminal o de desarrollador (el mono vive solo en cifras, nunca en etiquetas, tags ni fechas), el parallax, los cursores custom, las partículas y las librerías pesadas de animación.
 
 **Key Characteristics:**
+
 - Papel crema (claro) o verde-negro (oscuro), con grilla de 32px que se desvanece hacia abajo.
 - Un solo acento dorado, usado con escasez; verde campo y azul dato solo en datos y estados.
 - Tres voces tipográficas con roles estrictos: Space Grotesk para títulos, Inter para texto, JetBrains Mono solo para cifras.
@@ -139,15 +140,19 @@ Rechazos confirmados: el look de terminal o de desarrollador (el mono vive solo 
 Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de grises fríos, y un dorado de trigo que cambia de profundidad según el tema para sostener el contraste.
 
 ### Primary
+
 - **Dorado de trigo profundo** (#8c5e0a, claro) / **Dorado de trigo** (#d9a441, oscuro): el único acento. Botones principales, cifras grandes, estado activo, línea de progreso, foco y subrayados de sección. El claro se oscureció desde el original (#a86f0c da 3,83:1) para pasar AA con texto normal (5,09:1 sobre crema).
 
 ### Secondary
+
 - **Verde campo** (#3e7a47 / #7fb685): estados positivos y de "activo", como el chip de promoción y los puntos de actividad.
 
 ### Tertiary
+
 - **Azul dato** (#2f6da3 / #6fa8dc): líneas y marcas de datos en los gráficos (la serie estimada) y los bordes de pasos automáticos.
 
 ### Neutral
+
 - **Papel crema** (#f6f3ec) / **Verde-negro de noche** (#0f1412): fondo de página.
 - **Hoja blanca** (#ffffff) / **Panel de noche** (#161d1a): superficie de tarjetas.
 - **Línea de cuaderno** (#e2dccd) / **Línea de noche** (#26302c): bordes, divisores y grilla de fondo.
@@ -156,7 +161,8 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 - **Arena de barra** (#c9c1ae) / **Pizarra de barra** (#3a4640): barras de datos que no son el foco; el foco usa el dorado.
 
 ### Named Rules
-**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada.
+
+**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada. Decisión explícita de Agustín: los botones principales de cada tarjeta de proyecto (ver caso, demo) van rellenos en dorado porque son la acción; la regla se cumple porque el dorado sigue reservado a acciones, cifras y estado activo, no a decoración. "Copiar email" es la acción principal de Contacto.
 
 **The Dimmed-State Rule.** Un estado atenuado (pasos inactivos, texto secundario en transición) se define con un token por tema (`--step-dim-title`, `--step-dim-question`), no con una opacidad fija, y debe pasar 4,5:1 en ambos temas. En claro los títulos atenuados usan 0,7 y las preguntas, color pleno; en oscuro, 0,55 y 0,8.
 
@@ -171,6 +177,7 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 **Character:** Una grotesca geométrica con carácter para los títulos, un humanista neutro para leer, y un mono tabular que convierte los números en el elemento de "dato" del sistema.
 
 ### Hierarchy
+
 - **Display** (600, 2,25rem móvil / 3rem desde md, line-height 1,25): nombre en el hero.
 - **Lead** (600, 1,25rem / 1,5rem, line-height 1,375): frase principal del hero.
 - **Headline** (600, 1,5rem / 1,875rem): títulos de sección, siempre precedidos por una barra de acento de 4px.
@@ -180,6 +187,7 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 - **Figure** (JetBrains Mono 500, 1,875rem–2,25rem, números tabulares, line-height 1): cifras grandes en dorado con su etiqueta chica debajo.
 
 ### Named Rules
+
 **The Numbers-Only Mono Rule.** El mono es para cifras y, cuando hace falta, ejes de gráficos. Etiquetas, tags, fechas, navegación y botones van en Inter. Es lo que separa un cuaderno de analista de un terminal.
 
 ## Layout
@@ -193,10 +201,12 @@ El ritmo es generoso pero no vacío: por debajo de 768px el hero reduce márgene
 Plano en reposo. La estructura la dan bordes de 1px (`ruled-line`) y el cambio de superficie (hoja blanca sobre papel crema; panel sobre verde-negro), no las sombras. La única elevación es respuesta a un estado: al pasar el mouse una tarjeta sube 3px, su borde toma el acento y aparece una sombra ambiente difusa. Los tooltips de los gráficos llevan una sombra mínima.
 
 ### Shadow Vocabulary
+
 - **Hover lift** (`box-shadow: 0 8px 24px -16px color-mix(in srgb, var(--text) 40%, transparent)`): tarjetas y recuadros "lift" al pasar el mouse.
 - **Tooltip** (`box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a`): etiqueta flotante de los gráficos.
 
 ### Named Rules
+
 **The Flat-By-Default Rule.** Ninguna superficie tiene sombra en reposo. La profundidad aparece solo como respuesta a hover o foco.
 
 ## Shapes
@@ -208,16 +218,19 @@ Esquinas moderadas y consistentes: tarjetas y paneles a 0,75rem, botones a 0,375
 Planos y precisos en reposo, con vida al hover: borde que toma el acento, elevación leve y una flecha que se desplaza.
 
 ### Buttons
+
 - **Shape:** esquinas suaves (0,375rem).
 - **Primary:** relleno dorado con texto del color de fondo del tema (crema sobre dorado oscuro en claro, verde-negro sobre dorado en oscuro); padding 0,6rem 1,1rem (grande) o 0,45rem 0,9rem (chico), texto 0,875rem peso 500. Se usa para "Ver proyectos", "Ver en vivo" y "Ver el caso completo".
 - **Hover / Focus:** el relleno baja a 90% de opacidad; foco con contorno de 2px en dorado a 2px de separación. La flecha de los botones con "→" se desplaza 4px.
 - **Secondary / Outline:** mismo tamaño, sin relleno y con borde neutro; el chico lleva el borde un poco más visible (muted al 45%). El hover toma el borde dorado. Es el botón de "Código", LinkedIn y GitHub.
 
 ### Chips
+
 - **Style:** píldora con borde de 1px, texto 0,875rem, padding 0,25rem 0,75rem, con el conteo en mono chico.
 - **State:** activo con borde y texto dorados (`aria-pressed`); inactivo con borde de línea y texto grafito; hover toma el borde dorado.
 
 ### Cards / Containers
+
 - **Corner Style:** 0,75rem.
 - **Background:** hoja blanca (claro) o panel de noche (oscuro).
 - **Shadow Strategy:** ninguna en reposo; "hover lift" al pasar el mouse.
@@ -225,20 +238,25 @@ Planos y precisos en reposo, con vida al hover: borde que toma el acento, elevac
 - **Internal Padding:** 1,25rem (1rem en tarjetas chicas de la franja "Lo que hago").
 
 ### Navigation
+
 Barra superior fija, de ancho de contenedor, borde inferior de 1px y fondo del tema al 90% con desenfoque. Enlaces en Inter 0,875rem, grafito en reposo y tinta para la sección activa (resaltada por IntersectionObserver). Debajo de 1024px, un botón de menú abre un panel con atrapado de foco que se cierra con Escape. Idioma (ES / EN) y tema a la derecha; una línea de progreso de lectura de 2px en dorado corre arriba de todo.
 
 ### Process steps (signature)
+
 La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. Avanzan solos cada ~3s, se pausan con mouse o foco y se activan con click o flechas.
 
 ### Charts
+
 Gráficos hechos a mano en SVG, sin librerías: barras en arena o pizarra con el dato clave en dorado, serie estimada en azul dato, ejes en mono chico y banda de incertidumbre translúcida. Cada gráfico lleva título con el hallazgo, subtítulo con unidad, tooltip y una tabla de datos para lectores de pantalla. Se dibujan una sola vez al entrar en pantalla.
 
 ### Tool marquee
+
 Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que se desvanecen a ambos lados; se pausa al pasar el mouse y con movimiento reducido pasa a una grilla estática.
 
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** usar el dorado solo para acción, cifra clave y estado activo (The One Gold Rule).
 - **Do** poner las cifras en JetBrains Mono con números tabulares y su etiqueta en Inter debajo.
 - **Do** mantener las superficies planas en reposo y reservar la elevación para hover y foco.
@@ -247,6 +265,7 @@ Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que s
 - **Do** mostrar el hallazgo en el título del gráfico, con unidad, fuente y tabla de datos accesible.
 
 ### Don't:
+
 - **Don't** usar mono en etiquetas, tags, fechas, botones ni navegación: es lo que produce el look de terminal.
 - **Don't** usar parallax, cursores custom, partículas ni librerías pesadas de animación.
 - **Don't** usar texto dorado claro (#a86f0c) sobre papel crema: no pasa AA para texto normal.

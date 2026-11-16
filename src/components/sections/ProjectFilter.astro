@@ -10,6 +10,7 @@ interface Props {
 
 const { lang, counts, total } = Astro.props;
 const t = useTranslations(lang);
+const showing = t.projects.showing;
 const base = 'tag-filter-btn rounded-full border px-3 py-1 text-sm transition';
 ---
 
@@ -33,16 +34,25 @@ const base = 'tag-filter-btn rounded-full border px-3 py-1 text-sm transition';
     </button>
   ))}
 </div>
+<p class="sr-only" role="status" data-filter-status data-template={showing}></p>
 
 <script>
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.tag-filter-btn'));
   const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-tags]'));
 
+  const statusEl = document.querySelector<HTMLElement>('[data-filter-status]');
+  const template = statusEl?.dataset.template ?? '';
+
   function applyFilter(tag: string) {
+    let visible = 0;
     cards.forEach((card) => {
       const show = tag === 'all' || (card.dataset.tags ?? '').split(',').includes(tag);
       card.classList.toggle('hidden', !show);
+      if (show) visible += 1;
     });
+    if (statusEl && tag !== 'all')
+      statusEl.textContent = template.replace('{n}', String(visible)).replace('{total}', String(cards.length));
+    else if (statusEl) statusEl.textContent = '';
     buttons.forEach((button) => {
       const active = button.dataset.tagFilter === tag;
       button.setAttribute('aria-pressed', String(active));

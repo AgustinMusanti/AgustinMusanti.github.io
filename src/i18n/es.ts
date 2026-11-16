@@ -45,6 +45,7 @@ export interface Dictionary {
   projects: {
     filterLabel: string;
     allTags: string;
+    showing: string;
     question: string;
     result: string;
     tools: string;
@@ -68,7 +69,7 @@ export interface Dictionary {
   };
   path: { promotion: string; award: string };
   tools: { footnote: string };
-  contact: { question: string; copyEmail: string; copied: string; copyFailed: string };
+  contact: { closing: string; question: string; copyEmail: string; copied: string; copyFailed: string };
   caseStudy: {
     problem: string;
     approach: string;
@@ -148,6 +149,7 @@ export const es: Dictionary = {
   projects: {
     filterLabel: 'Filtrar proyectos por disciplina',
     allTags: 'Todos',
+    showing: 'Mostrando {n} de {total} proyectos',
     question: 'Pregunta',
     result: 'Resultado',
     tools: 'Herramientas',
@@ -186,6 +188,8 @@ export const es: Dictionary = {
   tools: { footnote: 'Es lo que uso hoy. La lista cambia: aprendo la herramienta que el problema pide.' },
   contact: {
     question: '¿Tenés un proceso que podría funcionar mejor?',
+    closing:
+      'Lo miramos con el mismo recorrido: entender el problema, repensar el proceso, elegir la herramienta e informar para decidir.',
     copyEmail: 'Copiar email',
     copied: '¡Copiado!',
     copyFailed: 'No se pudo copiar el email',

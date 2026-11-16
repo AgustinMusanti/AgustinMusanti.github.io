@@ -68,6 +68,7 @@ export const en: Dictionary = {
   projects: {
     filterLabel: 'Filter projects by discipline',
     allTags: 'All',
+    showing: 'Showing {n} of {total} projects',
     question: 'Question',
     result: 'Result',
     tools: 'Tools',
@@ -106,6 +107,8 @@ export const en: Dictionary = {
   tools: { footnote: 'This is what I use today. The list changes: I learn the tool the problem calls for.' },
   contact: {
     question: 'Got a process that could work better?',
+    closing:
+      'We’ll look at it the same way: understand the problem, rethink the process, choose the tool and inform the decision.',
     copyEmail: 'Copy email',
     copied: 'Copied!',
     copyFailed: "Couldn't copy the email",
