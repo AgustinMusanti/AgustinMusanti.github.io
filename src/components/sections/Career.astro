@@ -22,7 +22,12 @@ const roles = await getExperience(lang);
         data-reveal
         style={`--d:${i}`}
       >
-        <span class="absolute -left-[35px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--accent)] bg-[var(--bg)]" />
+        <span
+          class:list={[
+            'absolute -left-[35px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--accent)]',
+            i === 0 ? 'bg-[var(--accent)] ring-4 ring-[var(--accent)]/20' : 'bg-[var(--bg)]',
+          ]}
+        />
         <div>
           {role.promotion && (
             <p class="mb-1.5 inline-flex whitespace-nowrap rounded-full border border-[var(--accent-2)] px-2 py-0.5 text-xs text-[var(--accent-2)]">

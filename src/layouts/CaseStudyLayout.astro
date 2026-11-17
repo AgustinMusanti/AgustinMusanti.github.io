@@ -4,7 +4,8 @@ import SojaEstimateChart from '../components/charts/SojaEstimateChart.astro';
 import SojaMaeChart from '../components/charts/SojaMaeChart.astro';
 import SojaImportance from '../components/charts/SojaImportance.astro';
 import InflationChart from '../components/charts/InflationChart.astro';
-import type { Project } from '../lib/content';
+import CopyEmailButton from '../components/ui/CopyEmailButton.astro';
+import { getProfile, type Project } from '../lib/content';
 import { useTranslations, localizePath, type Language } from '../i18n/utils';
 
 interface Props {
@@ -16,6 +17,7 @@ const { lang, project } = Astro.props;
 const t = useTranslations(lang);
 const { text, links, tags, stack, metric, visual, slug } = project;
 const caseStudy = text.caseStudy!;
+const { email } = await getProfile(lang);
 const ogImagePath = lang === 'en' ? `/og/en/project/${slug}.png` : `/og/project/${slug}.png`;
 
 const blocks = [
@@ -44,11 +46,22 @@ const blocks = [
       {tags.map((tag) => t.projects.tags[tag]).join(' · ')} · {text.sector}
     </p>
 
-    {metric && (
-      <p class="panel mt-8 p-5">
-        <span class="num block text-4xl leading-none text-[var(--accent)]">{metric}</span>
-        <span class="mt-2 block text-sm text-[var(--muted)]">{text.metricLabel}</span>
-      </p>
+    {text.stats ? (
+      <ul class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {text.stats.map((stat) => (
+          <li class="panel p-4 md:p-5">
+            <span class="num block whitespace-nowrap text-2xl leading-none text-[var(--accent)]">{stat.value}</span>
+            <span class="mt-2 block text-sm text-[var(--muted)]">{stat.label}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      metric && (
+        <p class="panel mt-8 p-5">
+          <span class="num block text-4xl leading-none text-[var(--accent)]">{metric}</span>
+          <span class="mt-2 block text-sm text-[var(--muted)]">{text.metricLabel}</span>
+        </p>
+      )
     )}
 
     {visual === 'soja' && (
@@ -107,5 +120,21 @@ const blocks = [
         </div>
       </section>
     )}
+
+    <section class="mt-16 border-t border-[var(--border)] pt-10" aria-labelledby="case-contact">
+      <h2 id="case-contact" class="max-w-xl font-heading text-2xl text-[var(--text)] md:text-3xl">
+        {t.contact.question}
+      </h2>
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <CopyEmailButton lang={lang} email={email} />
+        <a
+          href={`mailto:${email}`}
+          data-email-text
+          class="inline-flex min-h-11 items-center text-sm text-[var(--muted)] underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--text)] hover:decoration-[var(--accent)]"
+        >
+          {email}
+        </a>
+      </div>
+    </section>
   </article>
 </BaseLayout>
