@@ -57,9 +57,28 @@ const links = [
       aria-label={t.nav.openMenu}
       aria-expanded="false"
       aria-controls="mobile-menu"
+      data-label-open={t.nav.openMenu}
+      data-label-close={t.nav.closeMenu}
     >
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <svg
+        class="menu-icon-open h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
         <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg
+        class="menu-icon-close hidden h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18" />
       </svg>
     </button>
   </nav>
@@ -69,7 +88,7 @@ const links = [
     class="hidden flex-col gap-4 border-t border-[var(--border)] bg-[var(--bg)] px-4 py-4 lg:hidden"
     role="dialog"
     aria-modal="true"
-    aria-label={t.nav.openMenu}
+    aria-label={t.nav.main}
   >
     <ul class="flex flex-col gap-3 text-base">
       {links.map((link) => (
@@ -92,17 +111,26 @@ const links = [
   const menu = document.getElementById('mobile-menu');
   let lastFocused: HTMLElement | null = null;
 
+  function setToggleState(open: boolean) {
+    if (!toggle) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    const label = open ? toggle.dataset.labelClose : toggle.dataset.labelOpen;
+    if (label) toggle.setAttribute('aria-label', label);
+    toggle.querySelector('.menu-icon-open')?.classList.toggle('hidden', open);
+    toggle.querySelector('.menu-icon-close')?.classList.toggle('hidden', !open);
+  }
+
   function closeMenu() {
     menu?.classList.add('hidden');
     menu?.classList.remove('flex');
-    toggle?.setAttribute('aria-expanded', 'false');
+    setToggleState(false);
     lastFocused?.focus();
   }
 
   function openMenu() {
     menu?.classList.remove('hidden');
     menu?.classList.add('flex');
-    toggle?.setAttribute('aria-expanded', 'true');
+    setToggleState(true);
     lastFocused = document.activeElement as HTMLElement;
     const firstLink = menu?.querySelector<HTMLElement>('a');
     firstLink?.focus();
@@ -145,17 +173,27 @@ const links = [
     .map((id) => document.getElementById(id))
     .filter((el): el is HTMLElement => Boolean(el));
 
+  // Highlights the section crossing the middle band of the viewport; clears when none does (e.g. at the hero).
+  function setActive(id: string | null) {
+    navLinks.forEach((link) => {
+      const active = link.dataset.navLink === id;
+      link.classList.toggle('text-[var(--text)]', active);
+      link.classList.toggle('text-[var(--muted)]', !active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
   if (sections.length > 0 && 'IntersectionObserver' in window) {
+    const visible = new Set<string>();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          navLinks.forEach((link) => {
-            const active = link.dataset.navLink === entry.target.id;
-            link.classList.toggle('text-[var(--text)]', active);
-            link.classList.toggle('text-[var(--muted)]', !active);
-          });
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
         });
+        const current = sections.find((section) => visible.has(section.id));
+        setActive(current ? current.id : null);
       },
       { rootMargin: '-40% 0px -50% 0px' },
     );

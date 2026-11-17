@@ -53,6 +53,11 @@ const projectText = z.object({
   did: z.array(z.string()).optional(),
   changed: z.string().optional(),
   metricLabel: z.string().optional(),
+  // Key figures shown as a row of tiles on the case page; values must come from the project's own sources.
+  stats: z
+    .array(z.object({ value: z.string(), label: z.string() }))
+    .max(4)
+    .optional(),
   caseStudy: z
     .object({ problem: z.string(), approach: z.string(), result: z.string(), learnings: z.string() })
     .optional(),

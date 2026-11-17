@@ -15,7 +15,7 @@
     "title": "Estimación temprana del rinde de soja",
     "question": "¿Se puede saber cómo viene la campaña de soja meses antes de la cosecha, solo con datos públicos?",
     "result": "Con datos a fin de noviembre, unos 5 meses antes de la cosecha, estima el rinde con un error medio de 2,42 qq/ha: 40% menos que el promedio histórico.",
-    "summary": "Combina NDVI satelital, clima y rindes oficiales para 5 partidos del noroeste bonaerense. Dashboard público que se actualiza mes a mes.",
+    "summary": "Combina NDVI satelital, clima y rindes oficiales para 5 partidos del noroeste bonaerense. Tablero público que se actualiza mes a mes.",
     "metricLabel": "de error medio, 5 meses antes de la cosecha",
     "caseStudy": {
       "problem": "Saber cómo viene la campaña de soja en el noroeste bonaerense meses antes de la cosecha, usando solo datos públicos y gratuitos.",
@@ -23,7 +23,25 @@
       "result": "Con datos a fin de noviembre: error medio de 2,42 qq/ha (40% menos que el promedio histórico) y R² de 0,72. Acierta si cada partido viene por arriba o por abajo de lo normal en el 69% de los casos. En la sequía 2022/23 el rinde cayó un 49%, y a fin de noviembre el modelo ya anticipaba una caída del 43%. Los intervalos del 80% cubrieron entre el 77% y el 87% de los casos.",
       "learnings": "El techo es el dato, no el algoritmo: lo que más mejoró el modelo fueron dos variables con fundamento agronómico (VPD y anomalía de NDVI), no cambiar de algoritmo. Validar en el tiempo y no ajustar al examen. Documentar los errores: encontré y corregí un error en los datos satelitales de un partido que inflaba los resultados."
     },
-    "sector": "Agro"
+    "sector": "Agro",
+    "stats": [
+      {
+        "value": "2,42 qq/ha",
+        "label": "de error medio con datos a fin de noviembre"
+      },
+      {
+        "value": "0,72",
+        "label": "de R² en 45 estimaciones fuera de muestra"
+      },
+      {
+        "value": "69%",
+        "label": "de acierto en si el partido viene por arriba o por abajo de lo normal"
+      },
+      {
+        "value": "−43%",
+        "label": "de caída anticipada en la sequía 2022/23, frente a −49% real"
+      }
+    ]
   },
   "en": {
     "title": "Early soybean yield estimation",
@@ -37,6 +55,24 @@
       "result": "With data through late November: mean error of 2.42 qq/ha (40% less than the historical average) and R² of 0.72. It gets right whether each county comes in above or below normal in 69% of cases. In the 2022/23 drought yield fell 49%, and by late November the model was already anticipating a 43% drop. The 80% intervals covered between 77% and 87% of cases.",
       "learnings": "The ceiling is the data, not the algorithm: what improved the model most were two agronomically grounded variables (VPD and NDVI anomaly), not switching algorithms. Validate over time instead of fitting to the test. Document the errors: I found and fixed an error in one county's satellite data that was inflating the results."
     },
-    "sector": "Agriculture"
+    "sector": "Agriculture",
+    "stats": [
+      {
+        "value": "2.42 qq/ha",
+        "label": "mean error with data through late November"
+      },
+      {
+        "value": "0.72",
+        "label": "R² across 45 out-of-sample estimates"
+      },
+      {
+        "value": "69%",
+        "label": "correct on whether a county comes in above or below normal"
+      },
+      {
+        "value": "−43%",
+        "label": "drop anticipated in the 2022/23 drought, versus −49% actual"
+      }
+    ]
   }
 }

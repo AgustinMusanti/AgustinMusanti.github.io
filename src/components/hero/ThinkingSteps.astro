@@ -13,14 +13,14 @@ const { thinking } = useTranslations(lang);
   <p class="eyebrow">{thinking.label}</p>
   <ol class="track">
     {thinking.steps.map((step, i) => (
-      <li>
-        <button type="button" class="t-step" data-step={i} aria-current={i === 0 ? 'step' : undefined}>
-          <span class="t-dot num">{i + 1}</span>
-          <span class="t-body">
-            <span class="t-title">{step.title}</span>
-            <span class="t-question">{step.question}</span>
-          </span>
-        </button>
+      <li class="t-step">
+        <span class="t-dot num" aria-hidden="true">
+          {i + 1}
+        </span>
+        <span class="t-body">
+          <span class="t-title">{step.title}</span>
+          <span class="t-question">{step.question}</span>
+        </span>
       </li>
     ))}
   </ol>
@@ -58,9 +58,6 @@ const { thinking } = useTranslations(lang);
     gap: 0.9rem;
     width: 100%;
     padding: 0.55rem 0.5rem 0.55rem 0;
-    border-radius: 0.5rem;
-    text-align: left;
-    cursor: pointer;
   }
   .t-dot {
     display: grid;
@@ -104,11 +101,6 @@ const { thinking } = useTranslations(lang);
   .is-live .t-step.is-active .t-title {
     color: var(--accent);
   }
-  .is-live .t-step:hover .t-title,
-  .is-live .t-step:hover .t-question {
-    opacity: 1;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     .track::after,
     .t-dot,
@@ -143,22 +135,17 @@ const { thinking } = useTranslations(lang);
   document.querySelectorAll<HTMLElement>('[data-thinking]').forEach((root) => {
     if (reduce) return;
     const track = root.querySelector<HTMLElement>('.track')!;
-    const steps = Array.from(root.querySelectorAll<HTMLButtonElement>('.t-step'));
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('.t-step'));
     let active = 0;
     let timer: number | undefined;
 
-    // Roving tabindex: the whole stepper is a single tab stop.
+    // Visual walk-through only: all four steps are always readable, so nothing here is interactive.
     const show = (n: number) => {
-      active = (n + steps.length) % steps.length;
-      steps.forEach((step, i) => {
-        step.classList.toggle('is-active', i === active);
-        step.tabIndex = i === active ? 0 : -1;
-        if (i === active) step.setAttribute('aria-current', 'step');
-        else step.removeAttribute('aria-current');
-      });
+      active = n;
+      steps.forEach((step, i) => step.classList.toggle('is-active', i === active));
       track.style.setProperty('--fill', String(active / (steps.length - 1)));
     };
-    // The demo plays once and rests on the last step (WCAG 2.2.2); any interaction stops it.
+    // The demo plays once and rests on the last step (WCAG 2.2.2); touching the stepper stops it.
     const stop = () => window.clearInterval(timer);
 
     root.classList.add('is-live');
@@ -168,22 +155,6 @@ const { thinking } = useTranslations(lang);
       else show(active + 1);
     }, STEP_MS);
 
-    ['pointerdown', 'keydown', 'focusin'].forEach((type) => root.addEventListener(type, stop));
-
-    steps.forEach((step, i) => {
-      step.addEventListener('click', () => show(i));
-      step.addEventListener('keydown', (event) => {
-        const delta =
-          event.key === 'ArrowDown' || event.key === 'ArrowRight'
-            ? 1
-            : event.key === 'ArrowUp' || event.key === 'ArrowLeft'
-              ? -1
-              : 0;
-        if (!delta) return;
-        event.preventDefault();
-        show(i + delta);
-        steps[active].focus();
-      });
-    });
+    root.addEventListener('pointerdown', stop);
   });
 </script>

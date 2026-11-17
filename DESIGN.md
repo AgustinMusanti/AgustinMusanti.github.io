@@ -168,7 +168,7 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 
 ### Named Rules
 
-**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada. Decisión explícita de Agustín: los botones principales de cada tarjeta de proyecto (ver caso, demo) van rellenos en dorado porque son la acción; la regla se cumple porque el dorado sigue reservado a acciones, cifras y estado activo, no a decoración. "Copiar email" es la acción principal de Contacto.
+**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada. Cada tarjeta de proyecto tiene un solo botón relleno en dorado: "Ver el caso completo" cuando hay caso, o "Ver en vivo" cuando no lo hay; el otro va con contorno. Así la cifra y una sola acción comparten el dorado, y no tres elementos apilados (decisión de Agustín tras la crítica del 17/11/2026). "Copiar email" es la acción principal de Contacto.
 
 **The Dimmed-State Rule.** Un estado atenuado (pasos inactivos, texto secundario en transición) se define con un token por tema (`--step-dim-title`, `--step-dim-question`), no con una opacidad fija, y debe pasar 4,5:1 en ambos temas. En claro los títulos atenuados usan 0,7 y las preguntas, color pleno; en oscuro, 0,55 y 0,8.
 
@@ -250,15 +250,15 @@ Barra superior fija, de ancho de contenedor, borde inferior de 1px y fondo del t
 
 ### Process steps (signature)
 
-La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. En el hero los pasos avanzan solos cada ~3s una única vez y descansan en el cuarto; cualquier toque, tecla o foco detiene el recorrido, y todo el conjunto es una sola parada de tab con flechas para moverse (WCAG 2.2.2).
+La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. En el hero los pasos son una lista, no botones: los cuatro se leen siempre completos, avanzan solos cada ~3s una única vez y descansan en el cuarto; tocar el conjunto detiene el recorrido (WCAG 2.2.2).
 
 ### Charts
 
 Gráficos hechos a mano en SVG, sin librerías: barras en arena o pizarra con el dato clave en dorado, serie estimada en azul dato, ejes en mono chico y banda de incertidumbre translúcida. Cada gráfico lleva título con el hallazgo, subtítulo con unidad, tooltip y una tabla de datos para lectores de pantalla. Se dibujan una sola vez al entrar en pantalla.
 
-### Tool marquee
+### Tools
 
-Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que se desvanecen a ambos lados; se pausa con el mouse, con el foco de teclado o con un botón visible de pausa/reanudar encima de la cinta, y con movimiento reducido pasa a una grilla estática.
+Las herramientas se muestran una sola vez, agrupadas por categoría en tarjetas planas. La cinta animada que repetía la misma lista se quitó tras la crítica del 17/11/2026: duplicaba el contenido sin agregar información.
 
 ## Do's and Don'ts
 

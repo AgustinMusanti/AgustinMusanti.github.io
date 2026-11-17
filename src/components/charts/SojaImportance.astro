@@ -8,7 +8,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang).soja;
-const max = 25;
+// Shares are percentages of total importance, so the track is 100%.
+const max = 100;
 ---
 
 <figure class="m-0">
@@ -23,10 +24,12 @@ const max = 25;
         <div>
           <div class="flex items-baseline justify-between gap-3 text-sm text-[var(--text)]">
             <span>{t.importance[item.feature]}</span>
-            {item.approxShare !== null && (
+            {item.approxShare !== null ? (
               <span class="shrink-0 text-xs text-[var(--muted)]">
                 {t.approx} <span class="num text-[var(--text)]">{item.approxShare}%</span>
               </span>
+            ) : (
+              <span class="shrink-0 text-xs text-[var(--muted)]">{t.undisclosed}</span>
             )}
           </div>
           {item.approxShare !== null && (

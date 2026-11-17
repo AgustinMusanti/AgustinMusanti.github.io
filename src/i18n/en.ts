@@ -26,7 +26,7 @@ export const en: Dictionary = {
       { title: 'Understand the problem', question: 'What decision needs to be made?' },
       { title: 'Rethink the process', question: 'Which steps don’t need to be there?' },
       { title: 'Choose the tool', question: 'Which one solves it best? If I don’t know it, I learn it.' },
-      { title: 'Inform the decision', question: 'What does the decision-maker need to see?' },
+      { title: 'Inform decisions', question: 'What does the decision-maker need to see?' },
     ],
   },
   whatIDo: { title: 'What I do' },
@@ -43,6 +43,7 @@ export const en: Dictionary = {
     maeSubtitle: 'Mean absolute error by lead time (qq/ha), 45 out-of-sample estimates',
     maeBaseline: 'Historical average',
     monthsBefore: 'months before',
+    monthBefore: 'month before',
     windows: {
       oct_nov: 'Late Nov',
       oct_dic: 'Late Dec',
@@ -59,10 +60,25 @@ export const en: Dictionary = {
       ndviAnomalyNov: 'NDVI anomaly in late November',
     },
     approx: 'approx.',
+    undisclosed: 'share not published',
   },
   inflation: {
     chartTitle: 'Average monthly inflation by month, 2017–2024 (%)',
     months: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    monthsFull: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
     tableCaption: 'Average monthly inflation by month of the year',
   },
   projects: {
@@ -106,13 +122,11 @@ export const en: Dictionary = {
   path: { promotion: 'Promotion', award: 'Award' },
   tools: {
     footnote: 'This is what I use today. The list changes: I learn the tool the problem calls for.',
-    pause: 'Pause the tools ticker',
-    play: 'Resume the tools ticker',
   },
   contact: {
     question: 'Got a process that could work better?',
     closing:
-      'We’ll look at it the same way: understand the problem, rethink the process, choose the tool and inform the decision.',
+      'We’ll look at it the same way: understand the problem, rethink the process, choose the tool and inform decisions.',
     copyEmail: 'Copy email',
     copied: 'Copied!',
     copyFailed: "Couldn't copy the email",

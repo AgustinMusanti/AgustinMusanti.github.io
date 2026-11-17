@@ -7,11 +7,11 @@
   "order": 13,
   "draft": false,
   "es": {
-    "title": "Dashboard estratégico para la gerencia",
+    "title": "Tablero estratégico para la gerencia",
     "sector": "Servicios profesionales",
     "summary": "Un tablero para la toma de decisiones de la gerencia.",
     "problem": "La gerencia necesitaba un tablero para tomar decisiones estratégicas.",
-    "did": ["Lideré el diseño y desarrollo del dashboard en Power BI."],
+    "did": ["Lideré el diseño y desarrollo del tablero en Power BI."],
     "changed": "El tablero se usa para la toma de decisiones de la gerencia y fue reconocido con el premio PwC Te Reconoce."
   },
   "en": {

@@ -10,45 +10,17 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const categories = await getStack(lang);
-const allTools = categories.flatMap((c) => c.data.tools);
+// On a 6-track grid, a last row of two splits it in halves instead of leaving one card alone.
+const lastRowOfTwo = categories.length % 3 === 2;
+const span = (i: number) => (lastRowOfTwo && i >= categories.length - 2 ? 'lg:col-span-3' : 'lg:col-span-2');
 ---
 
 <section id="tools" class="mx-auto max-w-6xl px-4 py-20">
   <SectionHeading title={t.nav.tools} />
 
-  <button
-    type="button"
-    class="marquee-toggle btn btn-sm mb-3"
-    data-label-pause={t.tools.pause}
-    data-label-play={t.tools.play}
-    aria-label={t.tools.pause}
-  >
-    <svg aria-hidden="true" viewBox="0 0 24 24" class="icon-pause h-4 w-4" fill="currentColor">
-      <rect x="6" y="5" width="4" height="14" rx="1" />
-      <rect x="14" y="5" width="4" height="14" rx="1" />
-    </svg>
-    <svg aria-hidden="true" viewBox="0 0 24 24" class="icon-play h-4 w-4" fill="currentColor">
-      <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" />
-    </svg>
-  </button>
-
-  <div class="marquee mb-10" data-reveal>
-    <div class="marquee-track">
-      {[false, true].map((copy) => (
-        <ul class="flex gap-3" aria-hidden={copy ? 'true' : undefined}>
-          {allTools.map((tool) => (
-            <li class="whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 font-heading text-base text-[var(--text)]">
-              {tool}
-            </li>
-          ))}
-        </ul>
-      ))}
-    </div>
-  </div>
-
-  <dl class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  <dl class="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
     {categories.map(({ data }, i) => (
-      <div class="panel p-5" data-reveal style={`--d:${i % 3}`}>
+      <div class:list={['panel p-5', span(i)]} data-reveal style={`--d:${i % 3}`}>
         <dt class="eyebrow">{data.label}</dt>
         <dd class="mt-2 text-sm text-[var(--text)]">{data.tools.join(' · ')}</dd>
       </div>
@@ -57,14 +29,3 @@ const allTools = categories.flatMap((c) => c.data.tools);
 
   <p class="mt-6 text-sm text-[var(--muted)]">{t.tools.footnote}</p>
 </section>
-
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>('.marquee-toggle');
-  const marquee = document.querySelector<HTMLElement>('.marquee');
-  toggle?.addEventListener('click', () => {
-    const paused = !toggle.hasAttribute('data-paused');
-    toggle.toggleAttribute('data-paused', paused);
-    toggle.setAttribute('aria-label', (paused ? toggle.dataset.labelPlay : toggle.dataset.labelPause) ?? '');
-    marquee?.toggleAttribute('data-paused', paused);
-  });
-</script>

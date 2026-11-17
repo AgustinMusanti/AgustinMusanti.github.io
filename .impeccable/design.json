@@ -340,18 +340,13 @@
       },
       {
         "name": "step-cycle",
-        "value": "3s por paso, una sola pasada que descansa en el paso 4; cualquier interacción la detiene",
+        "value": "3s por paso, una sola pasada que descansa en el paso 4; tocar el conjunto la detiene",
         "purpose": "Avance automático de los pasos del hero."
       },
       {
         "name": "flow-loop",
         "value": "8s, punto recorriendo los pasos",
         "purpose": "Flujo del caso de validación."
-      },
-      {
-        "name": "marquee",
-        "value": "40s linear infinite, pausa al hover",
-        "purpose": "Cinta de herramientas."
       },
       {
         "name": "count-up",

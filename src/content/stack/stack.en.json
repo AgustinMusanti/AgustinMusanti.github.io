@@ -9,13 +9,13 @@
     "category": "data",
     "label": "Data and programming",
     "order": 2,
-    "tools": ["Python", "SQL", "R", "SQL Server", "MySQL", "PostgreSQL", "BigQuery"]
+    "tools": ["Python", "SQL", "R", "SQL Server", "MySQL", "PostgreSQL", "BigQuery", "Pandas", "NumPy"]
   },
   "ml": {
     "category": "ml",
     "label": "Machine Learning",
     "order": 3,
-    "tools": ["Pandas", "NumPy", "Scikit-learn", "SHAP"]
+    "tools": ["Scikit-learn", "SHAP"]
   },
   "automation": {
     "category": "automation",
@@ -25,7 +25,7 @@
   },
   "ai": {
     "category": "ai",
-    "label": "AI and agents",
+    "label": "AI, agents and deployment",
     "order": 5,
     "tools": ["Copilot Studio", "Claude Code", "Codex", "Vercel", "GitHub Pages"]
   }

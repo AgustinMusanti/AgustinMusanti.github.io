@@ -16,17 +16,27 @@ const { email, linkedin, github } = await getProfile(lang);
 <section id="contact" class="mx-auto max-w-6xl px-4 py-20">
   <SectionHeading title={t.nav.contact} />
 
-  <p class="max-w-xl font-heading text-2xl text-[var(--text)] md:text-3xl">{t.contact.question}</p>
-  <p class="mt-3 max-w-xl text-[var(--muted)]">{t.contact.closing}</p>
+  <div class="panel p-6 md:p-12">
+    <p class="max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text)] text-balance md:text-5xl">
+      {t.contact.question}
+    </p>
+    <p class="mt-4 max-w-xl text-[var(--muted)] md:text-lg">{t.contact.closing}</p>
 
-  <div class="mt-6 flex flex-wrap items-center gap-3">
-    <CopyEmailButton lang={lang} email={email} />
-    <span class="text-sm text-[var(--muted)]">{email}</span>
-    <a href={linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
-      LinkedIn<span class="sr-only"> {t.nav.openInNewTab}</span>
-    </a>
-    <a href={github} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
-      GitHub<span class="sr-only"> {t.nav.openInNewTab}</span>
-    </a>
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <CopyEmailButton lang={lang} email={email} />
+      <a
+        href={`mailto:${email}`}
+        data-email-text
+        class="inline-flex min-h-11 items-center text-sm text-[var(--muted)] underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--text)] hover:decoration-[var(--accent)]"
+      >
+        {email}
+      </a>
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        LinkedIn<span class="sr-only"> {t.nav.openInNewTab}</span>
+      </a>
+      <a href={github} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        GitHub<span class="sr-only"> {t.nav.openInNewTab}</span>
+      </a>
+    </div>
   </div>
 </section>

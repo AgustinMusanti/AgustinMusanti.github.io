@@ -12,8 +12,10 @@ const t = useTranslations(lang);
 <button
   type="button"
   data-theme-toggle
-  class="grid h-9 w-9 place-items-center rounded border border-[var(--border)] text-[var(--text)] transition hover:border-[var(--accent)]"
+  class="grid h-11 w-11 place-items-center rounded border border-[var(--border)] text-[var(--text)] transition hover:border-[var(--accent)]"
   aria-label={t.theme.toggleToDark}
+  data-label-to-dark={t.theme.toggleToDark}
+  data-label-to-light={t.theme.toggleToLight}
 >
   <svg
     class="theme-icon-dark h-4 w-4"
@@ -62,6 +64,8 @@ const t = useTranslations(lang);
     buttons.forEach((button) => {
       button.querySelector('.theme-icon-dark')?.classList.toggle('hidden', dark);
       button.querySelector('.theme-icon-light')?.classList.toggle('hidden', !dark);
+      const label = dark ? button.dataset.labelToLight : button.dataset.labelToDark;
+      if (label) button.setAttribute('aria-label', label);
     });
   }
 
@@ -77,6 +81,8 @@ const t = useTranslations(lang);
   }
 
   buttons.forEach((button) => button.addEventListener('click', toggleTheme));
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncIcons);
 
   syncIcons();
 </script>
