@@ -46,3 +46,29 @@ test('English home and case study are reachable and translated', async ({ page }
   await page.getByRole('link', { name: 'ES', exact: true }).first().click();
   await expect(page).toHaveURL(/\/proyectos\/estimacion-rinde-soja\/?$/);
 });
+
+test('nav marks the section in view and clears it back at the hero', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/');
+  const current = page.locator('#nav-links [aria-current="location"]');
+  await expect(current).toHaveCount(0);
+
+  await page.locator('#career').scrollIntoViewIfNeeded();
+  await page.evaluate(() => window.scrollBy(0, 100));
+  await expect(current).toHaveText('Trayectoria');
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(current).toHaveCount(0);
+});
+
+test('mobile menu toggle says what it will do', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/');
+  const toggle = page.locator('#mobile-menu-toggle');
+  await expect(toggle).toHaveAttribute('aria-label', 'Abrir menú');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(toggle).toHaveAttribute('aria-label', 'Cerrar menú');
+  await page.keyboard.press('Escape');
+  await expect(toggle).toHaveAttribute('aria-label', 'Abrir menú');
+});
