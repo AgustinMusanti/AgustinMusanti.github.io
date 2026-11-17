@@ -250,15 +250,15 @@ Barra superior fija, de ancho de contenedor, borde inferior de 1px y fondo del t
 
 ### Process steps (signature)
 
-La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. En el hero los pasos avanzan solos cada ~3s una única vez y descansan en el cuarto; cualquier toque, tecla o foco detiene el recorrido, y todo el conjunto es una sola parada de tab con flechas para moverse (WCAG 2.2.2).
+La pieza del hero y el diagrama del caso de validación comparten un lenguaje: píldoras unidas por una línea vertical de 2px; el paso activo se rellena en dorado con su título en dorado y un círculo numerado de 2rem, y los inactivos se atenúan según el token de tema. Un punto recorre los pasos automáticos; el paso de revisión humana se resalta en dorado. En el hero los pasos son una lista, no botones: los cuatro se leen siempre completos, avanzan solos cada ~3s una única vez y descansan en el cuarto; tocar el conjunto detiene el recorrido (WCAG 2.2.2).
 
 ### Charts
 
 Gráficos hechos a mano en SVG, sin librerías: barras en arena o pizarra con el dato clave en dorado, serie estimada en azul dato, ejes en mono chico y banda de incertidumbre translúcida. Cada gráfico lleva título con el hallazgo, subtítulo con unidad, tooltip y una tabla de datos para lectores de pantalla. Se dibujan una sola vez al entrar en pantalla.
 
-### Tool marquee
+### Tools
 
-Cinta continua de píldoras en Space Grotesk 1rem, con bordes enmascarados que se desvanecen a ambos lados; se pausa con el mouse, con el foco de teclado o con un botón visible de pausa/reanudar encima de la cinta, y con movimiento reducido pasa a una grilla estática.
+Las herramientas se muestran una sola vez, agrupadas por categoría en tarjetas planas. La cinta animada que repetía la misma lista se quitó tras la crítica del 17/11/2026: duplicaba el contenido sin agregar información.
 
 ## Do's and Don'ts
 

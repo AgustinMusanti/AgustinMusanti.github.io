@@ -369,67 +369,11 @@ h4 {
   transform-origin: left;
 }
 
-/* Tool marquee */
-.marquee {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 0.75rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .marquee-track {
-    animation: marquee 40s linear infinite;
-  }
-
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track,
-  .marquee[data-paused] .marquee-track {
-    animation-play-state: paused;
-  }
-
-  .marquee-toggle .icon-play,
-  .marquee-toggle[data-paused] .icon-pause {
-    display: none;
-  }
-
-  .marquee-toggle[data-paused] .icon-play {
-    display: block;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-toggle {
-    display: none;
-  }
-
-  .marquee-track {
-    flex-wrap: wrap;
-    width: auto;
-  }
-
-  .marquee-track [aria-hidden='true'] {
-    display: none;
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(calc(-50% - 0.375rem));
-  }
-}
-
 /* Touch: comfortable 44px targets for secondary controls on coarse pointers. */
 @media (pointer: coarse) {
   .btn,
   .btn-sm,
-  .tag-filter-btn,
-  .marquee-toggle {
+  .tag-filter-btn {
     min-height: 2.75rem;
   }
 }

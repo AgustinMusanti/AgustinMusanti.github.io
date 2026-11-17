@@ -37,8 +37,8 @@ test.describe('hero with animations running', () => {
       await page.evaluate(() =>
         document.querySelectorAll('[data-reveal]').forEach((n) => n.classList.add('is-visible')),
       );
-      // Focus pauses the step cycle, so the dimmed state being measured is stable.
-      await page.locator('.t-step').first().focus();
+      // Touching the stepper stops the step cycle, so the dimmed state being measured is stable.
+      await page.locator('[data-thinking]').first().dispatchEvent('pointerdown');
       await page.waitForTimeout(1000);
 
       const results = await new AxeBuilder({ page })

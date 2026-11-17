@@ -122,8 +122,6 @@ export const en: Dictionary = {
   path: { promotion: 'Promotion', award: 'Award' },
   tools: {
     footnote: 'This is what I use today. The list changes: I learn the tool the problem calls for.',
-    pause: 'Pause the tools ticker',
-    play: 'Resume the tools ticker',
   },
   contact: {
     question: 'Got a process that could work better?',

@@ -70,7 +70,7 @@ export interface Dictionary {
     flowDescription: string;
   };
   path: { promotion: string; award: string };
-  tools: { footnote: string; pause: string; play: string };
+  tools: { footnote: string };
   contact: { closing: string; question: string; copyEmail: string; copied: string; copyFailed: string };
   caseStudy: {
     problem: string;
@@ -205,8 +205,6 @@ export const es: Dictionary = {
   path: { promotion: 'Promoción', award: 'Premio' },
   tools: {
     footnote: 'Es lo que uso hoy. La lista cambia: aprendo la herramienta que el problema pide.',
-    pause: 'Pausar la cinta de herramientas',
-    play: 'Reanudar la cinta de herramientas',
   },
   contact: {
     question: '¿Tenés un proceso que podría funcionar mejor?',
