@@ -35,13 +35,15 @@ export interface Dictionary {
     maeSubtitle: string;
     maeBaseline: string;
     monthsBefore: string;
+    monthBefore: string;
     windows: Record<string, string>;
     importanceTitle: string;
     importanceSubtitle: string;
     importance: Record<string, string>;
     approx: string;
+    undisclosed: string;
   };
-  inflation: { chartTitle: string; months: string[]; tableCaption: string };
+  inflation: { chartTitle: string; months: string[]; monthsFull: string[]; tableCaption: string };
   projects: {
     filterLabel: string;
     allTags: string;
@@ -125,6 +127,7 @@ export const es: Dictionary = {
     maeSubtitle: 'Error medio absoluto por ventana de anticipación (qq/ha), 45 estimaciones fuera de muestra',
     maeBaseline: 'Promedio histórico',
     monthsBefore: 'meses antes',
+    monthBefore: 'mes antes',
     windows: {
       oct_nov: 'Fin de nov.',
       oct_dic: 'Fin de dic.',
@@ -140,10 +143,25 @@ export const es: Dictionary = {
       ndviAnomalyNov: 'Anomalía de NDVI a fin de noviembre',
     },
     approx: 'aprox.',
+    undisclosed: 'sin porcentaje publicado',
   },
   inflation: {
     chartTitle: 'Inflación mensual promedio por mes, 2017–2024 (%)',
     months: ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    monthsFull: [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ],
     tableCaption: 'Inflación mensual promedio por mes del año',
   },
   projects: {

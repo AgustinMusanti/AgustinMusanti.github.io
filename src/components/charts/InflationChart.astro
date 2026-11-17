@@ -39,7 +39,7 @@ const threshold = 5;
           class="draw-bar"
           style={`--i:${i}`}
           fill={v > threshold ? 'var(--accent)' : 'var(--bar)'}
-          data-tip={`${t.months[i]} · ${fmt(v)}%`}
+          data-tip={`${t.monthsFull[i]} · ${fmt(v)}%`}
         />
         <text x={x(i)} y={h - 4} text-anchor="middle" font-size="10" fill="var(--muted)">
           {t.months[i]}
@@ -53,7 +53,7 @@ const threshold = 5;
       <tbody>
         {values.map((v, i) => (
           <tr>
-            <th scope="row">{i + 1}</th>
+            <th scope="row">{t.monthsFull[i]}</th>
             <td>{fmt(v)}%</td>
           </tr>
         ))}

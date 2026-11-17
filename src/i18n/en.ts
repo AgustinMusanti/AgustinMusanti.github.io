@@ -43,6 +43,7 @@ export const en: Dictionary = {
     maeSubtitle: 'Mean absolute error by lead time (qq/ha), 45 out-of-sample estimates',
     maeBaseline: 'Historical average',
     monthsBefore: 'months before',
+    monthBefore: 'month before',
     windows: {
       oct_nov: 'Late Nov',
       oct_dic: 'Late Dec',
@@ -59,10 +60,25 @@ export const en: Dictionary = {
       ndviAnomalyNov: 'NDVI anomaly in late November',
     },
     approx: 'approx.',
+    undisclosed: 'share not published',
   },
   inflation: {
     chartTitle: 'Average monthly inflation by month, 2017–2024 (%)',
     months: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    monthsFull: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
     tableCaption: 'Average monthly inflation by month of the year',
   },
   projects: {
