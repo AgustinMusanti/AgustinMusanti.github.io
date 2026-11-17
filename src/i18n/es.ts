@@ -222,7 +222,7 @@ export const es: Dictionary = {
     result: 'Resultado',
     learnings: 'Qué aprendí',
     stack: 'Herramientas',
-    links: 'Links',
+    links: 'Enlaces',
     back: 'Volver a proyectos',
     charts: 'Resultados en gráficos',
   },

@@ -26,7 +26,7 @@ export const en: Dictionary = {
       { title: 'Understand the problem', question: 'What decision needs to be made?' },
       { title: 'Rethink the process', question: 'Which steps don’t need to be there?' },
       { title: 'Choose the tool', question: 'Which one solves it best? If I don’t know it, I learn it.' },
-      { title: 'Inform the decision', question: 'What does the decision-maker need to see?' },
+      { title: 'Inform decisions', question: 'What does the decision-maker need to see?' },
     ],
   },
   whatIDo: { title: 'What I do' },
@@ -128,7 +128,7 @@ export const en: Dictionary = {
   contact: {
     question: 'Got a process that could work better?',
     closing:
-      'We’ll look at it the same way: understand the problem, rethink the process, choose the tool and inform the decision.',
+      'We’ll look at it the same way: understand the problem, rethink the process, choose the tool and inform decisions.',
     copyEmail: 'Copy email',
     copied: 'Copied!',
     copyFailed: "Couldn't copy the email",

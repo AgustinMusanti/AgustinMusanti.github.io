@@ -15,7 +15,7 @@
     "title": "Estimación temprana del rinde de soja",
     "question": "¿Se puede saber cómo viene la campaña de soja meses antes de la cosecha, solo con datos públicos?",
     "result": "Con datos a fin de noviembre, unos 5 meses antes de la cosecha, estima el rinde con un error medio de 2,42 qq/ha: 40% menos que el promedio histórico.",
-    "summary": "Combina NDVI satelital, clima y rindes oficiales para 5 partidos del noroeste bonaerense. Dashboard público que se actualiza mes a mes.",
+    "summary": "Combina NDVI satelital, clima y rindes oficiales para 5 partidos del noroeste bonaerense. Tablero público que se actualiza mes a mes.",
     "metricLabel": "de error medio, 5 meses antes de la cosecha",
     "caseStudy": {
       "problem": "Saber cómo viene la campaña de soja en el noroeste bonaerense meses antes de la cosecha, usando solo datos públicos y gratuitos.",
