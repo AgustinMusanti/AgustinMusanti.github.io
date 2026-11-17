@@ -122,6 +122,14 @@ h4 {
   background: var(--surface);
 }
 
+/* Active section in the desktop nav: color plus the gold rule used for section accents. */
+#nav-links .nav-link[aria-current='location'] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

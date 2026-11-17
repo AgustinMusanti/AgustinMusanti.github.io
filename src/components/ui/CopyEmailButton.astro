@@ -34,15 +34,28 @@ const t = useTranslations(lang);
     const copiedLabel = button.dataset.labelCopied ?? 'Copied!';
     const failedStatus = button.dataset.statusFailed ?? "Couldn't copy the email";
 
+    // Clear first so a repeated result is announced again.
+    if (status) status.textContent = '';
+
     try {
       await navigator.clipboard.writeText(email);
       if (label) label.textContent = copiedLabel;
       if (status) status.textContent = copiedLabel;
     } catch {
+      // Show the failure and select the visible address so it can be copied by hand.
+      if (label) label.textContent = failedStatus;
       if (status) status.textContent = failedStatus;
+      const visibleEmail = document.querySelector('[data-email-text]');
+      const selection = window.getSelection();
+      if (visibleEmail && selection) {
+        const range = document.createRange();
+        range.selectNodeContents(visibleEmail);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
     }
     setTimeout(() => {
       if (label) label.textContent = defaultLabel;
-    }, 2000);
+    }, 3000);
   });
 </script>

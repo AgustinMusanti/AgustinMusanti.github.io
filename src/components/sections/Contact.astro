@@ -21,7 +21,13 @@ const { email, linkedin, github } = await getProfile(lang);
 
   <div class="mt-6 flex flex-wrap items-center gap-3">
     <CopyEmailButton lang={lang} email={email} />
-    <span class="text-sm text-[var(--muted)]">{email}</span>
+    <a
+      href={`mailto:${email}`}
+      data-email-text
+      class="inline-flex min-h-11 items-center text-sm text-[var(--muted)] underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--text)] hover:decoration-[var(--accent)]"
+    >
+      {email}
+    </a>
     <a href={linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
       LinkedIn<span class="sr-only"> {t.nav.openInNewTab}</span>
     </a>

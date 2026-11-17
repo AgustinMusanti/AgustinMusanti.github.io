@@ -17,7 +17,7 @@ const enHref = toEnPath(currentPath);
   <a
     href={esHref}
     class:list={[
-      'rounded px-2 py-1',
+      'inline-flex min-h-11 min-w-11 items-center justify-center rounded px-2',
       lang === 'es' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]',
     ]}
     aria-current={lang === 'es' ? 'true' : undefined}
@@ -28,7 +28,7 @@ const enHref = toEnPath(currentPath);
   <a
     href={enHref}
     class:list={[
-      'rounded px-2 py-1',
+      'inline-flex min-h-11 min-w-11 items-center justify-center rounded px-2',
       lang === 'en' ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--text)]',
     ]}
     aria-current={lang === 'en' ? 'true' : undefined}
