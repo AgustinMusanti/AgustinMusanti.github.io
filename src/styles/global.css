@@ -130,6 +130,12 @@ h4 {
   text-underline-offset: 6px;
 }
 
+/* Reading measure of about 70 Inter characters. `ch` is the width of "0", which in Inter
+   lets ~89 real characters through, so the cap is set in em and scales with the text size. */
+.measure {
+  max-width: 34em;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

@@ -18,7 +18,7 @@ const { paragraphs, note } = await getHowIWork(lang);
   <ul class="max-w-3xl divide-y divide-[var(--border)] border-y border-[var(--border)]">
     {paragraphs.map((paragraph, i) => (
       <li class="py-5 md:text-lg" data-reveal style={`--d:${i % 2}`}>
-        <p class="max-w-[62ch] text-[var(--text)]">{paragraph}</p>
+        <p class="measure text-[var(--text)]">{paragraph}</p>
       </li>
     ))}
   </ul>
