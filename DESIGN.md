@@ -168,7 +168,7 @@ Una paleta de papel y tinta con un acento cálido: neutros verdosos en lugar de 
 
 ### Named Rules
 
-**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada. Decisión explícita de Agustín: los botones principales de cada tarjeta de proyecto (ver caso, demo) van rellenos en dorado porque son la acción; la regla se cumple porque el dorado sigue reservado a acciones, cifras y estado activo, no a decoración. "Copiar email" es la acción principal de Contacto.
+**The One Gold Rule.** El dorado marca acción, cifra clave o estado activo, y nada más. Si en una pantalla hay dorado en todos lados, ya no marca nada. Cada tarjeta de proyecto tiene un solo botón relleno en dorado: "Ver el caso completo" cuando hay caso, o "Ver en vivo" cuando no lo hay; el otro va con contorno. Así la cifra y una sola acción comparten el dorado, y no tres elementos apilados (decisión de Agustín tras la crítica del 17/11/2026). "Copiar email" es la acción principal de Contacto.
 
 **The Dimmed-State Rule.** Un estado atenuado (pasos inactivos, texto secundario en transición) se define con un token por tema (`--step-dim-title`, `--step-dim-question`), no con una opacidad fija, y debe pasar 4,5:1 en ambos temas. En claro los títulos atenuados usan 0,7 y las preguntas, color pleno; en oscuro, 0,55 y 0,8.
 
