@@ -21,7 +21,7 @@ const demoClass = href ? 'btn btn-sm' : 'btn btn-sm btn-primary';
 <article
   class:list={[
     'panel lift flex flex-col p-5',
-    featured && 'md:col-span-2 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-8',
+    featured && 'md:col-span-2 lg:[&:not(.hidden)]:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-8',
   ]}
   data-tags={tags.join(',')}
   data-reveal

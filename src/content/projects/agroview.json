@@ -1,0 +1,25 @@
+{
+  "kind": "personal",
+  "tags": ["automatizacion", "bi"],
+  "stack": ["Next.js", "TypeScript", "Tailwind", "GitHub Actions", "Vercel", "APIs REST", "Web scraping"],
+  "links": {
+    "demo": "https://agroview-ar.vercel.app"
+  },
+  "featured": false,
+  "order": 1,
+  "draft": false,
+  "es": {
+    "title": "AgroView: datos del agro argentino en un solo lugar",
+    "sector": "Agro",
+    "question": "¿Se pueden reunir en un solo lugar los precios y datos que el productor consulta todos los días, hoy dispersos en distintas fuentes?",
+    "result": "Un portal público en producción que integra más de 9 fuentes (A3 Mercados, CBOT, MAGyP, BCRA, NOAA, Open-Meteo, entre otras) y se actualiza solo: APIs donde las hay y scrapers programados con GitHub Actions donde no. Suma indicadores calculados, como el basis y el FAS teórico.",
+    "summary": "Producto de datos propio, pensado para productores y cooperativas. Lo voy mejorando con sugerencias de gente del sector."
+  },
+  "en": {
+    "title": "AgroView: Argentine agri data in one place",
+    "sector": "Agriculture",
+    "question": "Can the prices and data that farmers check every day, scattered across different sources, be brought together in one place?",
+    "result": "A public portal in production that integrates more than 9 sources (A3 Mercados, CBOT, MAGyP, BCRA, NOAA, Open-Meteo, among others) and updates itself: APIs where they exist, and scrapers scheduled with GitHub Actions where they don't. It adds calculated indicators, such as basis and theoretical FAS.",
+    "summary": "A data product of my own, built for farmers and cooperatives. I keep improving it with suggestions from people in the sector."
+  }
+}

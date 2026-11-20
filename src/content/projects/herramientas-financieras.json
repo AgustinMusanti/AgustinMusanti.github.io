@@ -10,17 +10,17 @@
   "order": 2,
   "draft": false,
   "es": {
-    "title": "Calculadora de LECAP y herramientas financieras en Python",
+    "title": "Calculadora de LECAP",
     "sector": "Finanzas",
     "question": "¿Cuánto puede rendir una LECAP según el escenario, sin armar el cálculo a mano cada vez?",
-    "result": "Una calculadora web publicada que obtiene los datos con scraping en Python y deja simular escenarios de inversión. Es parte de una colección de calculadoras, simulaciones y proyecciones financieras.",
-    "summary": "Herramientas reutilizables para analizar inversiones y modelar escenarios."
+    "result": "Calculadora web publicada: trae los datos con scraping en Python y deja simular escenarios de inversión.",
+    "summary": "Parte de un repo con herramientas financieras en Python: calculadoras, simulaciones y proyecciones."
   },
   "en": {
-    "title": "LECAP calculator and finance tools in Python",
+    "title": "LECAP return calculator",
     "sector": "Finance",
     "question": "How much could an Argentine Treasury bill (LECAP) return under different scenarios, without building the math by hand every time?",
-    "result": "A published web calculator that pulls the data with Python scraping and lets you simulate investment scenarios. Part of a collection of financial calculators, simulations, and projections.",
-    "summary": "Reusable tools to analyze investments and model scenarios."
+    "result": "A published web calculator: it pulls the data with Python scraping and lets you simulate investment scenarios.",
+    "summary": "Part of a repo of financial tools in Python: calculators, simulations, and projections."
   }
 }
