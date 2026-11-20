@@ -7,7 +7,7 @@
   },
   "featured": false,
   "order": 5,
-  "draft": false,
+  "draft": true,
   "es": {
     "title": "Producción agropecuaria de la provincia de Buenos Aires",
     "sector": "Agro",

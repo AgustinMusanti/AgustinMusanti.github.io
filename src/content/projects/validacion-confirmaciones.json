@@ -8,35 +8,31 @@
   "draft": false,
   "visual": "validation-flow",
   "es": {
-    "title": "Automatización de un proceso de validación y emisión de confirmaciones",
+    "title": "Validación de solicitudes y emisión de confirmaciones",
     "sector": "Servicios profesionales",
-    "summary": "Un proceso con intervención manual en casi todas las etapas, convertido en un circuito automático con revisión humana.",
-    "problem": "Los usuarios enviaban solicitudes por formulario y el equipo verificaba todo a mano: entrar a un sistema interno, consultar estados uno por uno, cruzar la información, pasar los resultados a Excel y armar un mail con el archivo adjunto.",
-    "decision": "Antes de construir evalué resolverlo con agentes (Copilot Studio). Por ser un proceso estructurado, con reglas claras y requisitos de rendimiento y costo, elegí un flujo determinístico en Power Automate. No toda automatización necesita un agente.",
+    "summary": "Un proceso manual de punta a punta, convertido en un circuito automático con aprobación humana.",
+    "problem": "Cada solicitud se verificaba a mano: consultar estados uno por uno en un sistema interno, pasar los resultados a Excel y armar el mail de confirmación.",
+    "decision": "Evalué resolverlo con un agente en Copilot Studio. Como el proceso tiene reglas claras y requisitos de rendimiento y costo, elegí un flujo determinístico en Power Automate.",
     "did": [
-      "Recepción automática de cada solicitud desde el formulario.",
-      "Cruce contra una base de referencia que se actualiza periódicamente, con verificación automática de estados y condiciones.",
-      "Resultado publicado en un canal de Teams, donde una persona revisa y aprueba. La automatización no decide: reúne, verifica y presenta.",
-      "Camino de excepciones: si falta información, el equipo la completa dentro del mismo circuito, sin volver al proceso manual.",
-      "Generación del Excel y envío automático del mail de confirmación.",
-      "Registro de cada aprobación con la persona responsable y actualización de las bases de seguimiento."
+      "Lo diseñé y construí solo, de punta a punta, en Power Automate.",
+      "Cada solicitud se recibe del formulario y se cruza automáticamente contra una base de referencia.",
+      "El resultado llega a Teams, donde una persona revisa y aprueba. Si falta información, se completa en el mismo circuito.",
+      "Se generan el Excel y el mail de confirmación, y queda registrada cada aprobación con su responsable."
     ],
-    "changed": "El equipo dejó de consultar, copiar y armar mails, y pasó a revisar y aplicar criterio. Un solo circuito para casos normales y excepciones, con un proceso estandarizado y trazable."
+    "changed": "El equipo dejó de consultar, copiar y armar mails, y pasó a revisar. Casos normales y excepciones van por un solo circuito, estandarizado y trazable."
   },
   "en": {
-    "title": "Automating a validation and confirmation process",
+    "title": "Request validation and confirmation workflow",
     "sector": "Professional services",
-    "summary": "A process with manual work at almost every stage, turned into an automated flow with human review.",
-    "problem": "Users submitted requests through a form and the team checked everything by hand: logging into an internal system, looking up statuses one by one, cross-checking the information, moving the results to Excel, and writing an email with the file attached.",
-    "decision": "Before building, I evaluated solving it with agents (Copilot Studio). Since the process is structured, with clear rules and performance and cost requirements, I chose a deterministic flow in Power Automate. Not every automation needs an agent.",
+    "summary": "A fully manual process, turned into an automated flow with human approval.",
+    "problem": "Each request was checked by hand: looking up statuses one by one in an internal system, moving the results to Excel, and writing the confirmation email.",
+    "decision": "I evaluated solving it with an agent in Copilot Studio. The process has clear rules and performance and cost requirements, so I chose a deterministic flow in Power Automate.",
     "did": [
-      "Each request is received automatically from the form.",
-      "It is cross-checked against a periodically refreshed reference base, with automatic verification of statuses and conditions.",
-      "The result is posted to a Teams channel, where a person reviews and approves it. The automation doesn’t decide: it gathers, verifies, and presents.",
-      "Exception path: if information is missing, the team completes it inside the same flow, without going back to the manual process.",
-      "The Excel file is generated and the confirmation email is sent automatically.",
-      "Every approval is logged with the person responsible, and the tracking databases are updated."
+      "I designed and built it on my own, end to end, in Power Automate.",
+      "Each request comes in from the form and is automatically cross-checked against a reference base.",
+      "The result goes to Teams, where a person reviews and approves it. If information is missing, it gets completed in the same flow.",
+      "The Excel file and the confirmation email are generated, and every approval is logged with the person responsible."
     ],
-    "changed": "The team stopped looking things up, copying, and writing emails, and moved to reviewing and applying judgment. One flow for both normal cases and exceptions, with a standardized, traceable process."
+    "changed": "The team stopped looking things up, copying, and writing emails, and moved to reviewing. Normal cases and exceptions go through one standardized, traceable flow."
   }
 }

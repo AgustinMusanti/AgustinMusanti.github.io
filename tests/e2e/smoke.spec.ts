@@ -19,9 +19,12 @@ test('project filter narrows cards and syncs the URL', async ({ page }) => {
   await page.getByRole('button', { name: /^SQL/ }).click();
   await expect(page).toHaveURL(/\?tag=sql/);
   expect(await visible.count()).toBeLessThan(total);
+  // Filtered-out cards must really disappear at desktop width, where featured cards use a grid layout.
+  await expect(all.filter({ visible: true })).toHaveCount(await visible.count());
 
   await page.getByRole('button', { name: /^Todos/ }).click();
   expect(await visible.count()).toBe(total);
+  await expect(all.filter({ visible: true })).toHaveCount(total);
 });
 
 test('theme toggle persists across reloads', async ({ page }) => {

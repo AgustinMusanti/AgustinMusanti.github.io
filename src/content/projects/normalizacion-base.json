@@ -7,19 +7,19 @@
   "order": 14,
   "draft": false,
   "es": {
-    "title": "Normalización automatizada de una base",
+    "title": "Estandarización automatizada de una base de compliance",
     "sector": "Servicios profesionales",
-    "summary": "Una base que se actualizaba a mano.",
-    "problem": "Una base de cumplimiento se actualizaba a mano.",
-    "did": ["Estandaricé la base con un proceso en Python."],
+    "summary": "Una base de compliance que se limpiaba y estandarizaba a mano.",
+    "problem": "La base de compliance se limpiaba y estandarizaba a mano antes de cada actualización de indicadores.",
+    "did": ["Automaticé en Python la estandarización y normalización de la base."],
     "changed": "Los datos quedaron trazables y auditables, y los indicadores están disponibles más rápido."
   },
   "en": {
-    "title": "Automated normalization of a database",
+    "title": "Automated standardization of a compliance database",
     "sector": "Professional services",
-    "summary": "A database that was updated by hand.",
-    "problem": "A compliance database was updated by hand.",
-    "did": ["I standardized the database with a Python process."],
+    "summary": "A compliance database that was cleaned and standardized by hand.",
+    "problem": "The compliance database was cleaned and standardized by hand before every indicator update.",
+    "did": ["I automated the database's standardization and normalization in Python."],
     "changed": "The data became traceable and auditable, and the indicators are available faster."
   }
 }

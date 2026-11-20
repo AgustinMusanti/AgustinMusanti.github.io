@@ -9,18 +9,18 @@
   "metric": "2,42 qq/ha",
   "visual": "soja",
   "featured": true,
-  "order": 1,
+  "order": 3,
   "draft": false,
   "es": {
     "title": "Estimación temprana del rinde de soja",
     "question": "¿Se puede saber cómo viene la campaña de soja meses antes de la cosecha, solo con datos públicos?",
-    "result": "Con datos a fin de noviembre, unos 5 meses antes de la cosecha, estima el rinde con un error medio de 2,42 qq/ha: 40% menos que el promedio histórico.",
+    "result": "Con datos a fin de noviembre, unos 5 meses antes de la cosecha, estima el rinde con un error medio de 2,42 qq/ha: 40% menos error que estimar con el promedio histórico.",
     "summary": "Combina NDVI satelital, clima y rindes oficiales para 5 partidos del noroeste bonaerense. Tablero público que se actualiza mes a mes.",
     "metricLabel": "de error medio, 5 meses antes de la cosecha",
     "caseStudy": {
       "problem": "Saber cómo viene la campaña de soja en el noroeste bonaerense meses antes de la cosecha, usando solo datos públicos y gratuitos.",
       "approach": "Pipeline en Python que combina NDVI satelital (MODIS vía Google Earth Engine), clima diario (NASA POWER) y rindes oficiales (MAGyP) para 5 partidos y 25 campañas (2000/01 a 2024/25). Usa 16 variables por corte, entre ellas el déficit de presión de vapor (VPD) y la anomalía de NDVI respecto de lo normal. Entrena un Random Forest por corte, con validación temporal walk-forward e intervalos del 80% por método conformal. Probé otros algoritmos, un NDVI filtrado a soja y la señal de El Niño / La Niña: ninguno mejoró el modelo de forma concluyente.",
-      "result": "Con datos a fin de noviembre: error medio de 2,42 qq/ha (40% menos que el promedio histórico) y R² de 0,72. Acierta si cada partido viene por arriba o por abajo de lo normal en el 69% de los casos. En la sequía 2022/23 el rinde cayó un 49%, y a fin de noviembre el modelo ya anticipaba una caída del 43%. Los intervalos del 80% cubrieron entre el 77% y el 87% de los casos.",
+      "result": "Con datos a fin de noviembre: error medio de 2,42 qq/ha (40% menos error que estimar con el promedio histórico) y R² de 0,72. Acierta si cada partido viene por arriba o por abajo de lo normal en el 69% de los casos. En la sequía 2022/23 el rinde cayó un 49%, y a fin de noviembre el modelo ya anticipaba una caída del 43%. Los intervalos del 80% cubrieron entre el 77% y el 87% de los casos.",
       "learnings": "El techo es el dato, no el algoritmo: lo que más mejoró el modelo fueron dos variables con fundamento agronómico (VPD y anomalía de NDVI), no cambiar de algoritmo. Validar en el tiempo y no ajustar al examen. Documentar los errores: encontré y corregí un error en los datos satelitales de un partido que inflaba los resultados."
     },
     "sector": "Agro",
@@ -46,13 +46,13 @@
   "en": {
     "title": "Early soybean yield estimation",
     "question": "Can you tell how the soybean season is going months before harvest, using only public data?",
-    "result": "With data through late November, about 5 months before harvest, it estimates yield with a mean error of 2.42 qq/ha: 40% less than the historical average.",
+    "result": "With data through late November, about 5 months before harvest, it estimates yield with a mean error of 2.42 qq/ha (≈242 kg/ha): 40% lower error than using the historical average.",
     "summary": "Combines satellite NDVI, weather, and official yields for 5 counties in northwestern Buenos Aires. Public dashboard updated month by month.",
     "metricLabel": "mean error, 5 months before harvest",
     "caseStudy": {
       "problem": "Knowing how the soybean season is shaping up in northwestern Buenos Aires province months before harvest, using only free public data.",
       "approach": "A Python pipeline that combines satellite NDVI (MODIS via Google Earth Engine), daily weather (NASA POWER), and official yields (MAGyP) for 5 counties and 25 seasons (2000/01 to 2024/25). It uses 16 variables per cutoff, including vapor pressure deficit (VPD) and the NDVI anomaly versus normal. One Random Forest per cutoff, with walk-forward temporal validation and 80% conformal prediction intervals. I tried other algorithms, NDVI filtered to soybean, and the El Niño / La Niña signal: none improved the model conclusively.",
-      "result": "With data through late November: mean error of 2.42 qq/ha (40% less than the historical average) and R² of 0.72. It gets right whether each county comes in above or below normal in 69% of cases. In the 2022/23 drought yield fell 49%, and by late November the model was already anticipating a 43% drop. The 80% intervals covered between 77% and 87% of cases.",
+      "result": "With data through late November: mean error of 2.42 qq/ha (40% lower error than using the historical average) and R² of 0.72. It gets right whether each county comes in above or below normal in 69% of cases. In the 2022/23 drought yield fell 49%, and by late November the model was already anticipating a 43% drop. The 80% intervals covered between 77% and 87% of cases.",
       "learnings": "The ceiling is the data, not the algorithm: what improved the model most were two agronomically grounded variables (VPD and NDVI anomaly), not switching algorithms. Validate over time instead of fitting to the test. Document the errors: I found and fixed an error in one county's satellite data that was inflating the results."
     },
     "sector": "Agriculture",
