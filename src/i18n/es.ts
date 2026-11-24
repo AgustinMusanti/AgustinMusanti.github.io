@@ -179,6 +179,7 @@ export const es: Dictionary = {
       bi: 'BI',
       'data-science': 'Data Science',
       automatizacion: 'Automatización',
+      'data-engineering': 'Data Engineering',
       sql: 'SQL',
       ia: 'IA y agentes',
     },

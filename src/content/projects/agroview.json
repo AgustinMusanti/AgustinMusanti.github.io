@@ -1,6 +1,6 @@
 {
   "kind": "personal",
-  "tags": ["automatizacion", "bi"],
+  "tags": ["data-engineering", "bi"],
   "stack": ["Next.js", "TypeScript", "Tailwind", "GitHub Actions", "Vercel", "APIs REST", "Web scraping"],
   "links": {
     "demo": "https://agroview-ar.vercel.app"
@@ -12,14 +12,26 @@
     "title": "AgroView: datos del agro argentino en un solo lugar",
     "sector": "Agro",
     "question": "¿Se pueden reunir en un solo lugar los precios y datos que el productor consulta todos los días, hoy dispersos en distintas fuentes?",
-    "result": "Un portal público en producción que integra más de 9 fuentes (A3 Mercados, CBOT, MAGyP, BCRA, NOAA, Open-Meteo, entre otras) y se actualiza solo: APIs donde las hay y scrapers programados con GitHub Actions donde no. Suma indicadores calculados, como el basis y el FAS teórico.",
-    "summary": "Producto de datos propio, pensado para productores y cooperativas. Lo voy mejorando con sugerencias de gente del sector."
+    "result": "Lo construí de punta a punta y está en producción. Integra más de 9 fuentes (A3 Mercados, CBOT, MAGyP, BCRA, entre otras) con APIs y scrapers que corren solos en GitHub Actions, guarda series históricas y calcula indicadores para decidir, como el basis y el FAS teórico.",
+    "summary": "Producto de datos propio, pensado para productores y cooperativas. Lo voy mejorando con sugerencias de gente del sector.",
+    "caseStudy": {
+      "problem": "Los precios y datos que mira el productor están repartidos en muchas fuentes: mercados de futuros, organismos públicos, pizarras. Algunas tienen API y otras solo una página web.",
+      "approach": "Lo armé en cuatro capas. Datos: APIs (A3 Mercados, CBOT vía Yahoo Finance, BCRA, DolarAPI, Open-Meteo) y scrapers para las fuentes sin API (MAGyP, Mercado Agroganadero), programados con GitHub Actions. Cada día se suma un punto a las series históricas, con 5 años de historia cargada para el FOB. Calidad: si una fuente falla, no se pisa el último dato válido y queda registrado el error; hay corridas de respaldo y auditoría de los números antes de publicarlos. Análisis: elegí qué indicadores le sirven al productor y sumé calculados, como el basis (precio local frente a Chicago), el FAS teórico y la relación insumo/producto. Producto: frontend en Next.js pensado para leer rápido, desplegado en Vercel con métricas de uso.",
+      "result": "Está en producción y se actualiza solo. Lo compartí con productores, ingenieros agrónomos y gente del sector, y sus sugerencias definen qué sumo después.",
+      "learnings": "Traer el dato es la mitad del trabajo. Cada fuente trae sus problemas: bloqueos de IP, tablas que vienen vacías, valores que no cierran. Diseñar para que una falla no rompa lo publicado y auditar los números fue tan importante como integrarlos: así encontré y corregí un error en el cálculo del FAS teórico."
+    }
   },
   "en": {
     "title": "AgroView: Argentine agri data in one place",
     "sector": "Agriculture",
     "question": "Can the prices and data that farmers check every day, scattered across different sources, be brought together in one place?",
-    "result": "A public portal in production that integrates more than 9 sources (A3 Mercados, CBOT, MAGyP, BCRA, NOAA, Open-Meteo, among others) and updates itself: APIs where they exist, and scrapers scheduled with GitHub Actions where they don't. It adds calculated indicators, such as basis and theoretical FAS.",
-    "summary": "A data product of my own, built for farmers and cooperatives. I keep improving it with suggestions from people in the sector."
+    "result": "I built it end to end and it's in production. It integrates more than 9 sources (A3 Mercados, CBOT, MAGyP, BCRA, among others) through APIs and scrapers that run on their own in GitHub Actions, stores historical series, and calculates indicators for decision-making, such as basis and theoretical FAS.",
+    "summary": "A data product of my own, built for farmers and cooperatives. I keep improving it with suggestions from people in the sector.",
+    "caseStudy": {
+      "problem": "The prices and data farmers watch are spread across many sources: futures markets, public agencies, local price boards. Some offer an API, others only a web page.",
+      "approach": "I built it in four layers. Data: APIs (A3 Mercados, CBOT via Yahoo Finance, BCRA, DolarAPI, Open-Meteo) and scrapers for sources without an API (MAGyP, Mercado Agroganadero), scheduled with GitHub Actions. Every day adds a point to the historical series, with 5 years of FOB history preloaded. Quality: if a source fails, the last valid value is kept and the error is logged; there are backup runs and an audit of the numbers before they are published. Analysis: I chose which indicators are useful to a farmer and added calculated ones, such as basis (local price versus Chicago), theoretical FAS, and the input/output price ratio. Product: a Next.js frontend designed to be read quickly, deployed on Vercel with usage metrics.",
+      "result": "It's in production and updates itself. I've shared it with farmers, agronomists, and people in the sector, and their suggestions shape what I add next.",
+      "learnings": "Getting the data is half the work. Every source brings its own problems: IP blocks, tables that come back empty, values that don't add up. Designing so that one failure doesn't break what's published, and auditing the numbers, mattered as much as integrating them: that's how I found and fixed an error in the theoretical FAS calculation."
+    }
   }
 }

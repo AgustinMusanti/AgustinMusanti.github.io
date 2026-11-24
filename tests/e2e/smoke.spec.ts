@@ -40,7 +40,8 @@ test('English home and case study are reachable and translated', async ({ page }
   await page.goto('/en/');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await page
-    .getByRole('link', { name: /Read the full case/ })
+    .locator('a[href$="/en/projects/estimacion-rinde-soja/"]')
+    .filter({ hasText: /Read the full case/ })
     .first()
     .click();
   await expect(page).toHaveURL(/\/en\/projects\/estimacion-rinde-soja\/?$/);
