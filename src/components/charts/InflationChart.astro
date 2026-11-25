@@ -20,6 +20,14 @@ const band = (w - m.l - m.r) / values.length;
 const x = (i: number) => m.l + (i + 0.5) * band;
 const y = scale([0, 7.5], [h - m.b, m.t]);
 const threshold = 5;
+// The peak month is the headline; other months above the threshold use a lighter step of the same gold.
+const peak = Math.max(...values);
+const barFill = (v: number) =>
+  v === peak
+    ? 'var(--chart-highlight)'
+    : v > threshold
+      ? 'color-mix(in srgb, var(--chart-highlight) 55%, var(--surface))'
+      : 'var(--chart-secondary)';
 ---
 
 <ChartFrame title={t.chartTitle} size="sm">
@@ -38,7 +46,7 @@ const threshold = 5;
           rx="2"
           class="draw-bar"
           style={`--i:${i}`}
-          fill={v > threshold ? 'var(--accent)' : 'var(--bar)'}
+          fill={barFill(v)}
           data-tip={`${t.monthsFull[i]} · ${fmt(v)}%`}
         />
         <text x={x(i)} y={h - 4} text-anchor="middle" font-size="10" fill="var(--muted)">

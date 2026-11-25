@@ -18,6 +18,15 @@
   --step-dim-title: 0.7;
   --step-dim-question: 1;
 
+  /* Chart roles. Each mark color names a job, not a series. Validated with the dataviz
+     palette script against the card surface in both themes. */
+  --chart-primary: var(--accent-3);
+  --chart-highlight: var(--accent);
+  --chart-positive: var(--accent-2);
+  --chart-secondary: var(--bar);
+  --chart-uncertainty: color-mix(in srgb, var(--chart-primary) 24%, transparent);
+  --chart-anomaly: #a64b3c;
+
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -35,6 +44,8 @@
   --bar: #3a4640;
   --step-dim-title: 0.55;
   --step-dim-question: 0.8;
+  --chart-primary: #5e9ad3;
+  --chart-anomaly: #d98974;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,6 +61,8 @@
     --bar: #3a4640;
     --step-dim-title: 0.55;
     --step-dim-question: 0.8;
+    --chart-primary: #5e9ad3;
+    --chart-anomaly: #d98974;
   }
 }
 
@@ -101,6 +114,38 @@ h4 {
   font-family: var(--font-mono);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
+}
+
+/* Headline figures: the gold key number of a stat tile, card or case. Numbers only, never prose. */
+.stat-value {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+/* A figure inside a short sentence (award line): gold mono, same size as the text around it. */
+.stat-inline {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Project card: the result carries the card, so it gets a gold rule and full-weight ink. */
+.field-result {
+  border-left: 2px solid var(--accent);
+  padding-left: 0.75rem;
+}
+
+.field-result dt {
+  color: var(--text);
+}
+
+.field-result dd {
+  font-weight: 500;
 }
 
 .font-heading {

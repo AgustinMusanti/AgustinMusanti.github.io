@@ -34,7 +34,10 @@ const max = 100;
           </div>
           {item.approxShare !== null && (
             <div class="mt-1.5 h-2 rounded-full bg-[var(--border)]">
-              <div class="h-2 rounded-full bg-[var(--accent)]" style={`width:${(item.approxShare / max) * 100}%`} />
+              <div
+                class:list={['h-2 rounded-full', i === 0 ? 'bg-[var(--chart-highlight)]' : 'bg-[var(--chart-primary)]']}
+                style={`width:${(item.approxShare / max) * 100}%`}
+              />
             </div>
           )}
         </div>

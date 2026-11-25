@@ -50,9 +50,7 @@ const blocks = [
       <ul class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
         {text.stats.map((stat) => (
           <li class="panel p-4 md:p-5">
-            <span class="num block whitespace-nowrap text-xl leading-none md:text-2xl text-[var(--accent)]">
-              {stat.value}
-            </span>
+            <span class="stat-value block whitespace-nowrap text-xl leading-none md:text-2xl">{stat.value}</span>
             <span class="mt-2 block text-sm text-[var(--muted)]">{stat.label}</span>
           </li>
         ))}
@@ -60,7 +58,7 @@ const blocks = [
     ) : (
       metric && (
         <p class="panel mt-8 p-5">
-          <span class="num block text-4xl leading-none text-[var(--accent)]">{metric}</span>
+          <span class="stat-value block text-4xl leading-none">{metric}</span>
           <span class="mt-2 block text-sm text-[var(--muted)]">{text.metricLabel}</span>
         </p>
       )
