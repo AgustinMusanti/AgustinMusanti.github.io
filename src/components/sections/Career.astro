@@ -10,6 +10,9 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const roles = await getExperience(lang);
+// Odd entries are the figures ("4 horas", "10 minutos"), rendered in gold mono; the text stays as written.
+const splitFigures = (text: string) =>
+  text.split(/(\d+(?:[.,]\d+)?\s?(?:horas|minutos|hours|minutes)\b)/);
 ---
 
 <section id="career" class="mx-auto max-w-6xl px-4 py-20">
@@ -59,7 +62,12 @@ const roles = await getExperience(lang);
               <span class="font-medium text-[var(--accent)]">
                 {t.path.award} {role.award.title}
               </span>
-              <span class="text-[var(--text)]"> · {role.award.description}</span>
+              <span class="text-[var(--text)]">
+                {' · '}
+                {splitFigures(role.award.description).map((part, j) =>
+                  j % 2 ? <span class="stat-inline">{part}</span> : part,
+                )}
+              </span>
             </span>
           </p>
         )}

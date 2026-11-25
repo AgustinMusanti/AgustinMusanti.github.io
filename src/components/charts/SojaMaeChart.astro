@@ -47,7 +47,7 @@ const best = Math.min(...rows.map((r) => r.mae));
           rx="2"
           class="draw-bar"
           style={`--i:${i}`}
-          fill={r.mae === best ? 'var(--accent)' : 'var(--bar)'}
+          fill={r.mae === best ? 'var(--chart-highlight)' : 'var(--chart-secondary)'}
           data-tip={`${t.windows[r.window]} · ${before(r.mesesAntes)} · MAE ${fmt(r.mae)} qq/ha`}
         />
         <text x={x(i)} y={y(r.mae) - 5} text-anchor="middle" class="num" font-size="10.5" fill="var(--text)">

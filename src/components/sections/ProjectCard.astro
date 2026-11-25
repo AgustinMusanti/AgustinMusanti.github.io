@@ -41,7 +41,7 @@ const demoClass = href ? 'btn btn-sm' : 'btn btn-sm btn-primary';
 
     {metric && (
       <p class="mt-3">
-        <span class="num block text-3xl leading-none text-[var(--accent)]">{metric}</span>
+        <span class="stat-value block text-3xl leading-none">{metric}</span>
         <span class="mt-1 block text-xs text-[var(--muted)]">{text.metricLabel}</span>
       </p>
     )}
@@ -61,7 +61,7 @@ const demoClass = href ? 'btn btn-sm' : 'btn btn-sm btn-primary';
         <dt class="eyebrow">{t.projects.question}</dt>
         <dd class="mt-0.5 text-[var(--text)]">{text.question}</dd>
       </div>
-      <div>
+      <div class="field-result">
         <dt class="eyebrow">{t.projects.result}</dt>
         <dd class="mt-0.5 text-[var(--text)]">{text.result}</dd>
       </div>
